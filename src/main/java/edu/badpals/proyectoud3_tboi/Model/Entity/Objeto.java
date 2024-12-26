@@ -3,6 +3,9 @@ package edu.badpals.proyectoud3_tboi.Model.Entity;
 import jakarta.persistence.*;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "tipo_objeto", discriminatorType = DiscriminatorType.INTEGER)
+@DiscriminatorValue("0")
 @Table(name = "Objetos", schema = "TBOI_BBDD")
 public class Objeto {
     @Id
@@ -12,11 +15,6 @@ public class Objeto {
     @Column(name = "nombre", nullable = false, length = 50)
     private String nombre;
 
-    @Lob
-    @Column(name = "tipo_objeto", nullable = false)
-    private String tipoObjeto;
-
-    @Lob
     @Column(name = "efecto")
     private String efecto;
 
@@ -34,14 +32,6 @@ public class Objeto {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public String getTipoObjeto() {
-        return tipoObjeto;
-    }
-
-    public void setTipoObjeto(String tipoObjeto) {
-        this.tipoObjeto = tipoObjeto;
     }
 
     public String getEfecto() {

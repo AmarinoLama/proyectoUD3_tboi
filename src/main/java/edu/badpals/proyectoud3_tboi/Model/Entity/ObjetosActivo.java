@@ -3,8 +3,10 @@ package edu.badpals.proyectoud3_tboi.Model.Entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "ObjetosActivos", schema = "TBOI_BBDD")
-public class ObjetosActivo {
+@Table(name = "ObjetosActivos")
+@PrimaryKeyJoinColumn(name = "id")
+@DiscriminatorValue("2")
+public class ObjetosActivo extends Objeto {
     @Id
     @Column(name = "id_objeto", nullable = false)
     private Integer id;

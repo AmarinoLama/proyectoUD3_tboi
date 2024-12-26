@@ -3,11 +3,10 @@ package edu.badpals.proyectoud3_tboi.Model.Entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "ObjetosPasivos", schema = "TBOI_BBDD")
-public class ObjetosPasivo {
-    @Id
-    @Column(name = "id_objeto", nullable = false)
-    private Integer id;
+@Table(name = "ObjetosPasivos")
+@PrimaryKeyJoinColumn(name = "id")
+@DiscriminatorValue("3")
+public class ObjetosPasivo extends Objeto {
 
     @MapsId
     @OneToOne(fetch = FetchType.LAZY, optional = false)
@@ -18,13 +17,6 @@ public class ObjetosPasivo {
     @Column(name = "mejora_estadistica")
     private String mejoraEstadistica;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public Objeto getObjetos() {
         return objetos;
