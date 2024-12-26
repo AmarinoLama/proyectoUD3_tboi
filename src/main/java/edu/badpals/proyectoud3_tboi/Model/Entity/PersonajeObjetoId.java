@@ -1,4 +1,4 @@
-package edu.badpals.proyectoud3_tboi.Model;
+package edu.badpals.proyectoud3_tboi.Model.Entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;

@@ -1,10 +1,10 @@
-package edu.badpals.proyectoud3_tboi.Model;
+package edu.badpals.proyectoud3_tboi.Model.Entity;
 
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "ObjetosActivos", schema = "TBOI_BBDD")
-public class ObjetosActivo {
+@Table(name = "ObjetosPasivos", schema = "TBOI_BBDD")
+public class ObjetosPasivo {
     @Id
     @Column(name = "id_objeto", nullable = false)
     private Integer id;
@@ -14,8 +14,9 @@ public class ObjetosActivo {
     @JoinColumn(name = "id_objeto", nullable = false)
     private Objeto objetos;
 
-    @Column(name = "tiempo_recarga")
-    private Integer tiempoRecarga;
+    @Lob
+    @Column(name = "mejora_estadistica")
+    private String mejoraEstadistica;
 
     public Integer getId() {
         return id;
@@ -33,12 +34,12 @@ public class ObjetosActivo {
         this.objetos = objetos;
     }
 
-    public Integer getTiempoRecarga() {
-        return tiempoRecarga;
+    public String getMejoraEstadistica() {
+        return mejoraEstadistica;
     }
 
-    public void setTiempoRecarga(Integer tiempoRecarga) {
-        this.tiempoRecarga = tiempoRecarga;
+    public void setMejoraEstadistica(String mejoraEstadistica) {
+        this.mejoraEstadistica = mejoraEstadistica;
     }
 
 }

@@ -1,4 +1,4 @@
-package edu.badpals.proyectoud3_tboi.Model;
+package edu.badpals.proyectoud3_tboi.Model.Entity;
 
 import jakarta.persistence.*;
 
@@ -12,7 +12,7 @@ public class Consumible {
     @MapsId
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_objeto", nullable = false)
-    private edu.badpals.proyectoud3_tboi.Model.Objeto objetos;
+    private Objeto objetos;
 
     @Column(name = "duracion_efecto")
     private Integer duracionEfecto;
@@ -25,11 +25,11 @@ public class Consumible {
         this.id = id;
     }
 
-    public edu.badpals.proyectoud3_tboi.Model.Objeto getObjetos() {
+    public Objeto getObjetos() {
         return objetos;
     }
 
-    public void setObjetos(edu.badpals.proyectoud3_tboi.Model.Objeto objetos) {
+    public void setObjetos(Objeto objetos) {
         this.objetos = objetos;
     }
 

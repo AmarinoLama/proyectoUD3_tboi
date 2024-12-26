@@ -1,6 +1,6 @@
 package edu.badpals.proyectoud3_tboi;
 
-import edu.badpals.proyectoud3_tboi.Model.Personaje;
+import edu.badpals.proyectoud3_tboi.Model.Entity.Personaje;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;

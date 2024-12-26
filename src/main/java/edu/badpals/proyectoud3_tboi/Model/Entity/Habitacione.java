@@ -1,4 +1,4 @@
-package edu.badpals.proyectoud3_tboi.Model;
+package edu.badpals.proyectoud3_tboi.Model.Entity;
 
 import jakarta.persistence.*;
 
@@ -18,7 +18,7 @@ public class Habitacione {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_piso", nullable = false)
-    private edu.badpals.proyectoud3_tboi.Model.Piso idPiso;
+    private Piso idPiso;
 
     public Integer getId() {
         return id;
@@ -44,11 +44,11 @@ public class Habitacione {
         this.dificultad = dificultad;
     }
 
-    public edu.badpals.proyectoud3_tboi.Model.Piso getIdPiso() {
+    public Piso getIdPiso() {
         return idPiso;
     }
 
-    public void setIdPiso(edu.badpals.proyectoud3_tboi.Model.Piso idPiso) {
+    public void setIdPiso(Piso idPiso) {
         this.idPiso = idPiso;
     }
 

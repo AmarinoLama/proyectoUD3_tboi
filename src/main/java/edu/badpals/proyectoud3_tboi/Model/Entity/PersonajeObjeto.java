@@ -1,4 +1,4 @@
-package edu.badpals.proyectoud3_tboi.Model;
+package edu.badpals.proyectoud3_tboi.Model.Entity;
 
 import jakarta.persistence.*;
 
@@ -11,7 +11,7 @@ public class PersonajeObjeto {
     @MapsId("idPersonaje")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_personaje", nullable = false)
-    private edu.badpals.proyectoud3_tboi.Model.Personaje idPersonaje;
+    private Personaje idPersonaje;
 
     @MapsId("idObjeto")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -26,11 +26,11 @@ public class PersonajeObjeto {
         this.id = id;
     }
 
-    public edu.badpals.proyectoud3_tboi.Model.Personaje getIdPersonaje() {
+    public Personaje getIdPersonaje() {
         return idPersonaje;
     }
 
-    public void setIdPersonaje(edu.badpals.proyectoud3_tboi.Model.Personaje idPersonaje) {
+    public void setIdPersonaje(Personaje idPersonaje) {
         this.idPersonaje = idPersonaje;
     }
 
