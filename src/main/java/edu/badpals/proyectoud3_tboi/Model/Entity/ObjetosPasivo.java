@@ -8,30 +8,80 @@ import jakarta.persistence.*;
 @DiscriminatorValue("3")
 public class ObjetosPasivo extends Objeto {
 
-    @MapsId
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "id_objeto", nullable = false)
-    private Objeto objetos;
+    @Column(name = "mejora_dano")
+    private int mejoraDano;
 
-    @Lob
-    @Column(name = "mejora_estadistica")
-    private String mejoraEstadistica;
+    @Column(name = "mejora_velocidad")
+    private int mejoraVelocidad;
 
+    @Column(name = "mejora_lagrimas")
+    private int mejoraLagrimas;
 
-    public Objeto getObjetos() {
-        return objetos;
+    @Column(name = "mejora_rango")
+    private int mejoraRango;
+
+    @Column(name = "mejora_suerte")
+    private int mejoraSuerte;
+
+    @Column(name = "mejora_salud")
+    private int mejoraSalud;
+
+    @Column(name = "mejora_velocidad_proyectil")
+    private int mejoraVelocidadProyectil;
+
+    public int getMejoraDano() {
+        return mejoraDano;
     }
 
-    public void setObjetos(Objeto objetos) {
-        this.objetos = objetos;
+    public void setMejoraDano(int mejoraDano) {
+        this.mejoraDano = mejoraDano;
     }
 
-    public String getMejoraEstadistica() {
-        return mejoraEstadistica;
+    public int getMejoraVelocidad() {
+        return mejoraVelocidad;
     }
 
-    public void setMejoraEstadistica(String mejoraEstadistica) {
-        this.mejoraEstadistica = mejoraEstadistica;
+    public void setMejoraVelocidad(int mejoraVelocidad) {
+        this.mejoraVelocidad = mejoraVelocidad;
     }
 
+    public int getMejoraLagrimas() {
+        return mejoraLagrimas;
+    }
+
+    public void setMejoraLagrimas(int mejoraLagrimas) {
+        this.mejoraLagrimas = mejoraLagrimas;
+    }
+
+    public int getMejoraVelocidadProyectil() {
+        return mejoraVelocidadProyectil;
+    }
+
+    public void setMejoraVelocidadProyectil(int mejoraVelocidadProyectil) {
+        this.mejoraVelocidadProyectil = mejoraVelocidadProyectil;
+    }
+
+    public int getMejoraSalud() {
+        return mejoraSalud;
+    }
+
+    public void setMejoraSalud(int mejoraSalud) {
+        this.mejoraSalud = mejoraSalud;
+    }
+
+    public int getMejoraSuerte() {
+        return mejoraSuerte;
+    }
+
+    public void setMejoraSuerte(int mejoraSuerte) {
+        this.mejoraSuerte = mejoraSuerte;
+    }
+
+    public int getMejoraRango() {
+        return mejoraRango;
+    }
+
+    public void setMejoraRango(int mejoraRango) {
+        this.mejoraRango = mejoraRango;
+    }
 }

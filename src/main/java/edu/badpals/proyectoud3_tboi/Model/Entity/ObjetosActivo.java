@@ -7,33 +7,9 @@ import jakarta.persistence.*;
 @PrimaryKeyJoinColumn(name = "id")
 @DiscriminatorValue("2")
 public class ObjetosActivo extends Objeto {
-    @Id
-    @Column(name = "id_objeto", nullable = false)
-    private Integer id;
-
-    @MapsId
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "id_objeto", nullable = false)
-    private Objeto objetos;
 
     @Column(name = "tiempo_recarga")
     private Integer tiempoRecarga;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Objeto getObjetos() {
-        return objetos;
-    }
-
-    public void setObjetos(Objeto objetos) {
-        this.objetos = objetos;
-    }
 
     public Integer getTiempoRecarga() {
         return tiempoRecarga;
