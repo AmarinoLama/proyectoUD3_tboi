@@ -7,7 +7,7 @@ USE TBOI_BBDD;
 CREATE TABLE Personajes (
     id_personaje INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(50) NOT NULL,
-    descripcion TEXT,
+    descripcion VARCHAR(500),
     salud_base INT NOT NULL,
     dano_base FLOAT NOT NULL
 );
@@ -16,14 +16,19 @@ CREATE TABLE Personajes (
 CREATE TABLE Objetos (
     id_objeto INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(50) NOT NULL,
-    tipo_objeto ENUM('Pasivo', 'Activo', 'Consumible') NOT NULL,
     efecto TEXT
 );
 
 -- Herencia: Objetos pasivos
 CREATE TABLE ObjetosPasivos (
     id_objeto INT PRIMARY KEY,
-    mejora_estadistica TEXT,
+    mejora_dano FLOAT,
+    mejora_salud INT,
+    mejora_velocidad FLOAT,
+    mejora_lagrimas FLOAT,
+    mejora_rango FLOAT,
+    mejora_velocidad_proyectil FLOAT,
+    mejora_suerte INT,
     FOREIGN KEY (id_objeto) REFERENCES Objetos(id_objeto)
 );
 
