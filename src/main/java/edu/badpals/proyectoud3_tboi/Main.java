@@ -1,5 +1,7 @@
 package edu.badpals.proyectoud3_tboi;
 
+import edu.badpals.proyectoud3_tboi.Model.Dao.InterfazDAO;
+import edu.badpals.proyectoud3_tboi.Model.Dao.PersonajeDAO;
 import edu.badpals.proyectoud3_tboi.Model.Entity.Personaje;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -26,34 +28,10 @@ public class Main extends Application {
 
     }
 
-    public static void crearPersonajePrueba() {
-
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("default");
-        EntityManager em = emf.createEntityManager();
-
-        Personaje personaje = new Personaje();
-        personaje.setNombre("Isaac");
-        personaje.setId(1);
-        personaje.setDescripcion("Un niño que se adentra en las profundidades de su sótano para escapar de su madre.");
-        personaje.setDanoBase(3.5f);
-        personaje.setSaludBase(3);
-
-        try{
-            em.getTransaction().begin();
-            em.persist(personaje);
-            em.getTransaction().commit();
-        } catch (PersistenceException e) {
-            em.getTransaction().rollback();
-            System.out.println("Error malo" + e.getMessage());
-        }
-
-        em.close();
-        emf.close();
-
-    }
 
     public static void main(String[] args) {
         Application.launch(args);
-        //crearPersonajePrueba();
+        PersonajeDAO judas = new PersonajeDAO();
+        judas.crearPersonaje("Judas");
     }
 }
