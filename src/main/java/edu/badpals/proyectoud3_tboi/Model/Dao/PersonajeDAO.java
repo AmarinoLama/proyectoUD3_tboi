@@ -66,7 +66,7 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
                     em.getTransaction().commit();
                     break;
 
-                case "???":
+                case "Blue Baby":
                     Personaje bluebaby = new Personaje();
                     bluebaby.setId(5);
                     bluebaby.setNombre(nombre);
@@ -104,7 +104,7 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
                     azazel.setId(8);
                     azazel.setNombre(nombre);
                     azazel.setDanoBase(5.25f);
-                    //azazel.setDescripcion("En la Biblia, Azazel es el nombre que se le da al macho cabrío que fue arrojado al monte como parte de los rituales de expiación judíos. Sin embargo, en ciertas tradiciones de las religiones abrahámicas, Azazel se refiere al ángel caído que enseñó a la gente a fabricar armas y joyas y enseñó a las mujeres el \"arte pecaminoso\" de pintarse la cara, como se menciona en el Libro apócrifo de Enoc.");
+                    azazel.setDescripcion("En la Biblia, Azazel es el nombre que se le da al macho cabrío que fue arrojado al monte como parte de los rituales de expiación judíos. Sin embargo, en ciertas tradiciones de las religiones abrahámicas, Azazel se refiere al ángel caído que enseñó a la gente a fabricar armas y joyas y enseñó a las mujeres el \"arte pecaminoso\" de pintarse la cara, como se menciona en el Libro apócrifo de Enoc.");
                     azazel.setSaludBase(3);
                     em.persist(azazel);
                     em.getTransaction().commit();
@@ -113,6 +113,7 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
                     break;
             }
             System.out.println("Personaje creado con éxito");
+            // crear mensaje emergente conforme se ha creado correctamente el personaje
 
         } catch (Exception e) {
             em.getTransaction().rollback();

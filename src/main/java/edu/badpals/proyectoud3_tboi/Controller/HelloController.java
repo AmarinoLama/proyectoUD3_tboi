@@ -1,8 +1,10 @@
 package edu.badpals.proyectoud3_tboi.Controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 
 public class HelloController {
 
@@ -31,43 +33,92 @@ public class HelloController {
     private ImageView samson;
 
     @FXML
-    void createAzazel(MouseEvent event) {
+    private Text heart;
 
+    @FXML
+    private Text damage;
+
+    @FXML
+    private Text speed;
+
+    @FXML
+    private Text name;
+
+    @FXML
+    void createAzazel(MouseEvent event) {
+        System.out.println("Azazel");
+        name.setText("Azazel");
+        speed.setText("👞 I");
+        damage.setText("⚔ I I");
+        heart.setText("❤ I I I");
     }
 
     @FXML
     void createBlueBaby(MouseEvent event) {
-
+        System.out.println("Blue Baby");
+        name.setText("Blue Baby");
+        speed.setText("👞 I");
+        damage.setText("⚔ I I");
+        heart.setText("❤ I I I");
     }
 
     @FXML
     void createCain(MouseEvent event) {
-
+        System.out.println("Cain");
+        name.setText("Cain");
+        speed.setText("👞 I");
+        damage.setText("⚔ I I");
+        heart.setText("❤ I I I");
     }
 
     @FXML
     void createEva(MouseEvent event) {
-
+        System.out.println("Eva");
+        name.setText("Eva");
+        speed.setText("👞 I");
+        damage.setText("⚔ I I");
+        heart.setText("❤ I I I");
     }
 
     @FXML
     void createIsaac(MouseEvent event) {
-
+        System.out.println("Isaac");
+        name.setText("Isaac");
+        speed.setText("👞 I I");
+        damage.setText("⚔ I I");
+        heart.setText("❤ I I I");
     }
 
     @FXML
     void createJudas(MouseEvent event) {
-
+        System.out.println("Judas");
+        name.setText("Judas");
+        speed.setText("👞 I");
+        damage.setText("⚔ I I");
+        heart.setText("❤ I");
     }
 
     @FXML
     void createMagdalene(MouseEvent event) {
-
+        System.out.println("Magdalene");
+        name.setText("Magdalene");
+        speed.setText("👞 I");
+        damage.setText("⚔ I I");
+        heart.setText("❤ I I I I");
     }
 
     @FXML
     void createSamson(MouseEvent event) {
+        System.out.println("Samson");
+        name.setText("Samson");
+        speed.setText("👞 I");
+        damage.setText("⚔ I I");
+        heart.setText("❤ I I I");
+    }
 
+    @FXML
+    void createCharacterPressed(ActionEvent event) {
+        System.out.println("Character created");
     }
 
 }
