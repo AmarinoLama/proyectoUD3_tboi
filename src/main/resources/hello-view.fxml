@@ -1,16 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="edu.badpals.proyectoud3_tboi.Controller.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="612.0" prefWidth="576.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.badpals.proyectoud3_tboi.Controller.HelloController">
+   <children>
+      <ImageView fitHeight="582.0" fitWidth="577.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/personajes/seleccionPersonaje.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="blueBaby" fitHeight="68.0" fitWidth="60.0" layoutX="91.0" layoutY="190.0" onMouseClicked="#createBlueBaby" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/personajes/blueBaby.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="cain" fitHeight="68.0" fitWidth="60.0" layoutX="319.0" layoutY="190.0" onMouseClicked="#createCain" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/personajes/cain.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="azazel" fitHeight="100.0" fitWidth="72.0" layoutX="194.0" layoutY="184.0" onMouseClicked="#createAzazel" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/personajes/azazel.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="eva" fitHeight="68.0" fitWidth="60.0" layoutX="414.0" layoutY="190.0" onMouseClicked="#createEva" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/personajes/eva.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="isaac" fitHeight="68.0" fitWidth="60.0" layoutX="91.0" layoutY="301.0" onMouseClicked="#createIsaac" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/personajes/isaac.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="samson" fitHeight="68.0" fitWidth="60.0" layoutX="200.0" layoutY="301.0" onMouseClicked="#createSamson" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/personajes/samson.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="magdalene" fitHeight="68.0" fitWidth="66.0" layoutX="315.0" layoutY="302.0" onMouseClicked="#createMagdalene" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/personajes/magdalena.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="judas" fitHeight="68.0" fitWidth="60.0" layoutX="419.0" layoutY="301.0" onMouseClicked="#createJudas" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/personajes/judas.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
