@@ -48,36 +48,36 @@ public class HelloController {
     void createAzazel(MouseEvent event) {
         System.out.println("Azazel");
         name.setText("Azazel");
-        speed.setText("👞 I");
-        damage.setText("⚔ I I");
-        heart.setText("❤ I I I");
+        speed.setText("👞 I I I");
+        damage.setText("⚔ I I I I");
+        heart.setText("❤ -I");
     }
 
     @FXML
     void createBlueBaby(MouseEvent event) {
         System.out.println("Blue Baby");
         name.setText("Blue Baby");
-        speed.setText("👞 I");
+        speed.setText("👞 I I");
         damage.setText("⚔ I I");
-        heart.setText("❤ I I I");
+        heart.setText("❤ -I");
     }
 
     @FXML
     void createCain(MouseEvent event) {
         System.out.println("Cain");
         name.setText("Cain");
-        speed.setText("👞 I");
-        damage.setText("⚔ I I");
-        heart.setText("❤ I I I");
+        speed.setText("👞 I I I ");
+        damage.setText("⚔ I I I");
+        heart.setText("❤ I I");
     }
 
     @FXML
     void createEva(MouseEvent event) {
         System.out.println("Eva");
         name.setText("Eva");
-        speed.setText("👞 I");
-        damage.setText("⚔ I I");
-        heart.setText("❤ I I I");
+        speed.setText("👞 I I I");
+        damage.setText("⚔ I");
+        heart.setText("❤ I I");
     }
 
     @FXML
@@ -93,8 +93,8 @@ public class HelloController {
     void createJudas(MouseEvent event) {
         System.out.println("Judas");
         name.setText("Judas");
-        speed.setText("👞 I");
-        damage.setText("⚔ I I");
+        speed.setText("👞 I I");
+        damage.setText("⚔ I I I I");
         heart.setText("❤ I");
     }
 
@@ -111,7 +111,7 @@ public class HelloController {
     void createSamson(MouseEvent event) {
         System.out.println("Samson");
         name.setText("Samson");
-        speed.setText("👞 I");
+        speed.setText("👞 I I");
         damage.setText("⚔ I I");
         heart.setText("❤ I I I");
     }
