@@ -7,7 +7,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
-public class HelloController {
+public class SeleccionPersonaje {
 
     @FXML
     private ImageView azazel;

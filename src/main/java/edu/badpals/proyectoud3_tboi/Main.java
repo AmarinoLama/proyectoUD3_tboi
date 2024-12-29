@@ -18,7 +18,8 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/hello-view.fxml"));
+        //FXMLLoader loader = new FXMLLoader(getClass().getResource("/seleccionPersonaje.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/seleccionPersonaje.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         stage.setTitle("The Binding of Isaac: Rebirth");

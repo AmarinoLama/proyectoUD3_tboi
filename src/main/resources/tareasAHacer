@@ -17,9 +17,16 @@ REALIZADO - menu con personajes
 REALIZADO - asignar botones y llamar funcion pasandole el nombre
 
 - empezar con menu stats
-    > crear menu stats básico (velocidad, daño, lagrimas, alcance, velocidadProyectil, suerte, vida)
+    > crear menu stats básico (👞velocidad, ⚔daño, 💧lagrimas, 🏹alcance, 💦velocidadProyectil, 🍀suerte, ❤vida)
 
 - cargar la tabla de objetos
     > cargar la tabla de objetos y enseñar sus stats junto a nombre y descripcion
 
 - poner al lado de la tabla los items que se eligan
+
+
+>>>>>>> Tareas Externas <<<<<<<<<
+
+- Hacer que se pueda buscar por objetos pasivos, activos y consumibles
+
+- Hacer que solo se pueda buscar por pool en los objetos pasivos
