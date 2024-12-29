@@ -11,7 +11,7 @@ public class HabitacionEnemigo {
     @MapsId("idHabitacion")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_habitacion", nullable = false)
-    private Habitacione idHabitacion;
+    private Habitacion idHabitacion;
 
     @MapsId("idEnemigo")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -26,11 +26,11 @@ public class HabitacionEnemigo {
         this.id = id;
     }
 
-    public Habitacione getIdHabitacion() {
+    public Habitacion getIdHabitacion() {
         return idHabitacion;
     }
 
-    public void setIdHabitacion(Habitacione idHabitacion) {
+    public void setIdHabitacion(Habitacion idHabitacion) {
         this.idHabitacion = idHabitacion;
     }
 

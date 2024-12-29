@@ -9,6 +9,7 @@ import jakarta.persistence.*;
 @Table(name = "Objetos", schema = "TBOI_BBDD")
 public class Objeto {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_objeto", nullable = false)
     private Integer id;
 

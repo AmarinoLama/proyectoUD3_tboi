@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "Habitaciones", schema = "TBOI_BBDD")
-public class Habitacione {
+public class Habitacion {
     @Id
     @Column(name = "id_habitacion", nullable = false)
     private Integer id;
