@@ -1,6 +1,6 @@
 package edu.badpals.proyectoud3_tboi.Model.Dao;
 
-import edu.badpals.proyectoud3_tboi.Model.Entity.Personaje;
+import edu.badpals.proyectoud3_tboi.Model.Entity.*;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -123,4 +123,87 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
             emf.close();
         }
     }
+
+    @Override
+    public void eliminarPersonaje(int id) {
+        try {
+            em.getTransaction().begin();
+            Personaje personaje = em.find(Personaje.class, id);
+            em.remove(personaje);
+            em.getTransaction().commit();
+            System.out.println("Personaje eliminado con éxito");
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            e.printStackTrace();
+        } finally {
+            em.close();
+            emf.close();
+        }
+    }
+    
+    @Override
+    public void addObjetoPasivoToPersonaje(int idPersonaje, int idObjeto){
+        try {
+            em.getTransaction().begin();
+            Personaje personaje = em.find(Personaje.class, idPersonaje);
+            ObjetosPasivo objetoPasivo = em.find(ObjetosPasivo.class, idObjeto);
+            createObjetoPersonaje(idPersonaje, idObjeto, personaje, objetoPasivo);
+            System.out.println("Objeto pasivo añadido con éxito");
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            e.printStackTrace();
+        } finally {
+            em.close();
+            emf.close();
+        }
+    }
+
+    @Override
+    public void addObjetoActivoToPersonaje(int idPersonaje, int idObjeto){
+        try {
+            em.getTransaction().begin();
+            Personaje personaje = em.find(Personaje.class, idPersonaje);
+            ObjetosActivo objetoActivo = em.find(ObjetosActivo.class, idObjeto);
+            createObjetoPersonaje(idPersonaje, idObjeto, personaje, objetoActivo);
+            System.out.println("Objeto activo añadido con éxito");
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            e.printStackTrace();
+        } finally {
+            em.close();
+            emf.close();
+        }
+    }
+
+    @Override
+    public void addConsumibleToPersonaje(int idPersonaje, int idObjeto){
+        try {
+            em.getTransaction().begin();
+            Personaje personaje = em.find(Personaje.class, idPersonaje);
+            Consumible consumible = em.find(Consumible.class, idObjeto);
+            createObjetoPersonaje(idPersonaje, idObjeto, personaje, consumible);
+            System.out.println("Objeto activo añadido con éxito");
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            e.printStackTrace();
+        } finally {
+            em.close();
+            emf.close();
+        }
+    }
+
+
+    private void createObjetoPersonaje(int idPersonaje, int idObjeto, Personaje personaje, Objeto objeto) {
+        PersonajeObjetoId personajeObjetoId = new PersonajeObjetoId();
+        personajeObjetoId.setIdPersonaje(idPersonaje);
+        personajeObjetoId.setIdObjeto(idObjeto);
+        PersonajeObjeto personajeObjeto = new PersonajeObjeto();
+        personajeObjeto.setId(personajeObjetoId);
+        personajeObjeto.setIdPersonaje(personaje);
+        personajeObjeto.setIdObjeto(objeto);
+        em.persist(personajeObjeto);
+        em.getTransaction().commit();
+    }
+
+
 }
