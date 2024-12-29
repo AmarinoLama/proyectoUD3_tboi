@@ -9,16 +9,16 @@ import jakarta.persistence.*;
 public class ObjetosPasivo extends Objeto {
 
     @Column(name = "mejora_dano")
-    private int mejoraDano;
+    private float mejoraDano;
 
     @Column(name = "mejora_velocidad")
-    private int mejoraVelocidad;
+    private float mejoraVelocidad;
 
     @Column(name = "mejora_lagrimas")
-    private int mejoraLagrimas;
+    private float mejoraLagrimas;
 
     @Column(name = "mejora_rango")
-    private int mejoraRango;
+    private float mejoraRango;
 
     @Column(name = "mejora_suerte")
     private int mejoraSuerte;
@@ -27,37 +27,37 @@ public class ObjetosPasivo extends Objeto {
     private int mejoraSalud;
 
     @Column(name = "mejora_velocidad_proyectil")
-    private int mejoraVelocidadProyectil;
+    private float mejoraVelocidadProyectil;
 
-    public int getMejoraDano() {
+    public float getMejoraDano() {
         return mejoraDano;
     }
 
-    public void setMejoraDano(int mejoraDano) {
+    public void setMejoraDano(float mejoraDano) {
         this.mejoraDano = mejoraDano;
     }
 
-    public int getMejoraVelocidad() {
+    public float getMejoraVelocidad() {
         return mejoraVelocidad;
     }
 
-    public void setMejoraVelocidad(int mejoraVelocidad) {
+    public void setMejoraVelocidad(float mejoraVelocidad) {
         this.mejoraVelocidad = mejoraVelocidad;
     }
 
-    public int getMejoraLagrimas() {
+    public float getMejoraLagrimas() {
         return mejoraLagrimas;
     }
 
-    public void setMejoraLagrimas(int mejoraLagrimas) {
+    public void setMejoraLagrimas(float mejoraLagrimas) {
         this.mejoraLagrimas = mejoraLagrimas;
     }
 
-    public int getMejoraVelocidadProyectil() {
+    public float getMejoraVelocidadProyectil() {
         return mejoraVelocidadProyectil;
     }
 
-    public void setMejoraVelocidadProyectil(int mejoraVelocidadProyectil) {
+    public void setMejoraVelocidadProyectil(float mejoraVelocidadProyectil) {
         this.mejoraVelocidadProyectil = mejoraVelocidadProyectil;
     }
 
@@ -77,11 +77,11 @@ public class ObjetosPasivo extends Objeto {
         this.mejoraSuerte = mejoraSuerte;
     }
 
-    public int getMejoraRango() {
+    public float getMejoraRango() {
         return mejoraRango;
     }
 
-    public void setMejoraRango(int mejoraRango) {
+    public void setMejoraRango(float mejoraRango) {
         this.mejoraRango = mejoraRango;
     }
 }
