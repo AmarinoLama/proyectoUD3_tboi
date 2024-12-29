@@ -1,4 +1,4 @@
-Tareas Sergio:
+>>>>>>> Tareas Sergio <<<<<<<<<
 
 - crear personajes (isaac, magdalena, cain, judas, ???, eva, samson, azazel)
     > funcion que cree un personaje por su nombre
@@ -9,10 +9,12 @@ Tareas Sergio:
 - modificar clase objetos para que pille las stats que mejorar (velocidad, daño, lagrimas, alcance, velocidadProyectil, suerte, vida)
     > añadir un par de items y ver si las relaciones funcionan
 
-Tareas Aman:
+- modificar lo que tenga que ver con personajes para cambiar el daño inicial por multiplicador inicial
 
-- menu con personajes
-    > asignar botones y llamar funcion pasandole el nombre
+ >>>>>>>> Tareas Aman <<<<<<<<<
+
+REALIZADO - menu con personajes
+REALIZADO - asignar botones y llamar funcion pasandole el nombre
 
 - empezar con menu stats
     > crear menu stats básico (velocidad, daño, lagrimas, alcance, velocidadProyectil, suerte, vida)

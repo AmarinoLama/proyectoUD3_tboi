@@ -1,5 +1,6 @@
 package edu.badpals.proyectoud3_tboi.Controller;
 
+import edu.badpals.proyectoud3_tboi.Model.Dao.PersonajeDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
@@ -118,6 +119,8 @@ public class HelloController {
 
     @FXML
     void createCharacterPressed(ActionEvent event) {
+        PersonajeDAO personaje = new PersonajeDAO();
+        personaje.crearPersonaje(name.getText());
         System.out.println("Character created");
     }
 
