@@ -1,13 +1,8 @@
 >>>>>>> Tareas Sergio <<<<<<<<<
 
-- crear personajes (isaac, magdalena, cain, judas, ???, eva, samson, azazel)
-    > funcion que cree un personaje por su nombre
-
-- comprobar las tablas para ver si hay errores
-    > meter datos arreglados
-
-- modificar clase objetos para que pille las stats que mejorar (velocidad, daño, lagrimas, alcance, velocidadProyectil, suerte, vida)
-    > añadir un par de items y ver si las relaciones funcionan
+REALIZADO - crear personajes (isaac, magdalena, cain, judas, ???, eva, samson, azazel)
+CASI REALIZADO - comprobar las tablas para ver si hay errores
+REALIZADO - modificar clase objetos para que pille las stats que mejorar (velocidad, daño, lagrimas, alcance, velocidadProyectil, suerte, vida)
 
 - modificar lo que tenga que ver con personajes para cambiar el daño inicial por multiplicador inicial
 
