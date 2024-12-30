@@ -33,7 +33,7 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
                     em.getTransaction().commit();
                 break;
 
-                case "Magdalene":
+                case "Magdalena":
                     Personaje magdalene = new Personaje();
                     magdalene.setId(2);
                     magdalene.setNombre(nombre);
@@ -66,7 +66,7 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
                     em.getTransaction().commit();
                     break;
 
-                case "Blue Baby":
+                case "???":
                     Personaje bluebaby = new Personaje();
                     bluebaby.setId(5);
                     bluebaby.setNombre(nombre);
