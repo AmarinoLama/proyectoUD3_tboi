@@ -1,11 +1,20 @@
 package edu.badpals.proyectoud3_tboi.Controller;
 
 import edu.badpals.proyectoud3_tboi.Model.Dao.PersonajeDAO;
+import edu.badpals.proyectoud3_tboi.View.Warnings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.util.Objects;
 
 public class SeleccionPersonaje {
 
@@ -47,7 +56,6 @@ public class SeleccionPersonaje {
 
     @FXML
     void createAzazel(MouseEvent event) {
-        System.out.println("Azazel");
         name.setText("Azazel");
         speed.setText("👞 I I I");
         damage.setText("⚔ I I I I");
@@ -56,8 +64,7 @@ public class SeleccionPersonaje {
 
     @FXML
     void createBlueBaby(MouseEvent event) {
-        System.out.println("Blue Baby");
-        name.setText("Blue Baby");
+        name.setText("???");
         speed.setText("👞 I I");
         damage.setText("⚔ I I");
         heart.setText("❤ -I");
@@ -65,7 +72,6 @@ public class SeleccionPersonaje {
 
     @FXML
     void createCain(MouseEvent event) {
-        System.out.println("Cain");
         name.setText("Cain");
         speed.setText("👞 I I I ");
         damage.setText("⚔ I I I");
@@ -74,7 +80,6 @@ public class SeleccionPersonaje {
 
     @FXML
     void createEva(MouseEvent event) {
-        System.out.println("Eva");
         name.setText("Eva");
         speed.setText("👞 I I I");
         damage.setText("⚔ I");
@@ -83,7 +88,6 @@ public class SeleccionPersonaje {
 
     @FXML
     void createIsaac(MouseEvent event) {
-        System.out.println("Isaac");
         name.setText("Isaac");
         speed.setText("👞 I I");
         damage.setText("⚔ I I");
@@ -92,7 +96,6 @@ public class SeleccionPersonaje {
 
     @FXML
     void createJudas(MouseEvent event) {
-        System.out.println("Judas");
         name.setText("Judas");
         speed.setText("👞 I I");
         damage.setText("⚔ I I I I");
@@ -101,8 +104,7 @@ public class SeleccionPersonaje {
 
     @FXML
     void createMagdalene(MouseEvent event) {
-        System.out.println("Magdalene");
-        name.setText("Magdalene");
+        name.setText("Magdalena");
         speed.setText("👞 I");
         damage.setText("⚔ I I");
         heart.setText("❤ I I I I");
@@ -110,7 +112,6 @@ public class SeleccionPersonaje {
 
     @FXML
     void createSamson(MouseEvent event) {
-        System.out.println("Samson");
         name.setText("Samson");
         speed.setText("👞 I I");
         damage.setText("⚔ I I");
@@ -119,9 +120,35 @@ public class SeleccionPersonaje {
 
     @FXML
     void createCharacterPressed(ActionEvent event) {
+        if (name.getText().equals("Selecciona un personaje")) {
+            Warnings.showError("Selecciona un personaje");
+            return;
+        }
         PersonajeDAO personaje = new PersonajeDAO();
         personaje.crearPersonaje(name.getText());
-        System.out.println("Character created");
+        abrirMenuPrincipal();
     }
 
+    public void abrirMenuPrincipal() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/menuPrincipal.fxml"));
+            Parent root = loader.load();
+
+            MenuController menuController = loader.getController();
+            String personajeName = name.getText().equals("???") ? "blueBaby" : name.getText().toLowerCase();
+            menuController.setImgPersonaje(personajeName);
+
+            Scene scene = new Scene(root);
+            Stage newStage = new Stage();
+            newStage.setTitle("The Binding of Isaac: Rebirth");
+            newStage.setScene(scene);
+            newStage.setResizable(false);
+            newStage.show();
+
+            Stage currentStage = (Stage) heart.getScene().getWindow();
+            currentStage.close();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }
