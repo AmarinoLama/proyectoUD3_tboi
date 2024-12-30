@@ -16,7 +16,8 @@ CREATE TABLE Personajes (
 CREATE TABLE Objetos (
     id_objeto INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(50) NOT NULL,
-    efecto TEXT
+    efecto TEXT,
+    imagen LONGBLOB
 );
 
 -- Herencia: Objetos pasivos
@@ -95,7 +96,15 @@ INSERT INTO Objetos (id_objeto, nombre, efecto) VALUES
 (13, 'Pyromaniac', 'Convierte el daño de explosión en curación y te vuelve inmune a explosiones.'),
 (14, 'Tech X', 'Permite disparar anillos láser cargados que atraviesan enemigos.'),
 (15, 'Ansuz', 'Revela el mapa completo del piso actual.'),
-(16, 'Pretty Fly', 'Genera una mosca orbital que bloquea proyectiles enemigos.');
+(16, 'Pretty Fly', 'Genera una mosca orbital que bloquea proyectiles enemigos.'),
+
+(17, 'Yum Heart', 'Otorga un corazón al usuario'),
+(18, 'Lucky Foot', 'Da un aumento de suerte al jugador'),
+(19, 'The Poop', 'Genera un montón de caca'),
+(20, 'Razor Blade', 'Se hace daño a cambio de un aumento de daño'),
+(21, 'Whore of Babylon', 'Cuando el portador tiene poca vida aumentan todas sus estadísticas'),
+(22, 'Dead Bird', 'Cuando sufre daño el portador invoca a un aliado pájaro que ataca a todos los enemigos'),
+(23, 'Bloody Lust', 'A medida que sufres daño aumenta tu daño');
 
 -- Inserts para la tabla ObjetosPasivos
 INSERT INTO ObjetosPasivos (id_objeto, mejora_dano, mejora_salud, mejora_velocidad, mejora_lagrimas, mejora_rango, mejora_velocidad_proyectil, mejora_suerte) VALUES
@@ -104,14 +113,21 @@ INSERT INTO ObjetosPasivos (id_objeto, mejora_dano, mejora_salud, mejora_velocid
 (6, 5.0, 0, -0.2, -0.5, 0.0, 0.0, 0),
 (7, 0.5, 1, 0.1, 0.1, 0.2, 0.1, 1),
 (10, 2.3, 0, -0.15, 0.0, 0.0, 0.0, 0),
-(12, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0),
-(13, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0);
+(12, 0.0, 0.1, 0.0, 0.0, 0.0, 0.0, 0),
+(13, 0.0, 0.1, 0.0, 0.0, 0.0, 0.0, 0),
+
+(18, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 1),
+(21, 4.5, 0, 1.5, 1.0, 1.0, 0.0, 0),
+(22, 0.5, 0, 0.0, 0.0, 0.0, 0.0, 0),
+(23, 7.5, 0, 0.0, 0.0, 0.0, 0.0, 0);
 
 -- Inserts para la tabla ObjetosActivos
 INSERT INTO ObjetosActivos (id_objeto, tiempo_recarga) VALUES
 (2, 3),
 (5, 2),
-(9, 0);
+(9, 0),
+(17, 4),
+(20, 0);
 
 -- Inserts para la tabla Consumibles
 INSERT INTO Consumibles (id_objeto, duracion_efecto) VALUES
@@ -125,7 +141,7 @@ INSERT INTO Habitaciones (id_habitacion, tipo_habitacion) VALUES
 (2, 'Tesoro'),
 (3, 'Jefe'),
 (4, 'Secreta'),
-(5, 'Super Secreta'),
+(5, 'Ultra Secreta'),
 (6, 'Tienda'),
 (7, 'Angelical'),
 (8, 'Demoniaca'),
@@ -139,7 +155,8 @@ INSERT INTO Pools (id_pool, nombre, id_habitacion) VALUES
 (2, 'Pool de Jefe', 3),
 (3, 'Pool de Tienda', 6),
 (4, 'Pool de Ángel', 7),
-(5, 'Pool de Demonio', 8);
+(5, 'Pool de Demonio', 8),
+(6, 'Pool de Ultra Secreta', 5);
 
 -- Inserts para la tabla PoolObjetos
 INSERT INTO PoolObjetos (id_pool, id_objeto) VALUES
@@ -148,11 +165,26 @@ INSERT INTO PoolObjetos (id_pool, id_objeto) VALUES
 (1, 5),
 (1, 6),
 (1, 7),
+(1, 22),
+(1, 23),
+(1, 19),
+(1, 18),
 (2, 2),
 (2, 10),
 (3, 9),
 (3, 13),
+(3, 20),
+(3, 17),
 (4, 12),
 (4, 14),
 (5, 8),
-(5, 10);
+(5, 10),
+(5, 21),
+(5, 22),
+(6, 1),
+(6, 4),
+(6, 5),
+(6, 10),
+(6, 17),
+(6, 21),
+(6, 23);
