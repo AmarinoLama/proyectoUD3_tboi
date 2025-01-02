@@ -5,7 +5,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
-public abstract class ObjetoPasivoDAO{
+public class ObjetoPasivoDAO{
     private EntityManagerFactory emf;
     private EntityManager em;
 

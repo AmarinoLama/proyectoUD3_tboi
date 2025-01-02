@@ -3,18 +3,19 @@ package edu.badpals.proyectoud3_tboi.Model.Entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Pisos", schema = "TBOI_BBDD")
-public class Piso {
+@Table(name = "Pools")
+public class Pool {
     @Id
-    @Column(name = "id_piso", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_pool", nullable = false)
     private Integer id;
 
     @Column(name = "nombre", nullable = false, length = 50)
     private String nombre;
 
-    @Lob
-    @Column(name = "descripcion")
-    private String descripcion;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "id_habitacion", nullable = false)
+    private Habitacion idHabitacion;
 
     public Integer getId() {
         return id;
@@ -32,12 +33,12 @@ public class Piso {
         this.nombre = nombre;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public Habitacion getIdHabitacion() {
+        return idHabitacion;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setIdHabitacion(Habitacion idHabitacion) {
+        this.idHabitacion = idHabitacion;
     }
 
 }
