@@ -31,7 +31,11 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         Application.launch(args);
-        //PersonajeDAO judas = new PersonajeDAO();
-        //judas.crearPersonaje("Judas");
+        /*PersonajeDAO personaje = new PersonajeDAO();
+        personaje.crearPersonaje("Judas");
+        personaje.addObjetoPasivoToPersonaje(4,1);
+        personaje.addObjetoActivoToPersonaje(4,5);
+        personaje.addConsumibleToPersonaje(4,3);
+        personaje.closeHibernate();*/
     }
 }
