@@ -1,8 +1,10 @@
 package edu.badpals.proyectoud3_tboi.Model.Dao;
 
+import edu.badpals.proyectoud3_tboi.Model.Entity.Personaje;
+
 public interface InterfazDAO<T> {
 
-    void crearPersonaje(String Nombre);
+    Personaje crearPersonaje(String Nombre);
 
     void eliminarPersonaje(int id);
 

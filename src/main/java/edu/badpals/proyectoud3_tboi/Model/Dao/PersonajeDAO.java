@@ -1,9 +1,9 @@
 package edu.badpals.proyectoud3_tboi.Model.Dao;
 
 import edu.badpals.proyectoud3_tboi.Model.Entity.*;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 public class PersonajeDAO implements InterfazDAO<Personaje>{
     private EntityManagerFactory emf;
@@ -17,111 +17,116 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
         initHibernate();
     }
 
+    public void closeHibernate(){
+        em.close();
+        emf.close();
+    }
+
     @Override
-    public void crearPersonaje(String nombre){
+    public Personaje crearPersonaje(String nombre){
+        Personaje personaje = null;
         try{
             em.getTransaction().begin();
             switch (nombre){
                 case "Isaac":
-                    Personaje isaac = new Personaje();
-                    isaac.setId(1);
-                    isaac.setNombre(nombre);
-                    isaac.setDanoBase(3.5f);
-                    isaac.setDescripcion("Un niño que se adentra en las profundidades de su sótano para escapar de su madre.");
-                    isaac.setSaludBase(3);
-                    em.persist(isaac);
-                    em.getTransaction().commit();
+                    personaje = new Personaje();
+                    personaje.setId(1);
+                    personaje.setNombre(nombre);
+                    personaje.setDanoBase(3.5f);
+                    personaje.setDescripcion("Un niño que se adentra en las profundidades de su sótano para escapar de su madre.");
+                    personaje.setSaludBase(3);
+                    personaje.setMultiplicadorDano(1f);
+                    em.persist(personaje);
                 break;
 
                 case "Magdalena":
-                    Personaje magdalene = new Personaje();
-                    magdalene.setId(2);
-                    magdalene.setNombre(nombre);
-                    magdalene.setDanoBase(3.5f);
-                    magdalene.setDescripcion("Magdalena es una referencia a María Magdalena, una seguidora de Jesús que de su cuerpo salieron 7 demonios, referenciado con los 7 contenedores de vida necesarios para desbloquearla.");
-                    magdalene.setSaludBase(4);
-                    em.persist(magdalene);
-                    em.getTransaction().commit();
+                    personaje = new Personaje();
+                    personaje.setId(2);
+                    personaje.setNombre(nombre);
+                    personaje.setDanoBase(3.5f);
+                    personaje.setDescripcion("Magdalena es una referencia a María Magdalena, una seguidora de Jesús que de su cuerpo salieron 7 demonios, referenciado con los 7 contenedores de vida necesarios para desbloquearla.");
+                    personaje.setSaludBase(4);
+                    personaje.setMultiplicadorDano(1f);
+                    em.persist(personaje);
                     break;
 
                 case "Cain":
-                    Personaje cain = new Personaje();
-                    cain.setId(3);
-                    cain.setNombre(nombre);
-                    cain.setDanoBase(4.2f);
-                    cain.setDescripcion("Es una referencia a la historia bíblica de Caín y Abel, donde Caín comete el primer asesinato al matar a Abel.");
-                    cain.setSaludBase(2);
-                    em.persist(cain);
-                    em.getTransaction().commit();
+                    personaje = new Personaje();
+                    personaje.setId(3);
+                    personaje.setNombre(nombre);
+                    personaje.setDanoBase(3.5f);
+                    personaje.setDescripcion("Es una referencia a la historia bíblica de Caín y Abel, donde Caín comete el primer asesinato al matar a Abel.");
+                    personaje.setSaludBase(2);
+                    personaje.setMultiplicadorDano(1.2f);
+                    em.persist(personaje);
                     break;
 
                 case "Judas":
-                    Personaje judas = new Personaje();
-                    judas.setId(4);
-                    judas.setNombre(nombre);
-                    judas.setDanoBase(4.73f);
-                    judas.setDescripcion("Es una referencia a la historia bíblica de Caín y Abel, donde Caín comete el primer asesinato al matar a Abel.");
-                    judas.setSaludBase(1);
-                    em.persist(judas);
-                    em.getTransaction().commit();
+                    personaje = new Personaje();
+                    personaje.setId(4);
+                    personaje.setNombre(nombre);
+                    personaje.setDanoBase(3.5f);
+                    personaje.setDescripcion("Es una referencia a la historia bíblica de Caín y Abel, donde Caín comete el primer asesinato al matar a Abel.");
+                    personaje.setSaludBase(1);
+                    personaje.setMultiplicadorDano(1.35f);
+                    em.persist(personaje);
                     break;
 
-                case "???":
-                    Personaje bluebaby = new Personaje();
-                    bluebaby.setId(5);
-                    bluebaby.setNombre(nombre);
-                    bluebaby.setDanoBase(3.68f);
-                    bluebaby.setDescripcion("El nombre Blue Baby viene del síndrome del bebé azul, refiriendo a un bebé recién nacido con problemas que causan un tono de piel más azul. Este ha aparecido como un personaje recurrente en los trabajos de Edmund McMillen, funcionando originalmente como la «mascota» de su cuenta en Newgrounds «Bluebaby».");
-                    bluebaby.setSaludBase(3);
-                    em.persist(bluebaby);
-                    em.getTransaction().commit();
+                case "bluebaby":
+                    personaje = new Personaje();
+                    personaje.setId(5);
+                    personaje.setNombre(nombre);
+                    personaje.setDanoBase(3.5f);
+                    personaje.setDescripcion("El nombre Blue Baby viene del síndrome del bebé azul, refiriendo a un bebé recién nacido con problemas que causan un tono de piel más azul. Este ha aparecido como un personaje recurrente en los trabajos de Edmund McMillen, funcionando originalmente como la «mascota» de su cuenta en Newgrounds «Bluebaby».");
+                    personaje.setSaludBase(3);
+                    personaje.setMultiplicadorDano(1.05f);
+                    em.persist(personaje);
                     break;
 
                 case "Eva":
-                    Personaje eva = new Personaje();
-                    eva.setId(6);
-                    eva.setNombre(nombre);
-                    eva.setDanoBase(2.63f);
-                    eva.setDescripcion("Según la teología bíblica, Eva fue la primera mujer en la tierra, nacida de la costilla de Adán según el libro de Génesis. En el juego original de The Binding of Isaac, Eve dejaba sangre en lugar de orina al entrar a una habitación teniendo medio corazón de vida restante; se teorizaba que esto era una referencia a la menstruación, que bíblicamente se explica como una maldición dada a Eve por Dios.");
-                    eva.setSaludBase(2);
-                    em.persist(eva);
-                    em.getTransaction().commit();
+                    personaje = new Personaje();
+                    personaje.setId(6);
+                    personaje.setNombre(nombre);
+                    personaje.setDanoBase(3.5f);
+                    personaje.setDescripcion("Según la teología bíblica, Eva fue la primera mujer en la tierra, nacida de la costilla de Adán según el libro de Génesis. En el juego original de The Binding of Isaac, Eve dejaba sangre en lugar de orina al entrar a una habitación teniendo medio corazón de vida restante; se teorizaba que esto era una referencia a la menstruación, que bíblicamente se explica como una maldición dada a Eve por Dios.");
+                    personaje.setSaludBase(2);
+                    personaje.setMultiplicadorDano(0.75f);
+                    em.persist(personaje);
+
                     break;
 
                 case "Samson":
-                    Personaje samson = new Personaje();
-                    samson.setId(7);
-                    samson.setNombre(nombre);
-                    samson.setDanoBase(3.5f);
-                    samson.setDescripcion("En la Biblia, Sansón era un guerrero sobrenaturalmente fuerte que derivaba su poder de su voto nazareo, lo que le otorgaba a Sansón una fuerza inmensa si no se cortaba el cabello.");
-                    samson.setSaludBase(3);
-                    em.persist(samson);
-                    em.getTransaction().commit();
+                    personaje = new Personaje();
+                    personaje.setId(7);
+                    personaje.setNombre(nombre);
+                    personaje.setDanoBase(3.5f);
+                    personaje.setDescripcion("En la Biblia, Sansón era un guerrero sobrenaturalmente fuerte que derivaba su poder de su voto nazareo, lo que le otorgaba a Sansón una fuerza inmensa si no se cortaba el cabello.");
+                    personaje.setSaludBase(3);
+                    personaje.setMultiplicadorDano(1f);
+                    em.persist(personaje);
                     break;
 
                 case "Azazel":
-                    Personaje azazel = new Personaje();
-                    azazel.setId(8);
-                    azazel.setNombre(nombre);
-                    azazel.setDanoBase(5.25f);
-                    azazel.setDescripcion("En la Biblia, Azazel es el nombre que se le da al macho cabrío que fue arrojado al monte como parte de los rituales de expiación judíos. Sin embargo, en ciertas tradiciones de las religiones abrahámicas, Azazel se refiere al ángel caído que enseñó a la gente a fabricar armas y joyas y enseñó a las mujeres el \"arte pecaminoso\" de pintarse la cara, como se menciona en el Libro apócrifo de Enoc.");
-                    azazel.setSaludBase(3);
-                    em.persist(azazel);
-                    em.getTransaction().commit();
+                    personaje = new Personaje();
+                    personaje.setId(8);
+                    personaje.setNombre(nombre);
+                    personaje.setDanoBase(3.5f);
+                    personaje.setDescripcion("En la Biblia, Azazel es el nombre que se le da al macho cabrío que fue arrojado al monte como parte de los rituales de expiación judíos. Sin embargo, en ciertas tradiciones de las religiones abrahámicas, Azazel se refiere al ángel caído que enseñó a la gente a fabricar armas y joyas y enseñó a las mujeres el \"arte pecaminoso\" de pintarse la cara, como se menciona en el Libro apócrifo de Enoc.");
+                    personaje.setSaludBase(3);
+                    personaje.setMultiplicadorDano(1.5f);
+                    em.persist(personaje);
                     break;
                 default:
                     break;
             }
-            System.out.println("Personaje creado con éxito");
-            // crear mensaje emergente conforme se ha creado correctamente el personaje
+            System.out.println("Personaje creado con éxito.");
+            em.getTransaction().commit();
 
         } catch (Exception e) {
             em.getTransaction().rollback();
             e.printStackTrace();
-        } finally {
-            em.close();
-            emf.close();
         }
+        return personaje;
     }
 
     @Override
@@ -135,9 +140,6 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
         } catch (Exception e) {
             em.getTransaction().rollback();
             e.printStackTrace();
-        } finally {
-            em.close();
-            emf.close();
         }
     }
     
@@ -146,15 +148,19 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
         try {
             em.getTransaction().begin();
             Personaje personaje = em.find(Personaje.class, idPersonaje);
+            if (personaje == null) {
+                throw new IllegalArgumentException("Personaje no encontrado");
+            }
             ObjetosPasivo objetoPasivo = em.find(ObjetosPasivo.class, idObjeto);
+            if (objetoPasivo == null) {
+                throw new IllegalArgumentException("El objeto pasivo con id " + idObjeto + " no existe.");
+            }
             createObjetoPersonaje(idPersonaje, idObjeto, personaje, objetoPasivo);
             System.out.println("Objeto pasivo añadido con éxito");
+            em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
             e.printStackTrace();
-        } finally {
-            em.close();
-            emf.close();
         }
     }
 
@@ -163,15 +169,19 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
         try {
             em.getTransaction().begin();
             Personaje personaje = em.find(Personaje.class, idPersonaje);
+            if (personaje == null) {
+                throw new IllegalArgumentException("Personaje no encontrado");
+            }
             ObjetosActivo objetoActivo = em.find(ObjetosActivo.class, idObjeto);
+            if (objetoActivo == null) {
+                throw new IllegalArgumentException("El objeto activo con id " + idObjeto + " no existe.");
+            }
             createObjetoPersonaje(idPersonaje, idObjeto, personaje, objetoActivo);
             System.out.println("Objeto activo añadido con éxito");
+            em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
             e.printStackTrace();
-        } finally {
-            em.close();
-            emf.close();
         }
     }
 
@@ -180,15 +190,19 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
         try {
             em.getTransaction().begin();
             Personaje personaje = em.find(Personaje.class, idPersonaje);
+            if (personaje == null) {
+                throw new IllegalArgumentException("Personaje no encontrado");
+            }
             Consumible consumible = em.find(Consumible.class, idObjeto);
+            if (consumible == null) {
+                throw new IllegalArgumentException("El consumible con id " + idObjeto + " no existe.");
+            }
             createObjetoPersonaje(idPersonaje, idObjeto, personaje, consumible);
             System.out.println("Objeto activo añadido con éxito");
+            em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
             e.printStackTrace();
-        } finally {
-            em.close();
-            emf.close();
         }
     }
 
@@ -202,7 +216,18 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
         personajeObjeto.setIdPersonaje(personaje);
         personajeObjeto.setIdObjeto(objeto);
         em.persist(personajeObjeto);
-        em.getTransaction().commit();
+    }
+
+    public List<Objeto> showObjetosPersonaje(int idPersonaje){
+        List<Objeto> objetos = null;
+        Query query = em.createQuery("SELECT o.nombre, o.efecto FROM PersonajeObjeto p JOIN p.idObjeto o WHERE p.idPersonaje.id = :idPersonaje");
+        query.setParameter("idPersonaje", idPersonaje);
+        for (Object objeto : query.getResultList()) {
+            if (objeto != null) {
+                objetos.add((Objeto) objeto);
+            }
+        }
+        return objetos;
     }
 
 
