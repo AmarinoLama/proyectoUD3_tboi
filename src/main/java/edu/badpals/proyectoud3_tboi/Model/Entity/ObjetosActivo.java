@@ -4,8 +4,8 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "ObjetosActivos")
-@PrimaryKeyJoinColumn(name = "id")
-@DiscriminatorValue("2")
+@PrimaryKeyJoinColumn(name = "id_objeto")
+@DiscriminatorValue("ObjetoActivo")
 public class ObjetosActivo extends Objeto {
 
     @Column(name = "tiempo_recarga")
