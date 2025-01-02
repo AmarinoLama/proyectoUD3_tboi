@@ -12,7 +12,6 @@ public class Personaje {
     @Column(name = "nombre", nullable = false, length = 50)
     private String nombre;
 
-    @Lob
     @Column(name = "descripcion")
     private String descripcion;
 
@@ -21,6 +20,17 @@ public class Personaje {
 
     @Column(name = "dano_base", nullable = false)
     private Float danoBase;
+
+    @Transient
+    private Float multiplicadorDano;
+
+    public Float getMultiplicadorDano() {
+        return multiplicadorDano;
+    }
+
+    public void setMultiplicadorDano(Float multiplicadorDano) {
+        this.multiplicadorDano = multiplicadorDano;
+    }
 
     public Integer getId() {
         return id;
