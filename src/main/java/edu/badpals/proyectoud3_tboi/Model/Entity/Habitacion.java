@@ -9,16 +9,13 @@ public class Habitacion {
     @Column(name = "id_habitacion", nullable = false)
     private Integer id;
 
-    @Lob
     @Column(name = "tipo_habitacion", nullable = false)
-    private String tipoHabitacion;
+    @Enumerated(EnumType.STRING)
+    private TipoHabitacion tipoHabitacion;
 
     @Column(name = "dificultad", nullable = false)
     private Integer dificultad;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "id_piso", nullable = false)
-    private Piso idPiso;
 
     public Integer getId() {
         return id;
@@ -28,12 +25,12 @@ public class Habitacion {
         this.id = id;
     }
 
-    public String getTipoHabitacion() {
+    public TipoHabitacion getTipoHabitacion() {
         return tipoHabitacion;
     }
 
     public void setTipoHabitacion(String tipoHabitacion) {
-        this.tipoHabitacion = tipoHabitacion;
+        this.tipoHabitacion = TipoHabitacion.fromNombre(tipoHabitacion);
     }
 
     public Integer getDificultad() {
@@ -44,12 +41,5 @@ public class Habitacion {
         this.dificultad = dificultad;
     }
 
-    public Piso getIdPiso() {
-        return idPiso;
-    }
-
-    public void setIdPiso(Piso idPiso) {
-        this.idPiso = idPiso;
-    }
 
 }
