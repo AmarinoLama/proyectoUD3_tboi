@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(name = "tipo_objeto", discriminatorType = DiscriminatorType.INTEGER)
+@DiscriminatorColumn(name = "tipo_objeto", discriminatorType = DiscriminatorType.STRING)
 @DiscriminatorValue("0")
 @Table(name = "Objetos", schema = "TBOI_BBDD")
 public class Objeto {
