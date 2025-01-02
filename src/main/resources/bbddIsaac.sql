@@ -50,7 +50,7 @@ CREATE TABLE Consumibles (
 -- Modificación de la tabla Habitaciones para eliminar relación con Pisos
 CREATE TABLE Habitaciones (
     id_habitacion INT PRIMARY KEY AUTO_INCREMENT,
-    tipo_habitacion ENUM('Normal', 'Tesoro', 'Jefe', 'Secreta', 'Super Secreta', 'Ultra Secreta', 'Tienda', 'Angelical', 'Demoniaca', 'Sacrificio', 'Planetario', 'Biblioteca') NOT NULL
+    tipo_habitacion VARCHAR(25) NOT NULL
 );
 
 -- Relación entre personajes y objetos (objetos recogidos)
