@@ -7,7 +7,7 @@ module edu.badpals.proyectoud3_tboi {
 
     opens edu.badpals.proyectoud3_tboi to javafx.fxml;
     opens edu.badpals.proyectoud3_tboi.Controller to javafx.fxml;
-    opens edu.badpals.proyectoud3_tboi.Model.Entity to org.hibernate.orm.core;
+    opens edu.badpals.proyectoud3_tboi.Model.Entity to org.hibernate.orm.core, javafx.base;
 
     exports edu.badpals.proyectoud3_tboi;
 }

@@ -5,21 +5,24 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
+import java.util.List;
+
 public class ConsumibleDAO {
 
     private EntityManagerFactory emf;
     private EntityManager em;
 
-    private void initHibernate(){
+    private void initHibernate() {
         emf = Persistence.createEntityManagerFactory("default");
         em = emf.createEntityManager();
     }
-    public ConsumibleDAO(){
+
+    public ConsumibleDAO() {
         initHibernate();
     }
 
-        public void crearConsumible(String nombre, String efecto, Integer duracionEfecto){
-        try{
+    public void crearConsumible(String nombre, String efecto, Integer duracionEfecto) {
+        try {
             em.getTransaction().begin();
             Consumible consumible = new Consumible();
             consumible.setNombre(nombre);
@@ -35,6 +38,17 @@ public class ConsumibleDAO {
             emf.close();
         }
     }
+
+    public List<Consumible> getConsumibles() {
+        List<Consumible> consumibles = null;
+        try {
+            consumibles = em.createQuery("SELECT c FROM Consumible c", Consumible.class).getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            em.close();
+            emf.close();
+        }
+        return consumibles;
+    }
 }
-
-
