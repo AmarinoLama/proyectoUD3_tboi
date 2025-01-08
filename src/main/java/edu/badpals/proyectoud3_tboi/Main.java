@@ -1,5 +1,6 @@
 package edu.badpals.proyectoud3_tboi;
 
+import edu.badpals.proyectoud3_tboi.Model.Dao.PersonajeDAO;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -23,5 +24,13 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         Application.launch(args);
+        PersonajeDAO personaje = new PersonajeDAO();
+/*        personaje.addObjetoPasivoToPersonaje(4,1);
+        personaje.addObjetoActivoToPersonaje(4,5);
+        personaje.addConsumibleToPersonaje(4,3);
+        personaje.showObjetosPersonaje(4);
+        personaje.closeHibernate();*/
+        personaje.showObjetosPersonaje(4);
+
     }
 }

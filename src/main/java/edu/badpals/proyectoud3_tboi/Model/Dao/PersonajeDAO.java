@@ -219,15 +219,10 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
     }
 
     public List<Objeto> showObjetosPersonaje(int idPersonaje){
-        List<Objeto> objetos = null;
-        Query query = em.createQuery("SELECT o.nombre, o.efecto FROM PersonajeObjeto p JOIN p.idObjeto o WHERE p.idPersonaje.id = :idPersonaje");
+        Query query = em.createQuery("SELECT o FROM PersonajeObjeto p JOIN p.idObjeto o WHERE p.idPersonaje.id = :idPersonaje");
         query.setParameter("idPersonaje", idPersonaje);
-        for (Object objeto : query.getResultList()) {
-            if (objeto != null) {
-                objetos.add((Objeto) objeto);
-            }
-        }
-        return objetos;
+        List<Objeto> result = query.getResultList();
+        return result;
     }
 
 }
