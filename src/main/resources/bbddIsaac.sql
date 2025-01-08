@@ -16,8 +16,7 @@ CREATE TABLE Personajes (
 CREATE TABLE Objetos (
     id_objeto INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(50) NOT NULL,
-    efecto TEXT,
-    imagen LONGBLOB
+    efecto TEXT
 );
 
 -- Herencia: Objetos pasivos

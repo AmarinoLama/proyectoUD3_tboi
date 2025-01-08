@@ -72,7 +72,7 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
                     em.persist(personaje);
                     break;
 
-                case "bluebaby":
+                case "???":
                     personaje = new Personaje();
                     personaje.setId(5);
                     personaje.setNombre(nombre);
@@ -229,6 +229,5 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
         }
         return objetos;
     }
-
 
 }

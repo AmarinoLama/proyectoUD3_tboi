@@ -1,10 +1,13 @@
 >>>>>>> Tareas Sergio <<<<<<<<<
 
 REALIZADO - crear personajes (isaac, magdalena, cain, judas, ???, eva, samson, azazel)
-CASI REALIZADO - comprobar las tablas para ver si hay errores
+REALIZADO - comprobar las tablas para ver si hay errores
 REALIZADO - modificar clase objetos para que pille las stats que mejorar (velocidad, daño, lagrimas, alcance, velocidadProyectil, suerte, vida)
+REALIZADO - modificar lo que tenga que ver con personajes para cambiar el daño inicial por multiplicador inicial
+REALIZADO - Crear CRUD de personajes
+REALIZADO - Crear Items
 
-- modificar lo que tenga que ver con personajes para cambiar el daño inicial por multiplicador inicial
+-Consultas JPA a Items y personajes
 
  >>>>>>>> Tareas Aman <<<<<<<<<
 
@@ -24,3 +27,11 @@ REALIZADO - poner al lado de la tabla los items que se eligan
 
 - cargar la tabla de objetos
     > cargar la tabla de objetos y enseñar sus stats junto a nombre y descripcion
+
+>>>>>>> Tareas Extra <<<<<<<
+
+- Objetos iniciales de los personajes
+
+- Hacer un submenú para crear y borrar objetos
+
+- Testing JUnit
