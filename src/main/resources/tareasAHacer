@@ -25,13 +25,25 @@ REALIZADO - hacer el filtrado por pool (ponerle un botón)
 
 REALIZADO - poner al lado de la tabla los items que se eligan
 
-- cargar la tabla de objetos
-    > cargar la tabla de objetos y enseñar sus stats junto a nombre y descripcion
+REALIZADO - cargar la tabla de objetos / cargar la tabla de objetos y enseñar sus stats junto a nombre y descripcion
 
 >>>>>>> Tareas Extra <<<<<<<
 
-- Objetos iniciales de los personajes
+- Vincular botones añadir y eliminar objetos con la tabla de objetos (si es pasivo tabla, activo arriba, consumible abajo)
+    > Crear query que coja el último activo
+    > Crear query que coja el último consumible
 
-- Hacer un submenú para crear y borrar objetos
+- Cargar los datos seleccionados en el Inventario
+
+- Hacer lo de que se vea el objeto activo y el consumible
+
+- Hacer otra tabla o en la misma para filtrar los objetos por pools
+    > Query tocha para obtener los objetos que estén en la relacion objetoPool y pillar la pool para ver el nombre de la habitación asignada
+
+- Pensar en como coño vamos a hacer para que las stats de la izq suban conforme los items que tenemos (solo pasivos)
+
+- Objetos iniciales de los personajes ??? (skipeable)
+
+- Hacer un submenú para crear y borrar objetos ??? (skipeable)
 
 - Testing JUnit
