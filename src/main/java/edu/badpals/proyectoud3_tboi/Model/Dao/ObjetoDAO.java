@@ -32,4 +32,22 @@ public class ObjetoDAO {
         }
         return objetos;
     }
+
+    public List<Object[]> getObjetosConPool() {
+        List<Object[]> resultados = null;
+        try {
+            // Realizamos la consulta con JOIN entre Objeto, PoolObjetos y Pool
+            resultados = em.createQuery(
+                            "SELECT o, p FROM Objeto o " +
+                                    "JOIN PoolObjeto po ON o.id = po.idObjeto.id " +
+                                    "JOIN Pool p ON po.idPool.id = p.id", Object[].class)
+                    .getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            em.close();
+            emf.close();
+        }
+        return resultados;
+    }
 }

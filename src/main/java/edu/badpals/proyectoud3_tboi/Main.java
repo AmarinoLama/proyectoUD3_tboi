@@ -39,5 +39,11 @@ public class Main extends Application {
         personaje.closeHibernate();
 
         personaje.showObjetosPersonaje(4);*/
+
+        /*ObjetoDAO objeto = new ObjetoDAO();
+        List<Object[]> objetos = objeto.getObjetosConPool();
+        for (Object[] obj : objetos) {
+            System.out.println("ID: " + obj[0] + " Nombre: " + obj[1] + " Efecto: " + obj[2] + " Pool: " + obj[3]);
+        }*/
     }
 }
