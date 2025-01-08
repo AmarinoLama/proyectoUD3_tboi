@@ -1,9 +1,13 @@
 package edu.badpals.proyectoud3_tboi.Model.Dao;
 
+import edu.badpals.proyectoud3_tboi.Model.Entity.Consumible;
 import edu.badpals.proyectoud3_tboi.Model.Entity.ObjetosActivo;
+import edu.badpals.proyectoud3_tboi.Model.Entity.ObjetosPasivo;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+
+import java.util.List;
 
 public class ObjetoActivoDAO {
 
@@ -34,5 +38,18 @@ public class ObjetoActivoDAO {
             em.close();
             emf.close();
         }
+    }
+
+    public List<ObjetosActivo> getObjetosActivos() {
+        List<ObjetosActivo> objetosActivos = null;
+        try {
+            objetosActivos = em.createQuery("SELECT o FROM ObjetosActivo o", ObjetosActivo.class).getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            em.close();
+            emf.close();
+        }
+        return objetosActivos;
     }
 }
