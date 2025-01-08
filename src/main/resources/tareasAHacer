@@ -14,21 +14,13 @@ REALIZADO - asignar botones y llamar funcion pasandole el nombre
 REALIZADO - empezar con menu stats
 REALIZADO - crear menu stats básico (👞velocidad, ⚔daño, 💧lagrimas, 🏹alcance, 💦velocidadProyectil, 🍀suerte, ❤vida)
 
-- hacer hueco para los consumibles y el objeto activo
+REALIZADO - hacer hueco para los consumibles y el objeto activo
 
-- poner botones de añadir y quitar objetos + combobox para seleccionar el tipo de habitación
+REALIZADO - poner botones de añadir y quitar objetos + combobox para seleccionar el tipo de habitación
 
-- hacer el filtrado por pool (ponerle un botón)
+REALIZADO - hacer el filtrado por pool (ponerle un botón)
+
+REALIZADO - poner al lado de la tabla los items que se eligan
 
 - cargar la tabla de objetos
     > cargar la tabla de objetos y enseñar sus stats junto a nombre y descripcion
-
-- poner al lado de la tabla los items que se eligan
-
->>>>>>> Tareas Externas <<<<<<<<<
-
-- Imágenes o nombres?
-
-- Hacer que se pueda buscar por objetos pasivos, activos y consumibles
-
-- Hacer que solo se pueda buscar por pool en los objetos pasivos
