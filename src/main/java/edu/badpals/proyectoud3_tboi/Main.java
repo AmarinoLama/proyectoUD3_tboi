@@ -1,12 +1,5 @@
 package edu.badpals.proyectoud3_tboi;
 
-import edu.badpals.proyectoud3_tboi.Model.Dao.InterfazDAO;
-import edu.badpals.proyectoud3_tboi.Model.Dao.PersonajeDAO;
-import edu.badpals.proyectoud3_tboi.Model.Entity.Personaje;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
-import jakarta.persistence.PersistenceException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
