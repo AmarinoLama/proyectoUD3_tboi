@@ -1,17 +1,11 @@
 package edu.badpals.proyectoud3_tboi;
 
-import edu.badpals.proyectoud3_tboi.Model.Dao.ObjetoDAO;
-import edu.badpals.proyectoud3_tboi.Model.Dao.ObjetoPasivoDAO;
 import edu.badpals.proyectoud3_tboi.Model.Dao.PersonajeDAO;
-import edu.badpals.proyectoud3_tboi.Model.Entity.Objeto;
-import edu.badpals.proyectoud3_tboi.Model.Entity.ObjetosPasivo;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-import java.util.List;
 
 public class Main extends Application {
 
@@ -28,22 +22,13 @@ public class Main extends Application {
 
     }
 
+    private static void borrarTablas() {
+        PersonajeDAO personajeDAO = new PersonajeDAO();
+        personajeDAO.eliminarPersonaje(personajeDAO.seleccionarIDpersonaje());
+    }
+
     public static void main(String[] args) {
         Application.launch(args);
-        /*PersonajeDAO personaje = new PersonajeDAO();
-
-        personaje.addObjetoPasivoToPersonaje(4,1);
-        personaje.addObjetoActivoToPersonaje(4,5);
-        personaje.addConsumibleToPersonaje(4,3);
-        personaje.showObjetosPersonaje(4);
-        personaje.closeHibernate();
-
-        personaje.showObjetosPersonaje(4);*/
-
-        /*ObjetoDAO objeto = new ObjetoDAO();
-        List<Object[]> objetos = objeto.getObjetosConPool();
-        for (Object[] obj : objetos) {
-            System.out.println("ID: " + obj[0] + " Nombre: " + obj[1] + " Efecto: " + obj[2] + " Pool: " + obj[3]);
-        }*/
+        borrarTablas();
     }
 }
