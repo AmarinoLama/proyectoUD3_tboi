@@ -1,9 +1,6 @@
     package edu.badpals.proyectoud3_tboi.Controller;
     
-    import edu.badpals.proyectoud3_tboi.Model.Dao.ConsumibleDAO;
-    import edu.badpals.proyectoud3_tboi.Model.Dao.ObjetoActivoDAO;
-    import edu.badpals.proyectoud3_tboi.Model.Dao.ObjetoDAO;
-    import edu.badpals.proyectoud3_tboi.Model.Dao.ObjetoPasivoDAO;
+    import edu.badpals.proyectoud3_tboi.Model.Dao.*;
     import edu.badpals.proyectoud3_tboi.Model.Entity.*;
     import javafx.event.ActionEvent;
     import javafx.fxml.FXML;
@@ -71,7 +68,8 @@
     
         @FXML
         private TableView<Objeto> tablaObjetos;
-    
+
+
         public void setImgPersonaje(String personaje) {
             imgPersonaje.setImage(new Image(getClass().getResource("/img/personajes/" + personaje + ".png").toExternalForm()));
         }
@@ -88,7 +86,6 @@
     
         @FXML
         void quitarItem(ActionEvent event) {
-    
         }
     
         public void filtrarPasivos(ActionEvent event) {
@@ -126,6 +123,9 @@
     
                 Stage currentStage = (Stage) imgPersonaje.getScene().getWindow();
                 currentStage.close();
+                PersonajeDAO personajeActual = new PersonajeDAO();
+                int idPersonaje = personajeActual.seleccionarIDpersonaje();
+                personajeActual.eliminarPersonaje(idPersonaje);
             } catch (IOException e) {
                 System.out.println(e.getMessage());
             }

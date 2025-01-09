@@ -142,6 +142,12 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
             e.printStackTrace();
         }
     }
+
+    @Override
+    public int seleccionarIDpersonaje(){
+        Query query = em.createQuery("SELECT p.id FROM Personaje p ORDER BY p.id ASC");
+        return (int) query.getSingleResult();
+    }
     
     @Override
     public void addObjetoPasivoToPersonaje(int idPersonaje, int idObjeto){

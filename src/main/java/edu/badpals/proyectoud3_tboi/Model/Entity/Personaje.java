@@ -12,7 +12,7 @@ public class Personaje {
     @Column(name = "nombre", nullable = false, length = 50)
     private String nombre;
 
-    @Column(name = "descripcion")
+    @Column(name = "descripcion", nullable = true, length = 350)
     private String descripcion;
 
     @Column(name = "salud_base", nullable = false)
