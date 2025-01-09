@@ -61,14 +61,14 @@ public class ObjetoPasivoDAO{
     }
 
     public List<ObjetosPasivo> getPasivosPersonaje() {
-        List<ObjetosPasivo> objetosPasivos = null;
+        List<ObjetosPasivo> objetosPasivos;
         try {
             objetosPasivos = em.createQuery(
                     "SELECT o FROM ObjetosPasivo o JOIN PersonajeObjeto op ON o.id = op.idObjeto.id",
                     ObjetosPasivo.class
             ).getResultList();
         } catch (Exception e) {
-            e.printStackTrace();
+            return null;
         } finally {
             em.close();
             emf.close();

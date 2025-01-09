@@ -1,11 +1,15 @@
 package edu.badpals.proyectoud3_tboi;
 
+import edu.badpals.proyectoud3_tboi.Model.Dao.HabitacionDAO;
 import edu.badpals.proyectoud3_tboi.Model.Dao.PersonajeDAO;
+import edu.badpals.proyectoud3_tboi.Model.Entity.Objeto;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
+import java.util.List;
 
 public class Main extends Application {
 
@@ -22,13 +26,18 @@ public class Main extends Application {
 
     }
 
-    private static void borrarTablas() {
+    private static void dropPersonajeObjeto() {
         PersonajeDAO personajeDAO = new PersonajeDAO();
         personajeDAO.eliminarPersonaje(personajeDAO.seleccionarIDpersonaje());
     }
 
     public static void main(String[] args) {
         Application.launch(args);
-        borrarTablas();
+        //dropPersonajeObjeto();
+        HabitacionDAO habitacionDAO = new HabitacionDAO();
+        List<Objeto> objetos = habitacionDAO.filtrarPool("Secreta");
+        for (Objeto objeto : objetos) {
+            System.out.println(objeto.getNombre());
+        }
     }
 }
