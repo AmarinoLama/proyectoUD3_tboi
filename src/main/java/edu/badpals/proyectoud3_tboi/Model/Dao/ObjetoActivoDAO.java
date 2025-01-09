@@ -52,4 +52,19 @@ public class ObjetoActivoDAO {
         }
         return objetosActivos;
     }
+
+
+    public ObjetosActivo ultimoObjetoActivo(){
+        ObjetosActivo objetoActivo = null;
+        try {
+            objetoActivo = em.createQuery("SELECT oa from ObjetosActivo oa inner join Objeto o on oa.id = o.id inner join" +
+                            " PersonajeObjeto po on o.id = po.idObjeto.id order by oa.id desc", ObjetosActivo.class).setMaxResults(1).getSingleResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            em.close();
+            emf.close();
+        }
+        return objetoActivo;
+    }
 }

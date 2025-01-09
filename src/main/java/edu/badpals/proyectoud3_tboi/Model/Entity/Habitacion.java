@@ -13,10 +13,6 @@ public class Habitacion {
     @Enumerated(EnumType.STRING)
     private TipoHabitacion tipoHabitacion;
 
-    @Column(name = "dificultad", nullable = false)
-    private Integer dificultad;
-
-
     public Integer getId() {
         return id;
     }
@@ -33,13 +29,6 @@ public class Habitacion {
         this.tipoHabitacion = TipoHabitacion.fromNombre(tipoHabitacion);
     }
 
-    public Integer getDificultad() {
-        return dificultad;
-    }
-
-    public void setDificultad(Integer dificultad) {
-        this.dificultad = dificultad;
-    }
 
 
 }
