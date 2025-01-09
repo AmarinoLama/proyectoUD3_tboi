@@ -6,8 +6,8 @@ REALIZADO - modificar clase objetos para que pille las stats que mejorar (veloci
 REALIZADO - modificar lo que tenga que ver con personajes para cambiar el daño inicial por multiplicador inicial
 REALIZADO - Crear CRUD de personajes
 REALIZADO - Crear Items
+REALIZADO - Eliminar personaje al cambiar de personaje
 
--Consultas JPA a Items y personajes
 
  >>>>>>>> Tareas Aman <<<<<<<<<
 

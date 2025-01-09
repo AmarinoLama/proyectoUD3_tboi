@@ -1,6 +1,7 @@
 package edu.badpals.proyectoud3_tboi.Model.Dao;
 
 import edu.badpals.proyectoud3_tboi.Model.Entity.Consumible;
+import edu.badpals.proyectoud3_tboi.Model.Entity.ObjetosActivo;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -50,5 +51,19 @@ public class ConsumibleDAO {
             emf.close();
         }
         return consumibles;
+    }
+
+    public Consumible ultimoConsumible(){
+        Consumible consumible = null;
+        try {
+            consumible = em.createQuery("SELECT oa from Consumible oa inner join Objeto o on oa.id = o.id inner join" +
+                    " PersonajeObjeto po on o.id = po.idObjeto.id order by oa.id desc", Consumible.class).setMaxResults(1).getSingleResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            em.close();
+            emf.close();
+        }
+        return consumible;
     }
 }
