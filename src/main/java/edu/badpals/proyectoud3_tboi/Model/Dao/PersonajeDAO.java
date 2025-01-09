@@ -1,6 +1,7 @@
 package edu.badpals.proyectoud3_tboi.Model.Dao;
 
 import edu.badpals.proyectoud3_tboi.Model.Entity.*;
+import edu.badpals.proyectoud3_tboi.View.Warnings;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -130,13 +131,19 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
     }
 
     @Override
-    public void eliminarPersonaje(int id) {
+    public void eliminarPersonaje(int idPersonaje) {
         try {
             em.getTransaction().begin();
-            Personaje personaje = em.find(Personaje.class, id);
-            em.remove(personaje);
+            // First, delete all rows in the dependent table
+            em.createQuery("DELETE FROM PersonajeObjeto po WHERE po.idPersonaje.id = :idPersonaje")
+                    .setParameter("idPersonaje", idPersonaje)
+                    .executeUpdate();
+            // Then, delete the row in the main table
+            em.createQuery("DELETE FROM Personaje p WHERE p.id = :idPersonaje")
+                    .setParameter("idPersonaje", idPersonaje)
+                    .executeUpdate();
             em.getTransaction().commit();
-            System.out.println("Personaje eliminado con éxito");
+            System.out.println("Personaje y sus objetos relacionados han sido eliminados.");
         } catch (Exception e) {
             em.getTransaction().rollback();
             e.printStackTrace();
@@ -166,7 +173,7 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
-            e.printStackTrace();
+            Warnings.showExisteObjeto("Error al añadir objeto pasivo");
         }
     }
 
@@ -187,7 +194,7 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
-            e.printStackTrace();
+            Warnings.showExisteObjeto("Error al añadir objeto activo");
         }
     }
 
@@ -208,7 +215,7 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
-            e.printStackTrace();
+            Warnings.showExisteObjeto("Error al añadir consumible");
         }
     }
 
@@ -229,6 +236,31 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
         query.setParameter("idPersonaje", idPersonaje);
         List<Objeto> result = query.getResultList();
         return result;
+    }
+
+    public void eliminarItemDePersonaje(int idPersonaje, int idObjeto){
+        try{
+            PersonajeObjetoId relacionId = new PersonajeObjetoId();
+            relacionId.setIdPersonaje(idPersonaje);
+            relacionId.setIdObjeto(idObjeto);
+
+            // Buscar la relación específica
+            PersonajeObjeto relacion = em.find(PersonajeObjeto.class, relacionId);
+
+            if (relacion != null) {
+                em.getTransaction().begin();
+                em.remove(relacion);
+
+                em.getTransaction().commit();
+                System.out.println("Relación eliminada correctamente.");
+            } else {
+                System.out.println("No se encontró la relación especificada.");
+            }
+
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            e.printStackTrace();
+        }
     }
 
 }

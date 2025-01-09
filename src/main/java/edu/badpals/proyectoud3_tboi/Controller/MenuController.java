@@ -2,6 +2,8 @@
     
     import edu.badpals.proyectoud3_tboi.Model.Dao.*;
     import edu.badpals.proyectoud3_tboi.Model.Entity.*;
+    import edu.badpals.proyectoud3_tboi.View.Warnings;
+    import javafx.collections.ObservableList;
     import javafx.event.ActionEvent;
     import javafx.fxml.FXML;
     import javafx.fxml.FXMLLoader;
@@ -81,27 +83,62 @@
     
         @FXML
         void anadirItem(ActionEvent event) {
-    
+            Objeto selectedObjeto = tablaObjetos.getSelectionModel().getSelectedItem();
+            if (selectedObjeto != null) {
+                PersonajeDAO personajeDAO = new PersonajeDAO();
+
+                Integer idObjeto = selectedObjeto.getId();
+                Integer idPersonaje = personajeDAO.seleccionarIDpersonaje();
+
+                TableColumn<Objeto, ?> cuartaCol = tablaObjetos.getColumns().get(3);
+                String nombreCuartaColumna = cuartaCol.getText();
+                switch (nombreCuartaColumna) {
+                    case "Salud":
+                        personajeDAO.addObjetoPasivoToPersonaje(idPersonaje, idObjeto);
+                        break;
+                    case "Tiempo Recarga":
+                        personajeDAO.addObjetoActivoToPersonaje(idPersonaje, idObjeto);
+                        break;
+                    case "Duración":
+                        personajeDAO.addConsumibleToPersonaje(idPersonaje, idObjeto);
+                        break;
+                }
+            } else {
+                Warnings.showNadaSeleccionado();
+            }
+            System.out.println("Objeto añadido al personaje.");
         }
     
         @FXML
         void quitarItem(ActionEvent event) {
+            PersonajeDAO personajeDAO = new PersonajeDAO();
+            int idPersonaje = personajeDAO.seleccionarIDpersonaje();
+            int idObjeto = tablaObjetos.getSelectionModel().getSelectedItem().getId();
+            personajeDAO.eliminarItemDePersonaje(idPersonaje, idObjeto);
         }
     
         public void filtrarPasivos(ActionEvent event) {
             cargarPasivos();
+            activarBotones();
+            mbtnTipoObjeto.setText("Pasivos");
         }
     
         public void filtrarActivos(ActionEvent event) {
             cargarActivos();
+            activarBotones();
+            mbtnTipoObjeto.setText("Activos");
         }
     
         public void filtrarConsumibles(ActionEvent event) {
             cargarConsumibles();
+            activarBotones();
+            mbtnTipoObjeto.setText("Consumibles");
         }
     
         public void filtrarTodos(ActionEvent event) {
             cargarTodosObjetos();
+            desactivarBotones();
+            mbtnTipoObjeto.setText("Todos objetos");
         }
     
         @FXML
@@ -123,6 +160,7 @@
     
                 Stage currentStage = (Stage) imgPersonaje.getScene().getWindow();
                 currentStage.close();
+
                 PersonajeDAO personajeActual = new PersonajeDAO();
                 int idPersonaje = personajeActual.seleccionarIDpersonaje();
                 personajeActual.eliminarPersonaje(idPersonaje);
@@ -292,5 +330,23 @@
 
             // Añadir los resultados a la tabla
             tablaObjetos.getItems().setAll(objetos);
+        }
+
+        private void activarBotones() {
+            btnAnadirItem.setDisable(false);
+            btnQuitarItem.setDisable(false);
+        }
+
+        private void desactivarBotones() {
+            btnAnadirItem.setDisable(true);
+            btnQuitarItem.setDisable(true);
+        }
+
+        private void cargarObjetoActivo() {
+
+        }
+
+        private void cargarObjetoConsumible() {
+
         }
     }

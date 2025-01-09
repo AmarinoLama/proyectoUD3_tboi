@@ -9,12 +9,12 @@ public class PersonajeObjeto {
     private PersonajeObjetoId id;
 
     @MapsId("idPersonaje")
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.REMOVE)
     @JoinColumn(name = "id_personaje", nullable = false)
     private Personaje idPersonaje;
 
     @MapsId("idObjeto")
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.REMOVE)
     @JoinColumn(name = "id_objeto", nullable = false)
     private Objeto idObjeto;
 
