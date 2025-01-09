@@ -173,7 +173,7 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
-            Warnings.showExisteObjeto("Error al añadir objeto pasivo");
+            Warnings.showExisteObjeto("Error al añadir objeto pasivo, comprueba que no exista");
         }
     }
 
@@ -194,7 +194,7 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
-            Warnings.showExisteObjeto("Error al añadir objeto activo");
+            Warnings.showExisteObjeto("Error al añadir objeto activo, comprueba que no exista");
         }
     }
 
@@ -215,7 +215,7 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
-            Warnings.showExisteObjeto("Error al añadir consumible");
+            Warnings.showExisteObjeto("Error al añadir consumible, comprueba que no exista");
         }
     }
 

@@ -71,6 +71,8 @@
         @FXML
         private TableView<Objeto> tablaObjetos;
 
+        @FXML
+        private TableView<Objeto> tblInventario;
 
         public void setImgPersonaje(String personaje) {
             imgPersonaje.setImage(new Image(getClass().getResource("/img/personajes/" + personaje + ".png").toExternalForm()));
@@ -79,6 +81,7 @@
         @FXML
         public void initialize() {
             cargarPasivos();
+            mbtnHabitacion.setDisable(true);
         }
     
         @FXML
@@ -107,6 +110,10 @@
                 Warnings.showNadaSeleccionado();
             }
             System.out.println("Objeto añadido al personaje.");
+
+            cargarActivoActual();
+            cargarConsumibleActual();
+            cargarObjetosInventario();
         }
     
         @FXML
@@ -115,31 +122,41 @@
             int idPersonaje = personajeDAO.seleccionarIDpersonaje();
             int idObjeto = tablaObjetos.getSelectionModel().getSelectedItem().getId();
             personajeDAO.eliminarItemDePersonaje(idPersonaje, idObjeto);
+
+            cargarActivoActual();
+            cargarConsumibleActual();
+            cargarObjetosInventario();
         }
     
         public void filtrarPasivos(ActionEvent event) {
             cargarPasivos();
             activarBotones();
             mbtnTipoObjeto.setText("Pasivos");
+            mbtnHabitacion.setDisable(true);
         }
     
         public void filtrarActivos(ActionEvent event) {
             cargarActivos();
             activarBotones();
             mbtnTipoObjeto.setText("Activos");
+            mbtnHabitacion.setDisable(true);
         }
     
         public void filtrarConsumibles(ActionEvent event) {
             cargarConsumibles();
             activarBotones();
             mbtnTipoObjeto.setText("Consumibles");
+            mbtnHabitacion.setDisable(true);
         }
     
         public void filtrarTodos(ActionEvent event) {
             cargarTodosObjetos();
             desactivarBotones();
             mbtnTipoObjeto.setText("Todos objetos");
+            mbtnHabitacion.setDisable(false);
         }
+
+
     
         @FXML
         void cambiarPersonaje(ActionEvent event) {
@@ -332,6 +349,20 @@
             tablaObjetos.getItems().setAll(objetos);
         }
 
+        private void cargarObjetosInventario() {
+            PersonajeDAO personajeDAO = new PersonajeDAO();
+            int idPersonaje = personajeDAO.seleccionarIDpersonaje();
+            List<Objeto> objetos = personajeDAO.showObjetosPersonaje(idPersonaje);
+
+            tblInventario.getColumns().clear();
+            TableColumn<Objeto, Object> colNombre = new TableColumn<>("Inventario");
+            colNombre.setMinWidth(130);
+            colNombre.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getNombre()));
+            tblInventario.getColumns().addAll(colNombre);
+
+            tblInventario.getItems().setAll(objetos);
+        }
+
         private void activarBotones() {
             btnAnadirItem.setDisable(false);
             btnQuitarItem.setDisable(false);
@@ -342,11 +373,69 @@
             btnQuitarItem.setDisable(true);
         }
 
-        private void cargarObjetoActivo() {
-
+        private void cargarActivoActual() {
+            ObjetoActivoDAO activoDAO = new ObjetoActivoDAO();
+            ObjetosActivo objetoActivo = activoDAO.ultimoObjetoActivo();
+            txtItemActivo.setText(objetoActivo != null ? objetoActivo.getNombre() : "Ninguno");
         }
 
-        private void cargarObjetoConsumible() {
+        private void cargarConsumibleActual() {
+            ConsumibleDAO consumibleDAO = new ConsumibleDAO();
+            Consumible consumible = consumibleDAO.ultimoConsumible();
+            txtConsumible.setText(consumible != null ? consumible.getNombre() : "Ninguno");
+        }
 
+        public void filtrarTesoro(ActionEvent event) {
+            mbtnHabitacion.setText("Tesoro");
+            cargarFiltradoPool();
+        }
+
+        public void filtrarJefe(ActionEvent event) {
+            mbtnHabitacion.setText("Jefe");
+            cargarFiltradoPool();
+        }
+
+        public void filtrarTienda(ActionEvent event) {
+            mbtnHabitacion.setText("Tienda");
+            cargarFiltradoPool();
+        }
+
+        public void filtrarAngel(ActionEvent event) {
+            mbtnHabitacion.setText("Angelical");
+            cargarFiltradoPool();
+        }
+
+        public void filtrarDemonio(ActionEvent event) {
+            mbtnHabitacion.setText("Demoniaca");
+            cargarFiltradoPool();
+        }
+
+        public void filtrarSecreta(ActionEvent event) {
+            mbtnHabitacion.setText("Secreta");
+            cargarFiltradoPool();
+        }
+
+        private void cargarFiltradoPool() {
+            HabitacionDAO habitacionDAO = new HabitacionDAO();
+            List<Objeto> objetos = habitacionDAO.filtrarPool(mbtnHabitacion.getText());
+
+            // Limpiar las columnas existentes
+            tablaObjetos.getColumns().clear();
+
+            // Crear las columnas
+            TableColumn<Objeto, Object> colId = new TableColumn<>("ID");
+            TableColumn<Objeto, Object> colNombre = new TableColumn<>("Nombre");
+            TableColumn<Objeto, Object> colEfecto = new TableColumn<>("Efecto");
+
+            // Asignar las propiedades correspondientes a cada columna
+            colId.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getId()));
+            colNombre.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getNombre()));
+            colEfecto.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getEfecto()));
+
+            // Agregar las columnas a la tabla
+            tablaObjetos.getColumns().addAll(colId, colNombre, colEfecto);
+
+            // Añadir los resultados a la tabla
+            tablaObjetos.getItems().setAll(objetos);
         }
     }
