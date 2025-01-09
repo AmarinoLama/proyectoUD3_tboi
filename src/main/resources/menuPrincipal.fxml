@@ -113,7 +113,7 @@
             <MenuItem mnemonicParsing="false" text="Todos" />
         </items>
       </MenuButton>
-      <MenuButton fx:id="mbtnTipoObjeto" layoutX="387.0" layoutY="65.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="144.0" text="Tipo de Objeto">
+      <MenuButton fx:id="mbtnTipoObjeto" layoutX="387.0" layoutY="65.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="144.0" text="Pasivos">
          <items>
             <MenuItem fx:id="filtrarPasivos" mnemonicParsing="false" onAction="#filtrarPasivos" text="Objetos Pasivos" />
             <MenuItem fx:id="filtrarActivos" mnemonicParsing="false" onAction="#filtrarActivos" text="Objetos Activos" />

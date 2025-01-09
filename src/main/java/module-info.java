@@ -4,6 +4,7 @@ module edu.badpals.proyectoud3_tboi {
     requires jakarta.persistence;
     requires java.sql;
     requires org.hibernate.orm.core;
+    requires jdk.jshell;
 
     opens edu.badpals.proyectoud3_tboi to javafx.fxml;
     opens edu.badpals.proyectoud3_tboi.Controller to javafx.fxml;
