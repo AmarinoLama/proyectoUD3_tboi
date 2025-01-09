@@ -74,6 +74,12 @@
         @FXML
         private TableView<Objeto> tblInventario;
 
+        private static Personaje personajeActual;
+
+        public static void setPersonajeActual(Personaje personaje) {
+            personajeActual = personaje;
+        }
+
         public void setImgPersonaje(String personaje) {
             imgPersonaje.setImage(new Image(getClass().getResource("/img/personajes/" + personaje + ".png").toExternalForm()));
         }
@@ -98,6 +104,8 @@
                 switch (nombreCuartaColumna) {
                     case "Salud":
                         personajeDAO.addObjetoPasivoToPersonaje(idPersonaje, idObjeto);
+                        ObjetosPasivo objetoPasivo = personajeDAO.getObjetoPasivo(idObjeto);
+                        mejorarEstadisticas(objetoPasivo);
                         break;
                     case "Tiempo Recarga":
                         personajeDAO.addObjetoActivoToPersonaje(idPersonaje, idObjeto);
@@ -114,6 +122,17 @@
             cargarActivoActual();
             cargarConsumibleActual();
             cargarObjetosInventario();
+        }
+
+        private void mejorarEstadisticas(ObjetosPasivo op){
+            Float multiplicadorDano = personajeActual.getMultiplicadorDano();
+            System.out.println(multiplicadorDano);
+            txtAtaque.setText(String.format("%.2f", Float.parseFloat(txtAtaque.getText().replace(",", ".")) + (op.getMejoraDano()) * multiplicadorDano).replace(".", ","));
+            txtVelocidad.setText(String.format("%.2f", Float.parseFloat(txtVelocidad.getText().replace(",", ".")) + op.getMejoraVelocidad()).replace(".", ","));
+            txtLagrimas.setText(String.format("%.2f", Float.parseFloat(txtLagrimas.getText().replace(",", ".")) + op.getMejoraLagrimas()).replace(".", ","));
+            txtVida.setText(String.format("%.2f", Float.parseFloat(txtVida.getText().replace(",", ".")) + op.getMejoraSalud()).replace(".", ","));
+            txtSuerte.setText(String.format("%.2f", Float.parseFloat(txtSuerte.getText().replace(",", ".")) + op.getMejoraSuerte()).replace(".", ","));
+            txtVelocidadLagrimas.setText(String.format("%.2f", Float.parseFloat(txtVelocidadLagrimas.getText().replace(",", ".")) + op.getMejoraVelocidadProyectil()).replace(".", ","));
         }
     
         @FXML

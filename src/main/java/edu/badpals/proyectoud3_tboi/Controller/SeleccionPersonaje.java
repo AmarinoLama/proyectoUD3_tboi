@@ -1,6 +1,7 @@
 package edu.badpals.proyectoud3_tboi.Controller;
 
 import edu.badpals.proyectoud3_tboi.Model.Dao.PersonajeDAO;
+import edu.badpals.proyectoud3_tboi.Model.Entity.Personaje;
 import edu.badpals.proyectoud3_tboi.View.Warnings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -125,7 +126,8 @@ public class SeleccionPersonaje {
             return;
         }
         PersonajeDAO personaje = new PersonajeDAO();
-        personaje.crearPersonaje(name.getText());
+        Personaje personajeActual = personaje.crearPersonaje(name.getText());
+        MenuController.setPersonajeActual(personajeActual);
         abrirMenuPrincipal();
     }
 

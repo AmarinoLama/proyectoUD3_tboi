@@ -134,11 +134,9 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
     public void eliminarPersonaje(int idPersonaje) {
         try {
             em.getTransaction().begin();
-            // First, delete all rows in the dependent table
             em.createQuery("DELETE FROM PersonajeObjeto po WHERE po.idPersonaje.id = :idPersonaje")
                     .setParameter("idPersonaje", idPersonaje)
                     .executeUpdate();
-            // Then, delete the row in the main table
             em.createQuery("DELETE FROM Personaje p WHERE p.id = :idPersonaje")
                     .setParameter("idPersonaje", idPersonaje)
                     .executeUpdate();
@@ -263,4 +261,15 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
         }
     }
 
+    public ObjetosPasivo getObjetoPasivo(Integer idObjeto) {
+        ObjetosPasivo objetoPasivo = null;
+        try{
+            em.getTransaction().begin();
+            objetoPasivo = em.find(ObjetosPasivo.class, idObjeto);
+        } catch (Exception e){
+            em.getTransaction().rollback();
+            e.printStackTrace();
+        }
+        return objetoPasivo;
+    }
 }
