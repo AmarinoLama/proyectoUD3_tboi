@@ -8,6 +8,8 @@ public interface InterfazDAO<T> {
 
     void eliminarPersonaje(int id);
 
+    int seleccionarIDpersonaje();
+
     void addObjetoPasivoToPersonaje(int idPersonaje, int idObjeto);
 
     void addObjetoActivoToPersonaje(int idPersonaje, int idObjeto);
