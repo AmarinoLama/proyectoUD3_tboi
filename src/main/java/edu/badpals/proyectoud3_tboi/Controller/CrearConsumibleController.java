@@ -22,6 +22,7 @@ public class CrearConsumibleController {
     @FXML
     private Button btnCrear;
 
+    @FXML
     public void crearConsumible(ActionEvent event) {
         ConsumibleDAO consumibleDAO = new ConsumibleDAO();
         if (nombreCrear.getText().isEmpty() || duracionCrear.getText().isEmpty() || efectoCrear.getText().isEmpty()) {

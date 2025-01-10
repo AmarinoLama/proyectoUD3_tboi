@@ -8,7 +8,6 @@ import jakarta.persistence.Persistence;
 import jakarta.persistence.Query;
 
 import java.util.List;
-import java.util.Locale;
 
 public class HabitacionDAO {
     private EntityManagerFactory emf;

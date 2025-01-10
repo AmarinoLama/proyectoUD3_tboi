@@ -121,7 +121,7 @@ public class SeleccionPersonaje {
     }
 
     @FXML
-    void createCharacterPressed(ActionEvent event) {
+    public void createCharacterPressed(ActionEvent event) {
         if (name.getText().equals("Selecciona un personaje")) {
             Alertas.showNadaSeleccionado();
             return;
@@ -133,7 +133,7 @@ public class SeleccionPersonaje {
         abrirMenuPrincipal();
     }
 
-    public void abrirMenuPrincipal() {
+    private void abrirMenuPrincipal() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/menuPrincipal.fxml"));
             Parent root = loader.load();

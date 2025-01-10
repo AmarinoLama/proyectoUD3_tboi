@@ -26,6 +26,7 @@ public class ModificarConsumibleController {
     @FXML
     private TextField nombreModificar;
 
+    @FXML
     public void modificarDatos(ActionEvent event) {
         ConsumibleDAO consumibleDAO = new ConsumibleDAO();
 
@@ -45,6 +46,7 @@ public class ModificarConsumibleController {
         Alertas.showInfo("Consumible modificado", "El consumible se ha modificado con exitosamente");
     }
 
+    @FXML
     public void cargarDatos(ActionEvent event) {
         ConsumibleDAO consumibleDAO = new ConsumibleDAO();
         if (nombreModificar.getText().isEmpty()) {

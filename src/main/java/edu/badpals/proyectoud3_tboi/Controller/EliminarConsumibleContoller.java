@@ -5,7 +5,6 @@ import edu.badpals.proyectoud3_tboi.Model.Entity.Consumible;
 import edu.badpals.proyectoud3_tboi.View.Alertas;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
@@ -20,6 +19,7 @@ public class EliminarConsumibleContoller {
     @FXML
     private TextField nombreBorrar;
 
+    @FXML
     public void clickBorrarConsumible(ActionEvent event) {
         ConsumibleDAO consumibleDAO = new ConsumibleDAO();
         if (consumibleDAO.personajeTieneConsumible(nombreBorrar.getText())) {
@@ -30,6 +30,7 @@ public class EliminarConsumibleContoller {
         }
     }
 
+    @FXML
     public void clickComprarExisteConsumible(ActionEvent event) {
         if (checkConsumibleDisponible()) {
             Alertas.showInfo("Consumible encontrado", "El consumible " + nombreBorrar.getText() + " ha sido encontrado");

@@ -31,7 +31,7 @@ public class ConsumibleDAO {
             consumible.setDuracionEfecto(duracionEfecto);
             em.persist(consumible);
             em.getTransaction().commit();
-        }catch (Exception e){
+        } catch (Exception e) {
             em.getTransaction().rollback();
             Alertas.showError("Error en ConsumibleDAO", "Ha dado error el método crearConsumible");
         } finally {
@@ -59,9 +59,9 @@ public class ConsumibleDAO {
             Consumible consumible = em.find(Consumible.class, getConsumibleByName(nombreConsumible).getId());
             if (consumible == null) {
                 Alertas.showWarning("Error en ConsumibleDAO", "No se ha encontrado el consumible");
-            } else if (personajeTieneConsumible(nombreConsumible) ){
+            } else if (personajeTieneConsumible(nombreConsumible)) {
                 Alertas.showWarning("Error en ConsumibleDAO", "No se puede eliminar un consumible que tiene un personaje");
-            }else {
+            } else {
                 em.remove(consumible);
                 em.getTransaction().commit();
             }
@@ -72,7 +72,7 @@ public class ConsumibleDAO {
         }
     }
 
-    public boolean personajeTieneConsumible(String nombreConsumible){
+    public boolean personajeTieneConsumible(String nombreConsumible) {
         try {
             em.createQuery("SELECT c FROM Consumible c join PersonajeObjeto po on c.id = po.id.idObjeto " +
                             "WHERE c.nombre = :nombre", Consumible.class)
@@ -107,7 +107,7 @@ public class ConsumibleDAO {
         return consumible;
     }
 
-    public Consumible ultimoConsumible(){
+    public Consumible ultimoConsumible() {
         Consumible consumible = null;
         try {
             consumible = em.createQuery("SELECT c from Consumible c join Objeto o on c.id = o.id join" +

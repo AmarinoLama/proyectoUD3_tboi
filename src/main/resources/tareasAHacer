@@ -33,17 +33,14 @@ REALIZADO - Dos ventanas emergentes al crear el personaje
 REALIZADO - Sacar la id de la tabla principal
 REALIZADO - Hacer un submenú para crear y borrar objetos
 REALIZADO - Hacer un update en lo de asignarle tiempo
+REALIZADO - Sacar comentarios y comentar la parte del tiempo y decir que es para tener crud
+REALIZADO - Comprobar mensajes emergentes
+REALIZADO - Sacar métodos sobrantes
 
 >>>>>>> Tareas Extra <<<<<<<
 
 - Meterle gif explicación diseño de la pantalla en el README
 
 - Testing JUnit
-
-- Sacar comentarios y comentar la parte del tiempo y decir que es para tener crud
-
-- Comprobar mensajes emergentes
-
-- Sacar métodos sobrantes
 
 - Poner en el README la mejora de crear personajes por JSON
