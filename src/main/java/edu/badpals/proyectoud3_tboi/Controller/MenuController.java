@@ -115,7 +115,7 @@ public class MenuController {
             Integer idObjeto = selectedObjeto.getId();
             Integer idPersonaje = personajeDAO.seleccionarIDpersonaje();
 
-            TableColumn<Objeto, ?> cuartaCol = tablaObjetos.getColumns().get(3);
+            TableColumn<Objeto, ?> cuartaCol = tablaObjetos.getColumns().get(2);
             String nombreCuartaColumna = cuartaCol.getText();
             switch (nombreCuartaColumna) {
                 case "Salud":
@@ -328,7 +328,6 @@ public class MenuController {
 
         tablaObjetos.getColumns().clear();
 
-        TableColumn<Objeto, Object> colId = new TableColumn<>("ID");
         TableColumn<Objeto, Object> colNombre = new TableColumn<>("Nombre");
         TableColumn<Objeto, Object> colEfecto = new TableColumn<>("Efecto");
         colEfecto.setMaxWidth(225);
@@ -339,7 +338,6 @@ public class MenuController {
         TableColumn<Objeto, Object> colVelocidadLagrimas = new TableColumn<>("V Lágrimas");
         TableColumn<Objeto, Object> colSuerte = new TableColumn<>("Suerte");
 
-        colId.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getId()));
         colNombre.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getNombre()));
         colEfecto.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getEfecto()));
 
@@ -385,7 +383,7 @@ public class MenuController {
             return null;
         });
 
-        tablaObjetos.getColumns().addAll(colId, colNombre, colDano, colSalud, colVelocidad, colLagrimas, colVelocidadLagrimas, colSuerte, colEfecto);
+        tablaObjetos.getColumns().addAll(colNombre, colDano, colSalud, colVelocidad, colLagrimas, colVelocidadLagrimas, colSuerte, colEfecto);
 
         tablaObjetos.getItems().setAll(objetos);
     }
@@ -396,12 +394,10 @@ public class MenuController {
 
         tablaObjetos.getColumns().clear();
 
-        TableColumn<Objeto, Object> colId = new TableColumn<>("ID");
         TableColumn<Objeto, Object> colNombre = new TableColumn<>("Nombre");
         TableColumn<Objeto, Object> colEfecto = new TableColumn<>("Efecto");
         TableColumn<Objeto, Object> colRecarga = new TableColumn<>("Tiempo Recarga");
 
-        colId.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getId()));
         colNombre.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getNombre()));
         colEfecto.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getEfecto()));
 
@@ -412,7 +408,7 @@ public class MenuController {
             return null;
         });
 
-        tablaObjetos.getColumns().addAll(colId, colNombre, colEfecto, colRecarga);
+        tablaObjetos.getColumns().addAll(colNombre, colEfecto, colRecarga);
 
         tablaObjetos.getItems().setAll(activos);
     }
@@ -423,12 +419,10 @@ public class MenuController {
 
         tablaObjetos.getColumns().clear();
 
-        TableColumn<Objeto, Object> colId = new TableColumn<>("ID");
         TableColumn<Objeto, Object> colNombre = new TableColumn<>("Nombre");
         TableColumn<Objeto, Object> colEfecto = new TableColumn<>("Efecto");
         TableColumn<Objeto, Object> colDuracion = new TableColumn<>("Duración");
 
-        colId.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getId()));
         colNombre.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getNombre()));
         colEfecto.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getEfecto()));
 
@@ -439,7 +433,7 @@ public class MenuController {
             return null;
         });
 
-        tablaObjetos.getColumns().addAll(colId, colNombre, colEfecto, colDuracion);
+        tablaObjetos.getColumns().addAll(colNombre, colEfecto, colDuracion);
 
         tablaObjetos.getItems().setAll(consumibles);
     }
@@ -450,15 +444,13 @@ public class MenuController {
 
         tablaObjetos.getColumns().clear();
 
-        TableColumn<Objeto, Object> colId = new TableColumn<>("ID");
         TableColumn<Objeto, Object> colNombre = new TableColumn<>("Nombre");
         TableColumn<Objeto, Object> colEfecto = new TableColumn<>("Efecto");
 
-        colId.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getId()));
         colNombre.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getNombre()));
         colEfecto.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getEfecto()));
 
-        tablaObjetos.getColumns().addAll(colId, colNombre, colEfecto);
+        tablaObjetos.getColumns().addAll(colNombre, colEfecto);
 
         tablaObjetos.getItems().setAll(objetos);
     }
@@ -495,15 +487,13 @@ public class MenuController {
 
         tablaObjetos.getColumns().clear();
 
-        TableColumn<Objeto, Object> colId = new TableColumn<>("ID");
         TableColumn<Objeto, Object> colNombre = new TableColumn<>("Nombre");
         TableColumn<Objeto, Object> colEfecto = new TableColumn<>("Efecto");
 
-        colId.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getId()));
         colNombre.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getNombre()));
         colEfecto.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getEfecto()));
 
-        tablaObjetos.getColumns().addAll(colId, colNombre, colEfecto);
+        tablaObjetos.getColumns().addAll(colNombre, colEfecto);
         tablaObjetos.getItems().setAll(objetos);
     }
 

@@ -19,7 +19,7 @@
       </Text>
       <Button fx:id="btnModificiar" layoutX="125.0" layoutY="372.0" mnemonicParsing="false" onAction="#modificarDatos" text="Modificar" />
       <TextField fx:id="nombreModificar" layoutX="78.0" layoutY="107.0" prefHeight="25.0" prefWidth="149.0" />
-      <TextField fx:id="duracionModificar" layoutX="80.0" layoutY="161.0" prefHeight="25.0" prefWidth="189.0" />
+      <TextField fx:id="duracionModificar" layoutX="80.0" layoutY="161.0" prefHeight="25.0" prefWidth="189.0" promptText="Introduce un número" />
       <Text fill="WHITE" layoutX="16.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:" textAlignment="CENTER">
          <font>
             <Font size="13.0" />
