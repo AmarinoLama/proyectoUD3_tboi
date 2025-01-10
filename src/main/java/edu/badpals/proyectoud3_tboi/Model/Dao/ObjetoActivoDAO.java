@@ -58,7 +58,7 @@ public class ObjetoActivoDAO {
         ObjetosActivo objetoActivo;
         try {
             objetoActivo = em.createQuery("SELECT oa from ObjetosActivo oa inner join Objeto o on oa.id = o.id inner join" +
-                            " PersonajeObjeto po on o.id = po.idObjeto.id order by oa.id desc", ObjetosActivo.class).setMaxResults(1).getSingleResult();
+                            " PersonajeObjeto po on o.id = po.idObjeto.id order by po.fechaInsercion desc", ObjetosActivo.class).setMaxResults(1).getSingleResult();
         } catch (Exception e) {
             return null;
         } finally {

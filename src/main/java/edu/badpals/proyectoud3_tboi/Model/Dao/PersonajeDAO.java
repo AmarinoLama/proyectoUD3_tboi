@@ -157,6 +157,7 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
     @Override
     public void addObjetoPasivoToPersonaje(int idPersonaje, int idObjeto){
         try {
+            String tiempoAhora = java.time.LocalTime.now().toString();
             em.getTransaction().begin();
             Personaje personaje = em.find(Personaje.class, idPersonaje);
             if (personaje == null) {
@@ -166,7 +167,7 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
             if (objetoPasivo == null) {
                 throw new IllegalArgumentException("El objeto pasivo con id " + idObjeto + " no existe.");
             }
-            createObjetoPersonaje(idPersonaje, idObjeto, personaje, objetoPasivo);
+            createObjetoPersonaje(idPersonaje, idObjeto, personaje, objetoPasivo, tiempoAhora);
             System.out.println("Objeto pasivo añadido con éxito");
             em.getTransaction().commit();
         } catch (Exception e) {
@@ -178,6 +179,7 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
     @Override
     public void addObjetoActivoToPersonaje(int idPersonaje, int idObjeto){
         try {
+            String tiempoAhora = java.time.LocalTime.now().toString();
             em.getTransaction().begin();
             Personaje personaje = em.find(Personaje.class, idPersonaje);
             if (personaje == null) {
@@ -187,7 +189,7 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
             if (objetoActivo == null) {
                 throw new IllegalArgumentException("El objeto activo con id " + idObjeto + " no existe.");
             }
-            createObjetoPersonaje(idPersonaje, idObjeto, personaje, objetoActivo);
+            createObjetoPersonaje(idPersonaje, idObjeto, personaje, objetoActivo, tiempoAhora);
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
@@ -198,7 +200,7 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
     @Override
     public void addConsumibleToPersonaje(int idPersonaje, int idObjeto){
         try {
-            //Query query = em.createQuery("");
+            String tiempoAhora = java.time.LocalTime.now().toString();
             em.getTransaction().begin();
             Personaje personaje = em.find(Personaje.class, idPersonaje);
             if (personaje == null) {
@@ -208,7 +210,7 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
             if (consumible == null) {
                 throw new IllegalArgumentException("El consumible con id " + idObjeto + " no existe.");
             }
-            createObjetoPersonaje(idPersonaje, idObjeto, personaje, consumible);
+            createObjetoPersonaje(idPersonaje, idObjeto, personaje, consumible, tiempoAhora);
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
@@ -217,7 +219,7 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
     }
 
 
-    private void createObjetoPersonaje(int idPersonaje, int idObjeto, Personaje personaje, Objeto objeto) {
+    private void createObjetoPersonaje(int idPersonaje, int idObjeto, Personaje personaje, Objeto objeto, String tiempoAhora) {
         PersonajeObjetoId personajeObjetoId = new PersonajeObjetoId();
         personajeObjetoId.setIdPersonaje(idPersonaje);
         personajeObjetoId.setIdObjeto(idObjeto);
@@ -225,6 +227,7 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
         personajeObjeto.setId(personajeObjetoId);
         personajeObjeto.setIdPersonaje(personaje);
         personajeObjeto.setIdObjeto(objeto);
+        personajeObjeto.setFechaInsercion(tiempoAhora);
         em.persist(personajeObjeto);
     }
 

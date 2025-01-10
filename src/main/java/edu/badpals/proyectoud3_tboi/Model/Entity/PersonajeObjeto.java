@@ -45,4 +45,11 @@ public class PersonajeObjeto {
         this.idObjeto = idObjeto;
     }
 
+    public String getFechaInsercion() {
+        return fechaInsercion;
+    }
+
+    public void setFechaInsercion(String fechaInsercion) {
+        this.fechaInsercion = fechaInsercion;
+    }
 }

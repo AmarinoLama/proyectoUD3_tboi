@@ -40,6 +40,14 @@ public class ConsumibleDAO {
         }
     }
 
+    public void modificarConsumible(Integer id, String nombre, String efecto, Integer duracionEfecto) {
+
+    }
+
+    public void eliminarConsumible(Integer id) {
+
+    }
+
     public List<Consumible> getConsumibles() {
         List<Consumible> consumibles = null;
         try {
@@ -57,7 +65,7 @@ public class ConsumibleDAO {
         Consumible consumible = null;
         try {
             consumible = em.createQuery("SELECT c from Consumible c join Objeto o on c.id = o.id join" +
-                    " PersonajeObjeto po on o.id = po.idObjeto.id order by c.id asc", Consumible.class).setMaxResults(1).getSingleResult();
+                    " PersonajeObjeto po on o.id = po.idObjeto.id order by po.fechaInsercion desc", Consumible.class).setMaxResults(1).getSingleResult();
         } catch (Exception e) {
             return null;
         } finally {
