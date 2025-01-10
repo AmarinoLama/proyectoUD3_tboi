@@ -1,3 +1,5 @@
+package edu.badpals.proyectoud3_tboi.Controller;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;

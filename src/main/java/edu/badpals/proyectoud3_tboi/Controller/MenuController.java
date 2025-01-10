@@ -181,6 +181,7 @@
     
         @FXML
         void cambiarPersonaje(ActionEvent event) {
+            EmergentWindows.showInfo("Cambio de personaje", "Se ha cambiado de personaje correctamente y se ha borrado el anterior");
             cargarVentana();
         }
     

@@ -141,10 +141,8 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
                     .setParameter("idPersonaje", idPersonaje)
                     .executeUpdate();
             em.getTransaction().commit();
-            EmergentWindows.showInfo("Personaje borrado","El personaje ha sido borrado exitosamente");
         } catch (Exception e) {
             em.getTransaction().rollback();
-            EmergentWindows.showError("Error en PersonajeDAO","Error en el método eliminarPersonaje");
         }
     }
 
