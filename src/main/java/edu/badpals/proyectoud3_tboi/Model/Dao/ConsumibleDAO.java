@@ -56,8 +56,8 @@ public class ConsumibleDAO {
     public Consumible ultimoConsumible(){
         Consumible consumible = null;
         try {
-            consumible = em.createQuery("SELECT oa from Consumible oa inner join Objeto o on oa.id = o.id inner join" +
-                    " PersonajeObjeto po on o.id = po.idObjeto.id order by oa.id desc", Consumible.class).setMaxResults(1).getSingleResult();
+            consumible = em.createQuery("SELECT c from Consumible c join Objeto o on c.id = o.id join" +
+                    " PersonajeObjeto po on o.id = po.idObjeto.id order by c.id asc", Consumible.class).setMaxResults(1).getSingleResult();
         } catch (Exception e) {
             return null;
         } finally {

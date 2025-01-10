@@ -18,6 +18,9 @@ public class PersonajeObjeto {
     @JoinColumn(name = "id_objeto", nullable = false)
     private Objeto idObjeto;
 
+    @Column(name = "fechaInsercion", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private String fechaInsercion;
+
     public PersonajeObjetoId getId() {
         return id;
     }

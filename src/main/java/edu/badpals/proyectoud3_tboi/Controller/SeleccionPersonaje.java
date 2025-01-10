@@ -136,7 +136,6 @@ public class SeleccionPersonaje {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/menuPrincipal.fxml"));
             Parent root = loader.load();
 
-            // usa esto para pasarle la vida inicial de los personajes, trata los corazones negativos como 0,5 y listo
             MenuController menuController = loader.getController();
             String personajeName = name.getText().equals("???") ? "blueBaby" : name.getText().toLowerCase();
             menuController.setImgPersonaje(personajeName);

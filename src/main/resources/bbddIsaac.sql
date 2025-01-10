@@ -56,6 +56,7 @@ CREATE TABLE Habitaciones (
 CREATE TABLE PersonajeObjetos (
     id_personaje INT,
     id_objeto INT,
+    fechaInsercion TIME,
     PRIMARY KEY (id_personaje, id_objeto),
     FOREIGN KEY (id_personaje) REFERENCES Personajes(id_personaje),
     FOREIGN KEY (id_objeto) REFERENCES Objetos(id_objeto)

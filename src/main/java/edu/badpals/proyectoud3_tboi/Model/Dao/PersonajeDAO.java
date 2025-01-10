@@ -188,7 +188,6 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
                 throw new IllegalArgumentException("El objeto activo con id " + idObjeto + " no existe.");
             }
             createObjetoPersonaje(idPersonaje, idObjeto, personaje, objetoActivo);
-            System.out.println("Objeto activo añadido con éxito");
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
@@ -199,6 +198,7 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
     @Override
     public void addConsumibleToPersonaje(int idPersonaje, int idObjeto){
         try {
+            //Query query = em.createQuery("");
             em.getTransaction().begin();
             Personaje personaje = em.find(Personaje.class, idPersonaje);
             if (personaje == null) {
@@ -209,7 +209,6 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
                 throw new IllegalArgumentException("El consumible con id " + idObjeto + " no existe.");
             }
             createObjetoPersonaje(idPersonaje, idObjeto, personaje, consumible);
-            System.out.println("Objeto activo añadido con éxito");
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
