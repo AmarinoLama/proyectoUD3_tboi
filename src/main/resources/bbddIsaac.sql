@@ -15,7 +15,7 @@ CREATE TABLE Personajes (
 -- Tabla de objetos genérica
 CREATE TABLE Objetos (
     id_objeto INT PRIMARY KEY AUTO_INCREMENT,
-    nombre VARCHAR(50) NOT NULL,
+    nombre VARCHAR(50) NOT NULL UNIQUE,
     efecto TEXT
 );
 
@@ -133,7 +133,7 @@ INSERT INTO ObjetosActivos (id_objeto, tiempo_recarga) VALUES
 INSERT INTO Consumibles (id_objeto, duracion_efecto) VALUES
 (3, 0),
 (15, 0),
-(16, 0);
+(16, 10);
 
 -- Inserts para la tabla Habitaciones
 INSERT INTO Habitaciones (id_habitacion, tipo_habitacion) VALUES
