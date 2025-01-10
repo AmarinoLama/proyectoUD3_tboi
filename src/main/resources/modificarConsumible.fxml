@@ -21,9 +21,9 @@
             <Font size="25.0" />
          </font>
       </Text>
-      <Button layoutX="125.0" layoutY="372.0" mnemonicParsing="false" text="Modificar" />
-      <TextField layoutX="78.0" layoutY="107.0" prefHeight="25.0" prefWidth="149.0" />
-      <TextField layoutX="80.0" layoutY="161.0" prefHeight="25.0" prefWidth="189.0" />
+      <Button fx:id="btnModificiar" layoutX="125.0" layoutY="372.0" mnemonicParsing="false" text="Modificar" />
+      <TextField fx:id="nombreModificar" layoutX="78.0" layoutY="107.0" prefHeight="25.0" prefWidth="149.0" />
+      <TextField fx:id="duracionModificar" layoutX="80.0" layoutY="161.0" onAction="#duracionModificar" prefHeight="25.0" prefWidth="189.0" />
       <Text fill="WHITE" layoutX="16.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:" textAlignment="CENTER">
          <font>
             <Font size="13.0" />
@@ -39,7 +39,7 @@
             <Font size="13.0" />
          </font>
       </Text>
-      <TextArea layoutX="80.0" layoutY="217.0" prefHeight="128.0" prefWidth="189.0" />
-      <Button layoutX="241.0" layoutY="107.0" mnemonicParsing="false" text="🔍" />
+      <TextArea fx:id="efectoModificar" layoutX="80.0" layoutY="217.0" prefHeight="128.0" prefWidth="189.0" />
+      <Button fx:id="btnCargarDatos" layoutX="241.0" layoutY="107.0" mnemonicParsing="false" text="🔍" />
    </children>
 </AnchorPane>
