@@ -23,9 +23,9 @@ public class ModificarConsumibleController {
     @FXML
     private TextField nombreModificar;
 
-    @FXML
-    void duracionModificar(ActionEvent event) {
-
+    public void modificarDatos(ActionEvent event) {
     }
 
+    public void cargarDatos(ActionEvent event) {
+    }
 }
