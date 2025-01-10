@@ -18,7 +18,7 @@ public class PersonajeObjeto {
     @JoinColumn(name = "id_objeto", nullable = false)
     private Objeto idObjeto;
 
-    @Column(name = "fechaInsercion", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Column(name = "fechaInsercion")
     private String fechaInsercion;
 
     public PersonajeObjetoId getId() {

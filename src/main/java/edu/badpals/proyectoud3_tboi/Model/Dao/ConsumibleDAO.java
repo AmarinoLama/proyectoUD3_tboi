@@ -44,7 +44,7 @@ public class ConsumibleDAO {
     public void modificarConsumible(String nombreConsumible, String efecto, Integer duracionEfecto) {
         try {
             em.getTransaction().begin();
-            Consumible consumible = em.find(Consumible.class, nombreConsumible);
+            Consumible consumible = em.find(Consumible.class, getConsumibleByName(nombreConsumible).getId());
             consumible.setEfecto(efecto);
             consumible.setDuracionEfecto(duracionEfecto);
             em.getTransaction().commit();
@@ -57,28 +57,31 @@ public class ConsumibleDAO {
     public void eliminarConsumible(String nombreConsumible) {
         try {
             em.getTransaction().begin();
-            Consumible consumible = em.find(Consumible.class, nombreConsumible);
+            Consumible consumible = em.find(Consumible.class, getConsumibleByName(nombreConsumible).getId());
             if (consumible == null) {
-                EmergentWindows.showError("Error en ConsumibleDAO", "No se ha encontrado el consumible");
-                return;
+                EmergentWindows.showWarning("Error en ConsumibleDAO", "No se ha encontrado el consumible");
             } else if (personajeTieneConsumible(nombreConsumible) ){
-                EmergentWindows.showError("Error en ConsumibleDAO", "No se puede eliminar un consumible que tiene un personaje");
-                return;
-
+                EmergentWindows.showWarning("Error en ConsumibleDAO", "No se puede eliminar un consumible que tiene un personaje");
+            }else {
+                em.remove(consumible);
+                em.getTransaction().commit();
             }
-            em.remove(consumible);
-            em.getTransaction().commit();
+
         } catch (Exception e) {
             em.getTransaction().rollback();
-            e.printStackTrace();
+            EmergentWindows.showError("Error en ConsumibleDAO", "Ha dado error el método eliminarConsumible");
         }
     }
 
     private boolean personajeTieneConsumible(String nombreConsumible){
-        Consumible consumibleUsado = em.createQuery("SELECT c FROM Consumible c join PersonajeObjeto po on c.id = po.id.idObjeto " +
-                        "WHERE c.nombre = :nombre and c.id in po.idObjeto.id", Consumible.class)
-                .setParameter("nombre", nombreConsumible).getSingleResult();
-        return consumibleUsado != null;
+        try {
+            em.createQuery("SELECT c FROM Consumible c join PersonajeObjeto po on c.id = po.id.idObjeto " +
+                            "WHERE c.nombre = :nombre", Consumible.class)
+                    .setParameter("nombre", nombreConsumible).getSingleResult();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     public List<Consumible> getConsumibles() {
@@ -101,9 +104,6 @@ public class ConsumibleDAO {
                     .setParameter("nombre", nombreConsumible).getSingleResult();
         } catch (Exception e) {
             EmergentWindows.showError("Error en ConsumibleDAO", "Ha dado error el método getConsumible");
-        } finally {
-            em.close();
-            emf.close();
         }
         return consumible;
     }

@@ -35,14 +35,5 @@ public class Main extends Application {
     public static void main(String[] args) {
         Application.launch(args);
         dropPersonajeObjeto();
-        /*HabitacionDAO habitacionDAO = new HabitacionDAO();
-        List<Objeto> objetos = habitacionDAO.filtrarPool("Secreta");
-        for (Objeto objeto : objetos) {
-            System.out.println(objeto.getNombre());
-        }*/
-        ConsumibleDAO consumibleDAO = new ConsumibleDAO();
-        consumibleDAO.crearConsumible("Pocion de vida", "Recupera 1 corazon", 0);
-        /*consumibleDAO.eliminarConsumible("Pocion de vida");
-        consumibleDAO.modificarConsumible("Pocion de vida", "Recupera 2 corazones", 0);*/
     }
 }
