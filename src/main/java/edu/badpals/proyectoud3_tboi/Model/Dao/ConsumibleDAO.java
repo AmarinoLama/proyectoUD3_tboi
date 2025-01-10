@@ -72,7 +72,7 @@ public class ConsumibleDAO {
         }
     }
 
-    private boolean personajeTieneConsumible(String nombreConsumible){
+    public boolean personajeTieneConsumible(String nombreConsumible){
         try {
             em.createQuery("SELECT c FROM Consumible c join PersonajeObjeto po on c.id = po.id.idObjeto " +
                             "WHERE c.nombre = :nombre", Consumible.class)
@@ -113,8 +113,7 @@ public class ConsumibleDAO {
             consumible = em.createQuery("SELECT c from Consumible c join Objeto o on c.id = o.id join" +
                     " PersonajeObjeto po on o.id = po.idObjeto.id order by po.fechaInsercion desc", Consumible.class).setMaxResults(1).getSingleResult();
         } catch (Exception e) {
-            Alertas.showError("Error en ConsumibleDAO", "Ha dado error el método ultimoConsumible");
-            return null;
+            return consumible;
         } finally {
             em.close();
             emf.close();

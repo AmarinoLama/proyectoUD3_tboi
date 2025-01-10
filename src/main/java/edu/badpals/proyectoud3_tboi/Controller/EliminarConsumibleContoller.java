@@ -21,22 +21,24 @@ public class EliminarConsumibleContoller {
     private TextField nombreBorrar;
 
     public void clickBorrarConsumible(ActionEvent event) {
-        if (checkExisteConsumible()) {
-            ConsumibleDAO consumibleDAO = new ConsumibleDAO();
+        ConsumibleDAO consumibleDAO = new ConsumibleDAO();
+        if (consumibleDAO.personajeTieneConsumible(nombreBorrar.getText())) {
+            Alertas.showWarning("Advertencia", "El consumible " + nombreBorrar.getText() + " está siendo usado por un personaje");
+        } else if (checkConsumibleDisponible()) {
             consumibleDAO.eliminarConsumible(nombreBorrar.getText());
             Alertas.showInfo("Consumible eliminado", "El consumible " + nombreBorrar.getText() + " ha sido eliminado");
         }
     }
 
     public void clickComprarExisteConsumible(ActionEvent event) {
-        if (checkExisteConsumible()) {
+        if (checkConsumibleDisponible()) {
             Alertas.showInfo("Consumible encontrado", "El consumible " + nombreBorrar.getText() + " ha sido encontrado");
         } else {
             Alertas.showWarning("Consumible no encontrado", "El consumible " + nombreBorrar.getText() + " no ha sido encontrado");
         }
     }
 
-    private boolean checkExisteConsumible() {
+    private boolean checkConsumibleDisponible() {
         ConsumibleDAO consumibleDAO = new ConsumibleDAO();
         Consumible consumible = consumibleDAO.getConsumibleByName(nombreBorrar.getText());
         return consumible != null;

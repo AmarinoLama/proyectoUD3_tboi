@@ -28,6 +28,12 @@ public class ModificarConsumibleController {
 
     public void modificarDatos(ActionEvent event) {
         ConsumibleDAO consumibleDAO = new ConsumibleDAO();
+
+        if (consumibleDAO.personajeTieneConsumible(nombreModificar.getText())) {
+            Alertas.showWarning("Advertencia", "El consumible " + nombreModificar.getText() + " está siendo usado por un personaje");
+            return;
+        }
+
         if (nombreModificar.getText().isEmpty() || duracionModificar.getText().isEmpty() || efectoModificar.getText().isEmpty()) {
             Alertas.showWarning("Error", "Por favor llene todos los campos");
             return;

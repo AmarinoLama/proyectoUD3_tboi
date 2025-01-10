@@ -108,7 +108,6 @@ public class MenuController {
     @FXML
     void anadirItem(ActionEvent event) {
         Objeto selectedObjeto = tablaObjetos.getSelectionModel().getSelectedItem();
-        String tipoObjeto = "";
         if (selectedObjeto != null) {
             PersonajeDAO personajeDAO = new PersonajeDAO();
 
@@ -122,21 +121,17 @@ public class MenuController {
                     personajeDAO.addObjetoPasivoToPersonaje(idPersonaje, idObjeto);
                     ObjetosPasivo objetoPasivo = personajeDAO.getObjetoPasivo(idObjeto);
                     mejorarEstadisticas(objetoPasivo);
-                    tipoObjeto = "pasivo";
                     break;
                 case "Tiempo Recarga":
                     personajeDAO.addObjetoActivoToPersonaje(idPersonaje, idObjeto);
-                    tipoObjeto = "activo";
                     break;
                 case "Duración":
                     personajeDAO.addConsumibleToPersonaje(idPersonaje, idObjeto);
-                    tipoObjeto = "consumible";
                     break;
             }
         } else {
             Alertas.showNadaSeleccionado();
         }
-        Alertas.showInfo("Objeto añadido", "El objeto de tipo " + tipoObjeto + " ha sido añadido correctamente");
 
         cargarActivoActual();
         cargarConsumibleActual();

@@ -3,6 +3,7 @@ package edu.badpals.proyectoud3_tboi.Model.Dao;
 import edu.badpals.proyectoud3_tboi.Model.Entity.*;
 import edu.badpals.proyectoud3_tboi.View.Alertas;
 import jakarta.persistence.*;
+import jakarta.persistence.criteria.CriteriaBuilder;
 
 import java.util.List;
 
@@ -154,7 +155,6 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
     @Override
     public void addObjetoPasivoToPersonaje(int idPersonaje, int idObjeto){
         try {
-            String tiempoAhora = java.time.LocalTime.now().toString();
             em.getTransaction().begin();
             Personaje personaje = em.find(Personaje.class, idPersonaje);
             if (personaje == null) {
@@ -164,8 +164,9 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
             if (objetoPasivo == null) {
                 throw new IllegalArgumentException("El objeto pasivo con id " + idObjeto + " no existe.");
             }
-            createObjetoPersonaje(idPersonaje, idObjeto, personaje, objetoPasivo, tiempoAhora);
+            createObjetoPersonaje(idPersonaje, idObjeto, personaje, objetoPasivo);
             em.getTransaction().commit();
+            addTiempoRelacionPersonajeObjeto(idObjeto, idPersonaje);
         } catch (Exception e) {
             em.getTransaction().rollback();
             Alertas.showWarning("Objeto pasivo existente","El objeto pasivo que estás intentando añadir ya está en el inventario, seleccione uno distinto");
@@ -175,7 +176,6 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
     @Override
     public void addObjetoActivoToPersonaje(int idPersonaje, int idObjeto){
         try {
-            String tiempoAhora = java.time.LocalTime.now().toString();
             em.getTransaction().begin();
             Personaje personaje = em.find(Personaje.class, idPersonaje);
             if (personaje == null) {
@@ -185,8 +185,9 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
             if (objetoActivo == null) {
                 throw new IllegalArgumentException("El objeto activo con id " + idObjeto + " no existe.");
             }
-            createObjetoPersonaje(idPersonaje, idObjeto, personaje, objetoActivo, tiempoAhora);
+            createObjetoPersonaje(idPersonaje, idObjeto, personaje, objetoActivo);
             em.getTransaction().commit();
+            addTiempoRelacionPersonajeObjeto(idObjeto, idPersonaje);
         } catch (Exception e) {
             em.getTransaction().rollback();
             Alertas.showWarning("Objeto activo existente","El objeto activo que estás intentando añadir ya está en el inventario, seleccione uno distinto");
@@ -196,7 +197,6 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
     @Override
     public void addConsumibleToPersonaje(int idPersonaje, int idObjeto){
         try {
-            String tiempoAhora = java.time.LocalTime.now().toString();
             em.getTransaction().begin();
             Personaje personaje = em.find(Personaje.class, idPersonaje);
             if (personaje == null) {
@@ -206,16 +206,34 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
             if (consumible == null) {
                 throw new IllegalArgumentException("El consumible con id " + idObjeto + " no existe.");
             }
-            createObjetoPersonaje(idPersonaje, idObjeto, personaje, consumible, tiempoAhora);
+            createObjetoPersonaje(idPersonaje, idObjeto, personaje, consumible);
             em.getTransaction().commit();
+            addTiempoRelacionPersonajeObjeto(idObjeto, idPersonaje);
         } catch (Exception e) {
             em.getTransaction().rollback();
             Alertas.showWarning("Objeto consumible existente","El objeto consumible que estás intentando añadir ya está en el inventario, seleccione uno distinto");
         }
     }
 
+    // Función creada para que se haga otro update en la bbdd
+    private void addTiempoRelacionPersonajeObjeto(Integer idObjeto, Integer idPersonaje) {
+        String tiempoAhora = java.time.LocalTime.now().toString();
+        try {
+            em.getTransaction().begin();
+            PersonajeObjetoId personajeObjetoId = new PersonajeObjetoId();
+            personajeObjetoId.setIdPersonaje(idPersonaje);
+            personajeObjetoId.setIdObjeto(idObjeto);
+            PersonajeObjeto personajeObjetoUpdate = em.find(PersonajeObjeto.class, personajeObjetoId);
+            personajeObjetoUpdate.setFechaInsercion(tiempoAhora);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            Alertas.showError("Error en PersonajeDAO", "Error en el método addTiempoRelacionPersonajeObjeto");
+        }
 
-    private void createObjetoPersonaje(int idPersonaje, int idObjeto, Personaje personaje, Objeto objeto, String tiempoAhora) {
+    }
+
+    private void createObjetoPersonaje(int idPersonaje, int idObjeto, Personaje personaje, Objeto objeto) {
         PersonajeObjetoId personajeObjetoId = new PersonajeObjetoId();
         personajeObjetoId.setIdPersonaje(idPersonaje);
         personajeObjetoId.setIdObjeto(idObjeto);
@@ -223,7 +241,6 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
         personajeObjeto.setId(personajeObjetoId);
         personajeObjeto.setIdPersonaje(personaje);
         personajeObjeto.setIdObjeto(objeto);
-        personajeObjeto.setFechaInsercion(tiempoAhora);
         em.persist(personajeObjeto);
     }
 

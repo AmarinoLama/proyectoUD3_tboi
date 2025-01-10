@@ -32,12 +32,11 @@ REALIZADO - comprobar la clase PersonajeObjeto
 REALIZADO - Dos ventanas emergentes al crear el personaje
 REALIZADO - Sacar la id de la tabla principal
 REALIZADO - Hacer un submenú para crear y borrar objetos
+REALIZADO - Hacer un update en lo de asignarle tiempo
 
 >>>>>>> Tareas Extra <<<<<<<
 
 - Meterle gif explicación diseño de la pantalla en el README
-
-- Hacer un update en lo de asignarle tiempo
 
 - Testing JUnit
 
