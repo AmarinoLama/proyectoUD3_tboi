@@ -1,7 +1,7 @@
 package edu.badpals.proyectoud3_tboi.Model.Dao;
 
 import edu.badpals.proyectoud3_tboi.Model.Entity.ObjetosPasivo;
-import edu.badpals.proyectoud3_tboi.View.EmergentWindows;
+import edu.badpals.proyectoud3_tboi.View.Alertas;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -39,7 +39,7 @@ public class ObjetoPasivoDAO{
             em.getTransaction().commit();
         }catch (Exception e){
             em.getTransaction().rollback();
-            EmergentWindows.showError("Error en ObjetoPasivoDAO", "Ha dado erro el método crearObjetoPasivo");
+            Alertas.showError("Error en ObjetoPasivoDAO", "Ha dado erro el método crearObjetoPasivo");
         } finally {
             em.close();
             emf.close();
@@ -51,7 +51,7 @@ public class ObjetoPasivoDAO{
         try {
             objetosPasivos = em.createQuery("SELECT o FROM ObjetosPasivo o", ObjetosPasivo.class).getResultList();
         } catch (Exception e) {
-            EmergentWindows.showError("Error en ObjetoPasivoDAO", "Ha dado erro el método getObjetosPasivos");
+            Alertas.showError("Error en ObjetoPasivoDAO", "Ha dado erro el método getObjetosPasivos");
         } finally {
             em.close();
             emf.close();

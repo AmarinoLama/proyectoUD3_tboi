@@ -1,8 +1,7 @@
 package edu.badpals.proyectoud3_tboi.Model.Dao;
 
 import edu.badpals.proyectoud3_tboi.Model.Entity.Consumible;
-import edu.badpals.proyectoud3_tboi.Model.Entity.ObjetosActivo;
-import edu.badpals.proyectoud3_tboi.View.EmergentWindows;
+import edu.badpals.proyectoud3_tboi.View.Alertas;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -59,9 +58,9 @@ public class ConsumibleDAO {
             em.getTransaction().begin();
             Consumible consumible = em.find(Consumible.class, getConsumibleByName(nombreConsumible).getId());
             if (consumible == null) {
-                EmergentWindows.showWarning("Error en ConsumibleDAO", "No se ha encontrado el consumible");
+                Alertas.showWarning("Error en ConsumibleDAO", "No se ha encontrado el consumible");
             } else if (personajeTieneConsumible(nombreConsumible) ){
-                EmergentWindows.showWarning("Error en ConsumibleDAO", "No se puede eliminar un consumible que tiene un personaje");
+                Alertas.showWarning("Error en ConsumibleDAO", "No se puede eliminar un consumible que tiene un personaje");
             }else {
                 em.remove(consumible);
                 em.getTransaction().commit();
@@ -69,7 +68,7 @@ public class ConsumibleDAO {
 
         } catch (Exception e) {
             em.getTransaction().rollback();
-            EmergentWindows.showError("Error en ConsumibleDAO", "Ha dado error el método eliminarConsumible");
+            Alertas.showError("Error en ConsumibleDAO", "Ha dado error el método eliminarConsumible");
         }
     }
 
@@ -89,7 +88,7 @@ public class ConsumibleDAO {
         try {
             consumibles = em.createQuery("SELECT c FROM Consumible c", Consumible.class).getResultList();
         } catch (Exception e) {
-            EmergentWindows.showError("Error en ConsumibleDAO", "Ha dado error el método getConsumibles");
+            Alertas.showError("Error en ConsumibleDAO", "Ha dado error el método getConsumibles");
         } finally {
             em.close();
             emf.close();
@@ -103,7 +102,7 @@ public class ConsumibleDAO {
             consumible = em.createQuery("SELECT c FROM Consumible c WHERE c.nombre = :nombre", Consumible.class)
                     .setParameter("nombre", nombreConsumible).getSingleResult();
         } catch (Exception e) {
-            EmergentWindows.showError("Error en ConsumibleDAO", "Ha dado error el método getConsumible");
+            Alertas.showError("Error en ConsumibleDAO", "Ha dado error el método getConsumible");
         }
         return consumible;
     }

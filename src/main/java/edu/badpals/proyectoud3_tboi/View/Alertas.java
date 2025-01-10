@@ -2,7 +2,7 @@ package edu.badpals.proyectoud3_tboi.View;
 
 import javafx.scene.control.Alert;
 
-public class EmergentWindows {
+public class Alertas {
 
     public static void showError(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -35,5 +35,4 @@ public class EmergentWindows {
         alert.setContentText("No has seleccionado ninguna opción");
         alert.showAndWait();
     }
-
 }

@@ -1,7 +1,7 @@
 package edu.badpals.proyectoud3_tboi.Model.Dao;
 
 import edu.badpals.proyectoud3_tboi.Model.Entity.*;
-import edu.badpals.proyectoud3_tboi.View.EmergentWindows;
+import edu.badpals.proyectoud3_tboi.View.Alertas;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -120,12 +120,11 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
                 default:
                     break;
             }
-            EmergentWindows.showInfo("Personaje creado","El personaje ha sido creado exitosamente");
             em.getTransaction().commit();
 
         } catch (Exception e) {
             em.getTransaction().rollback();
-            EmergentWindows.showError("Error en PersonajeDAO","Error en el método crearPersonaje");
+            Alertas.showError("Error en PersonajeDAO","Error en el método crearPersonaje");
         }
         return personaje;
     }
@@ -169,7 +168,7 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
-            EmergentWindows.showWarning("Objeto pasivo existente","El objeto pasivo que estás intentando añadir ya está en el inventario, seleccione uno distinto");
+            Alertas.showWarning("Objeto pasivo existente","El objeto pasivo que estás intentando añadir ya está en el inventario, seleccione uno distinto");
         }
     }
 
@@ -190,7 +189,7 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
-            EmergentWindows.showWarning("Objeto activo existente","El objeto activo que estás intentando añadir ya está en el inventario, seleccione uno distinto");
+            Alertas.showWarning("Objeto activo existente","El objeto activo que estás intentando añadir ya está en el inventario, seleccione uno distinto");
         }
     }
 
@@ -211,7 +210,7 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
-            EmergentWindows.showWarning("Objeto consumible existente","El objeto consumible que estás intentando añadir ya está en el inventario, seleccione uno distinto");
+            Alertas.showWarning("Objeto consumible existente","El objeto consumible que estás intentando añadir ya está en el inventario, seleccione uno distinto");
         }
     }
 
@@ -256,7 +255,7 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
 
         } catch (Exception e) {
             em.getTransaction().rollback();
-            EmergentWindows.showError("Error en PersonajeDAO","Error en el método eliminarItemDePersonaje");
+            Alertas.showError("Error en PersonajeDAO","Error en el método eliminarItemDePersonaje");
         }
     }
 
@@ -267,7 +266,7 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
             objetoPasivo = em.find(ObjetosPasivo.class, idObjeto);
         } catch (Exception e){
             em.getTransaction().rollback();
-            EmergentWindows.showError("Error en PersonajeDAO","Error en el método getObjetoPasivo");
+            Alertas.showError("Error en PersonajeDAO","Error en el método getObjetoPasivo");
         }
         return objetoPasivo;
     }

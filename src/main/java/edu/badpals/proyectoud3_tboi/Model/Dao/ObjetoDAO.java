@@ -1,8 +1,7 @@
 package edu.badpals.proyectoud3_tboi.Model.Dao;
 
 import edu.badpals.proyectoud3_tboi.Model.Entity.Objeto;
-import edu.badpals.proyectoud3_tboi.Model.Entity.Personaje;
-import edu.badpals.proyectoud3_tboi.View.EmergentWindows;
+import edu.badpals.proyectoud3_tboi.View.Alertas;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -27,7 +26,7 @@ public class ObjetoDAO {
         try {
             objetos = em.createQuery("SELECT o FROM Objeto o", Objeto.class).getResultList();
         } catch (Exception e) {
-            EmergentWindows.showError("Error en ObjetoDAO", "Ha dado error el método getObjetos");
+            Alertas.showError("Error en ObjetoDAO", "Ha dado error el método getObjetos");
         } finally {
             em.close();
             emf.close();
@@ -45,7 +44,7 @@ public class ObjetoDAO {
                                     "JOIN Pool p ON po.idPool.id = p.id", Object[].class)
                     .getResultList();
         } catch (Exception e) {
-            EmergentWindows.showError("Error en ObjetoDAO", "Ha dado error el método getObjetosConPool");
+            Alertas.showError("Error en ObjetoDAO", "Ha dado error el método getObjetosConPool");
         } finally {
             em.close();
             emf.close();
