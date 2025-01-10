@@ -40,14 +40,23 @@ REALIZADO - Hacer lo de que se vea el objeto activo y el consumible
 REALIZADO - Hacer otra tabla o en la misma para filtrar los objetos por pools
 REALIZADO - Query tocha para obtener los objetos que estén en la relacion objetoPool y pillar la pool para ver el nombre de la habitación asignada
 
-- Arreglar las stats para que aparezcan con la vida, fuerza y velocidad inicial
+REALIZADO - Añadirle una columna a objetosActivo y objetosConsumible para que se vea la fecha de inserción modificando el objeto y así ya tenemos un modify
+REALIZADO - comprobar la clase PersonajeObjeto
 
-- Añadirle una columna a objetosActivo y objetosConsumible para que se vea la fecha de inserción modificando el objeto y así ya tenemos un modify
-        > comprobar la clase PersonajeObjeto
-        > hacer el modify
+- Dos ventanas emergentes al crear el personaje
 
-- CRUD?
+- Sacar la id de la tabla principal
 
-- Hacer un submenú para crear y borrar objetos ??? (skipeable)
+- Meterle gif explicación diseño de la pantalla en el README
+
+- Hacer un update en lo de asignarle tiempo
+
+- Hacer un submenú para crear y borrar objetos
 
 - Testing JUnit
+
+- Sacar comentarios y comentar la parte del tiempo y decir que es para tener crud
+
+- Comprobar mensajes emergentes
+
+- Sacar métodos sobrantes
