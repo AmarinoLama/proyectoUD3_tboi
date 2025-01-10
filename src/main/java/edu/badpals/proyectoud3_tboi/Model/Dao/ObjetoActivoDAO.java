@@ -1,8 +1,7 @@
 package edu.badpals.proyectoud3_tboi.Model.Dao;
 
-import edu.badpals.proyectoud3_tboi.Model.Entity.Consumible;
 import edu.badpals.proyectoud3_tboi.Model.Entity.ObjetosActivo;
-import edu.badpals.proyectoud3_tboi.Model.Entity.ObjetosPasivo;
+import edu.badpals.proyectoud3_tboi.View.EmergentWindows;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -33,7 +32,7 @@ public class ObjetoActivoDAO {
             em.getTransaction().commit();
         }catch (Exception e){
             em.getTransaction().rollback();
-            e.printStackTrace();
+            EmergentWindows.showError("Error en ObjetoActivoDAO", "Ha dado error el método crearObjetoActivo");
         } finally {
             em.close();
             emf.close();
@@ -45,7 +44,7 @@ public class ObjetoActivoDAO {
         try {
             objetosActivos = em.createQuery("SELECT o FROM ObjetosActivo o", ObjetosActivo.class).getResultList();
         } catch (Exception e) {
-            e.printStackTrace();
+            EmergentWindows.showError("Error en ObjetoActivoDAO", "Ha dado error el método getObjetosActivos");
         } finally {
             em.close();
             emf.close();

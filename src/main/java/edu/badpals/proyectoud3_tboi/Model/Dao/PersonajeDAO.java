@@ -1,7 +1,7 @@
 package edu.badpals.proyectoud3_tboi.Model.Dao;
 
 import edu.badpals.proyectoud3_tboi.Model.Entity.*;
-import edu.badpals.proyectoud3_tboi.View.Warnings;
+import edu.badpals.proyectoud3_tboi.View.EmergentWindows;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -120,12 +120,12 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
                 default:
                     break;
             }
-            System.out.println("Personaje creado con éxito.");
+            EmergentWindows.showInfo("Personaje creado","El personaje ha sido creado exitosamente");
             em.getTransaction().commit();
 
         } catch (Exception e) {
             em.getTransaction().rollback();
-            e.printStackTrace();
+            EmergentWindows.showError("Error en PersonajeDAO","Error en el método crearPersonaje");
         }
         return personaje;
     }
@@ -141,10 +141,10 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
                     .setParameter("idPersonaje", idPersonaje)
                     .executeUpdate();
             em.getTransaction().commit();
-            System.out.println("Personaje y sus objetos relacionados han sido eliminados.");
+            EmergentWindows.showInfo("Personaje borrado","El personaje ha sido borrado exitosamente");
         } catch (Exception e) {
             em.getTransaction().rollback();
-            e.printStackTrace();
+            EmergentWindows.showError("Error en PersonajeDAO","Error en el método eliminarPersonaje");
         }
     }
 
@@ -168,11 +168,10 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
                 throw new IllegalArgumentException("El objeto pasivo con id " + idObjeto + " no existe.");
             }
             createObjetoPersonaje(idPersonaje, idObjeto, personaje, objetoPasivo, tiempoAhora);
-            System.out.println("Objeto pasivo añadido con éxito");
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
-            Warnings.showExisteObjeto("Error al añadir objeto pasivo, comprueba que no exista");
+            EmergentWindows.showWarning("Objeto pasivo existente","El objeto pasivo que estás intentando añadir ya está en el inventario, seleccione uno distinto");
         }
     }
 
@@ -193,7 +192,7 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
-            Warnings.showExisteObjeto("Error al añadir objeto activo, comprueba que no exista");
+            EmergentWindows.showWarning("Objeto activo existente","El objeto activo que estás intentando añadir ya está en el inventario, seleccione uno distinto");
         }
     }
 
@@ -214,7 +213,7 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
-            Warnings.showExisteObjeto("Error al añadir consumible, comprueba que no exista");
+            EmergentWindows.showWarning("Objeto consumible existente","El objeto consumible que estás intentando añadir ya está en el inventario, seleccione uno distinto");
         }
     }
 
@@ -259,7 +258,7 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
 
         } catch (Exception e) {
             em.getTransaction().rollback();
-            e.printStackTrace();
+            EmergentWindows.showError("Error en PersonajeDAO","Error en el método eliminarItemDePersonaje");
         }
     }
 
@@ -270,7 +269,7 @@ public class PersonajeDAO implements InterfazDAO<Personaje>{
             objetoPasivo = em.find(ObjetosPasivo.class, idObjeto);
         } catch (Exception e){
             em.getTransaction().rollback();
-            e.printStackTrace();
+            EmergentWindows.showError("Error en PersonajeDAO","Error en el método getObjetoPasivo");
         }
         return objetoPasivo;
     }

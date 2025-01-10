@@ -2,20 +2,18 @@ package edu.badpals.proyectoud3_tboi.Controller;
 
 import edu.badpals.proyectoud3_tboi.Model.Dao.PersonajeDAO;
 import edu.badpals.proyectoud3_tboi.Model.Entity.Personaje;
-import edu.badpals.proyectoud3_tboi.View.Warnings;
+import edu.badpals.proyectoud3_tboi.View.EmergentWindows;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Objects;
 
 public class SeleccionPersonaje {
 
@@ -54,6 +52,9 @@ public class SeleccionPersonaje {
 
     @FXML
     private Text name;
+
+    private Float vida;
+    private Float velocidad;
 
     @FXML
     void createAzazel(MouseEvent event) {
@@ -122,12 +123,13 @@ public class SeleccionPersonaje {
     @FXML
     void createCharacterPressed(ActionEvent event) {
         if (name.getText().equals("Selecciona un personaje")) {
-            Warnings.showError("Selecciona un personaje");
+            EmergentWindows.showNadaSeleccionado();
             return;
         }
         PersonajeDAO personaje = new PersonajeDAO();
         Personaje personajeActual = personaje.crearPersonaje(name.getText());
         MenuController.setPersonajeActual(personajeActual);
+        EmergentWindows.showInfo("Creación Exitosa", "El personaje " + name.getText() + " ha sido creado exitosamente");
         abrirMenuPrincipal();
     }
 
@@ -150,7 +152,7 @@ public class SeleccionPersonaje {
             Stage currentStage = (Stage) heart.getScene().getWindow();
             currentStage.close();
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            EmergentWindows.showError("Error al abrir ventana", "Ha sucedido un error al abrir la ventana del menú principal");
         }
     }
 }

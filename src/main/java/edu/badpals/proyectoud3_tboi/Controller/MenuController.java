@@ -2,8 +2,7 @@
     
     import edu.badpals.proyectoud3_tboi.Model.Dao.*;
     import edu.badpals.proyectoud3_tboi.Model.Entity.*;
-    import edu.badpals.proyectoud3_tboi.View.Warnings;
-    import javafx.collections.ObservableList;
+    import edu.badpals.proyectoud3_tboi.View.EmergentWindows;
     import javafx.event.ActionEvent;
     import javafx.fxml.FXML;
     import javafx.fxml.FXMLLoader;
@@ -93,6 +92,7 @@
         @FXML
         void anadirItem(ActionEvent event) {
             Objeto selectedObjeto = tablaObjetos.getSelectionModel().getSelectedItem();
+            String tipoObjeto = "";
             if (selectedObjeto != null) {
                 PersonajeDAO personajeDAO = new PersonajeDAO();
 
@@ -106,18 +106,21 @@
                         personajeDAO.addObjetoPasivoToPersonaje(idPersonaje, idObjeto);
                         ObjetosPasivo objetoPasivo = personajeDAO.getObjetoPasivo(idObjeto);
                         mejorarEstadisticas(objetoPasivo);
+                        tipoObjeto = "pasivo";
                         break;
                     case "Tiempo Recarga":
                         personajeDAO.addObjetoActivoToPersonaje(idPersonaje, idObjeto);
+                        tipoObjeto = "activo";
                         break;
                     case "Duración":
                         personajeDAO.addConsumibleToPersonaje(idPersonaje, idObjeto);
+                        tipoObjeto = "consumible";
                         break;
                 }
             } else {
-                Warnings.showNadaSeleccionado();
+                EmergentWindows.showNadaSeleccionado();
             }
-            System.out.println("Objeto añadido al personaje.");
+            EmergentWindows.showInfo("Objeto añadido", "El objeto de tipo " + tipoObjeto + " ha sido añadido correctamente");
 
             cargarActivoActual();
             cargarConsumibleActual();
@@ -138,7 +141,6 @@
 
         private void mejorarEstadisticas(ObjetosPasivo op){
             Float multiplicadorDano = personajeActual.getMultiplicadorDano();
-            System.out.println(multiplicadorDano);
             txtAtaque.setText(String.format("%.2f", Float.parseFloat(txtAtaque.getText().replace(",", ".")) + (op.getMejoraDano()) * multiplicadorDano).replace(".", ","));
             txtVelocidad.setText(String.format("%.2f", Float.parseFloat(txtVelocidad.getText().replace(",", ".")) + op.getMejoraVelocidad()).replace(".", ","));
             txtLagrimas.setText(String.format("%.2f", Float.parseFloat(txtLagrimas.getText().replace(",", ".")) + op.getMejoraLagrimas()).replace(".", ","));
@@ -201,7 +203,7 @@
                 int idPersonaje = personajeActual.seleccionarIDpersonaje();
                 personajeActual.eliminarPersonaje(idPersonaje);
             } catch (IOException e) {
-                System.out.println(e.getMessage());
+                EmergentWindows.showError("Error al cargar ventana", "Ha sucedido un problema al cargar la ventana");
             }
         }
     
