@@ -2,6 +2,7 @@ package edu.badpals.proyectoud3_tboi.Model.Dao;
 
 import edu.badpals.proyectoud3_tboi.Model.Entity.Consumible;
 import edu.badpals.proyectoud3_tboi.Model.Entity.ObjetosActivo;
+import edu.badpals.proyectoud3_tboi.View.EmergentWindows;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -53,7 +54,7 @@ public class ConsumibleDAO {
         try {
             consumibles = em.createQuery("SELECT c FROM Consumible c", Consumible.class).getResultList();
         } catch (Exception e) {
-            e.printStackTrace();
+            EmergentWindows.showError("Error en ConsumibleDAO", "Ha dado error el método getConsumibles");
         } finally {
             em.close();
             emf.close();
