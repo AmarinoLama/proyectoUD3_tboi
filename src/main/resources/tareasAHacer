@@ -51,7 +51,7 @@ REALIZADO - comprobar la clase PersonajeObjeto
 
 - Hacer un update en lo de asignarle tiempo
 
-- Hacer un submenú para crear y borrar objetos
+REALIZADO - Hacer un submenú para crear y borrar objetos
 
 - Testing JUnit
 
@@ -60,3 +60,5 @@ REALIZADO - comprobar la clase PersonajeObjeto
 - Comprobar mensajes emergentes
 
 - Sacar métodos sobrantes
+
+- Poner en el README la mejora de crear personajes por JSON

@@ -1,5 +1,6 @@
 package edu.badpals.proyectoud3_tboi;
 
+import edu.badpals.proyectoud3_tboi.Model.Dao.ConsumibleDAO;
 import edu.badpals.proyectoud3_tboi.Model.Dao.HabitacionDAO;
 import edu.badpals.proyectoud3_tboi.Model.Dao.PersonajeDAO;
 import edu.badpals.proyectoud3_tboi.Model.Entity.Objeto;
@@ -39,5 +40,9 @@ public class Main extends Application {
         for (Objeto objeto : objetos) {
             System.out.println(objeto.getNombre());
         }*/
+        ConsumibleDAO consumibleDAO = new ConsumibleDAO();
+        consumibleDAO.crearConsumible("Pocion de vida", "Recupera 1 corazon", 0);
+        /*consumibleDAO.eliminarConsumible("Pocion de vida");
+        consumibleDAO.modificarConsumible("Pocion de vida", "Recupera 2 corazones", 0);*/
     }
 }
