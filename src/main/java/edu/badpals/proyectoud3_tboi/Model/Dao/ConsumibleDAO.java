@@ -67,8 +67,7 @@ public class ConsumibleDAO {
 
         } catch (Exception e) {
             em.getTransaction().rollback();
-            //Alertas.showError("Error en ConsumibleDAO", "Ha dado error el método eliminarConsumible");
-            e.printStackTrace();
+            Alertas.showError("Error en ConsumibleDAO", "Ha dado error el metodo eliminarConsumible");
         }
     }
 
