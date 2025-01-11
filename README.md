@@ -135,7 +135,7 @@ Finalmente, quieres cambiar de personaje puedes seleccionar la opción de person
 
 En la siguiente imagen se puede apreciar el diagrama de CFM:
 
-![Diagrama CFM](./images/CFM.png)
+![Diagrama CFM](src/main/resources/img/readme/diagramaER_TBOI.png)
 
 Este diagrama muestra la relación entre las clases de la aplicación y como se relacionan entre ellas. La explicación de la bbdd se encuentra en el apartado 2.
 
