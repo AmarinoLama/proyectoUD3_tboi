@@ -79,7 +79,7 @@ y estás son el número de relaciones de cada tipo:
 
 Finalmente esta es una representación visual de la base de datos:
 
-![Diagrama de la base de datos](.\src\main\resources\img\readme\diagramaBBDD.png)
+![diagramaBBDD.png](src%2Fmain%2Fresources%2Fimg%2Freadme%2FdiagramaBBDD.png)
 
 ## 3. Estructura del código
 
@@ -107,7 +107,7 @@ Finalmente, respecto a las querys en JPSQL se han realizado las siguientes query
 
 A continuación se muestra una imagen de la estructura de carpetas del proyecto:
 
-![Estructura de carpetas](.\src\main\resources\img\readme\estructuraCarpetas.png)
+![estructuraCarpetas.png](src%2Fmain%2Fresources%2Fimg%2Freadme%2FestructuraCarpetas.png)
 
 ## 4. Supuesto
 
@@ -115,11 +115,11 @@ Para usar esta aplicación debes seleccionar un personaje entre los ocho que hay
 
 Este menú está organizado de la siguiente forma:
 
-![Menu principal](.\src\main\resources\img\readme\menuPrincipal.png)
+![menuPrincipal.png](src%2Fmain%2Fresources%2Fimg%2Freadme%2FmenuPrincipal.png)
 
 Tiene esta estructura para que se asemeje a una partida cualquiera en el juego normal, el cual tiene la siguiente estructura:
 
-![Estructura partida](.\src\main\resources\img\readme\partidaIsaac.png)
+![partidaIsaac.png](src%2Fmain%2Fresources%2Fimg%2Freadme%2FpartidaIsaac.png)
 
 Como se puede apreciar a la izquierda aparecen las estadísticas, arriba a la izquierda se encuentra el objeto activo junto a sus cargas. Por otra parte en el lado derecho se encuentran los objetos del inventario y finalemtne en la parte inferior se encuentran el consumible.
 
@@ -201,7 +201,7 @@ Los atributos de cada tabla se mostrarán a continuación:
 
 En la siguiente imagen se puede apreciar el diagrama de clases:
 
-![Diagrama clases](.\src\main\resources\img\readme\diagramaClases.png)
+![diagramaClases.png](src%2Fmain%2Fresources%2Fimg%2Freadme%2FdiagramaClases.png)
 
 Como se puede apreciar todas las clases giran entorno a los controladores de los fxml, estos así mismo llaman a las clases DAO que se encargan de realizar las operaciones con la base de datos. Por otra parte, las clases Entity son las que representan las tablas de la base de datos y se encargan de almacenar los datos de la base de datos.
 
