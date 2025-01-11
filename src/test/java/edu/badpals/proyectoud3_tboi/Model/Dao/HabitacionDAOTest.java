@@ -37,8 +37,8 @@ class HabitacionDAOTest {
 
     @Test
     @Order(1)
-    void testFiltrarPoolHabitacionNormal() {
-        List<Objeto> objetos = habitacionDAO.filtrarPool("Normal");
+    void testFiltrarPoolHabitacionAngelical() {
+        List<Objeto> objetos = habitacionDAO.filtrarPool("Angelical");
         assertNotNull(objetos, "La lista de objetos no debería ser nula");
         assertTrue(objetos.size() >= 2, "Debería haber al menos 2 objetos en la lista para la habitación Normal");
     }
