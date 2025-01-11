@@ -10,6 +10,7 @@ REALIZADO - Eliminar personaje al cambiar de personaje
 REALIZADO - Crear query que coja el último activo
 REALIZADO - Crear query que coja el último consumible
 REALIZADO - Hacer crud del objetoConsumible
+REALIZADO - Testing JUnit
 
  >>>>>>>> Tareas Aman <<<<<<<<<
 
@@ -36,11 +37,5 @@ REALIZADO - Hacer un update en lo de asignarle tiempo
 REALIZADO - Sacar comentarios y comentar la parte del tiempo y decir que es para tener crud
 REALIZADO - Comprobar mensajes emergentes
 REALIZADO - Sacar métodos sobrantes
-
->>>>>>> Tareas Extra <<<<<<<
-
-- Meterle gif explicación diseño de la pantalla en el README
-
-- Testing JUnit
-
-- Poner en el README la mejora de crear personajes por JSON
+REALIZADO - Meterle gif explicación diseño de la pantalla en el README
+REALIZADO - Poner en el README la mejora de crear personajes por JSON
