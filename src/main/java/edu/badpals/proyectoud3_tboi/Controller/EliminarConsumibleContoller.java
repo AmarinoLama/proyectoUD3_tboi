@@ -24,14 +24,18 @@ public class EliminarConsumibleContoller {
         ConsumibleDAO consumibleDAO = new ConsumibleDAO();
         if (consumibleDAO.personajeTieneConsumible(nombreBorrar.getText())) {
             Alertas.showWarning("Advertencia", "El consumible " + nombreBorrar.getText() + " está siendo usado por un personaje");
-        } else if (checkConsumibleDisponible()) {
+        } else if (checkConsumibleDisponible() && consumibleDAO.consumibleExiste(nombreBorrar.getText())) {
+            consumibleDAO.eliminarConsumibleDePools(nombreBorrar.getText());
             consumibleDAO.eliminarConsumible(nombreBorrar.getText());
             Alertas.showInfo("Consumible eliminado", "El consumible " + nombreBorrar.getText() + " ha sido eliminado");
+        } else{
+            Alertas.showWarning("Consumible no encontrado", "El consumible " + nombreBorrar.getText() + " no ha sido encontrado o no existe");
+            nombreBorrar.clear();
         }
     }
 
     @FXML
-    public void clickComprarExisteConsumible(ActionEvent event) {
+    public void clickComprobarExisteConsumible(ActionEvent event) {
         if (checkConsumibleDisponible()) {
             Alertas.showInfo("Consumible encontrado", "El consumible " + nombreBorrar.getText() + " ha sido encontrado");
         } else {
