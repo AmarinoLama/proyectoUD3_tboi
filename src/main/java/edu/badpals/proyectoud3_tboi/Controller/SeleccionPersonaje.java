@@ -133,6 +133,8 @@ public class SeleccionPersonaje {
         abrirMenuPrincipal();
     }
 
+    // Método que se encarga de abrir el menú principal accediendo a resorces y cogiendo el fxml
+
     private void abrirMenuPrincipal() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/menuPrincipal.fxml"));

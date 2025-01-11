@@ -18,6 +18,8 @@ public class PersonajeDAO implements InterfazDAO<Personaje> {
         initHibernate();
     }
 
+    // Método que crea un personaje y lo devuelve
+
     @Override
     public Personaje crearPersonaje(String nombre) {
         Personaje personaje = null;
@@ -124,6 +126,8 @@ public class PersonajeDAO implements InterfazDAO<Personaje> {
         return personaje;
     }
 
+    // Método que eliminar un personaje
+
     @Override
     public void eliminarPersonaje(int idPersonaje) {
         try {
@@ -140,11 +144,15 @@ public class PersonajeDAO implements InterfazDAO<Personaje> {
         }
     }
 
+    // Método que selecciona un personaje y devuelve su id
+
     @Override
     public int seleccionarIDpersonaje() {
         Query query = em.createQuery("SELECT p.id FROM Personaje p ORDER BY p.id ASC");
         return (int) query.getSingleResult();
     }
+
+    // Método que añade un objeto pasivo a un personaje
 
     @Override
     public void addObjetoPasivoToPersonaje(int idPersonaje, int idObjeto) {
@@ -167,6 +175,8 @@ public class PersonajeDAO implements InterfazDAO<Personaje> {
         }
     }
 
+    // Método que añade un objeto activo a un personaje
+
     @Override
     public void addObjetoActivoToPersonaje(int idPersonaje, int idObjeto) {
         try {
@@ -187,6 +197,8 @@ public class PersonajeDAO implements InterfazDAO<Personaje> {
             Alertas.showWarning("Objeto activo existente", "El objeto activo que estás intentando añadir ya está en el inventario, seleccione uno distinto");
         }
     }
+
+    // Método que añade un consumible a un personaje
 
     @Override
     public void addConsumibleToPersonaje(int idPersonaje, int idObjeto) {
@@ -210,6 +222,7 @@ public class PersonajeDAO implements InterfazDAO<Personaje> {
     }
 
     // Función creada para que se haga otro update en la bbdd
+
     private void addTiempoRelacionPersonajeObjeto(Integer idObjeto, Integer idPersonaje) {
         String tiempoAhora = java.time.LocalTime.now().toString();
         try {
@@ -224,8 +237,9 @@ public class PersonajeDAO implements InterfazDAO<Personaje> {
             em.getTransaction().rollback();
             Alertas.showError("Error en PersonajeDAO", "Error en el método addTiempoRelacionPersonajeObjeto");
         }
-
     }
+
+    // Método que crea una relación entre un personaje y un objeto
 
     private void createObjetoPersonaje(int idPersonaje, int idObjeto, Personaje personaje, Objeto objeto) {
         PersonajeObjetoId personajeObjetoId = new PersonajeObjetoId();
@@ -238,12 +252,16 @@ public class PersonajeDAO implements InterfazDAO<Personaje> {
         em.persist(personajeObjeto);
     }
 
+    // Método que devuelve una lista con los objetos de un personaje
+
     public List<Objeto> showObjetosPersonaje(int idPersonaje) {
         Query query = em.createQuery("SELECT o FROM PersonajeObjeto p JOIN p.idObjeto o WHERE p.idPersonaje.id = :idPersonaje");
         query.setParameter("idPersonaje", idPersonaje);
         List<Objeto> result = query.getResultList();
         return result;
     }
+
+    // Método que elimina un item de un personaje
 
     public void eliminarItemDePersonaje(int idPersonaje, int idObjeto) {
         try {
@@ -269,6 +287,8 @@ public class PersonajeDAO implements InterfazDAO<Personaje> {
             Alertas.showError("Error en PersonajeDAO", "Error en el método eliminarItemDePersonaje");
         }
     }
+
+    // Método que devuelve un objeto pasivo
 
     public ObjetosPasivo getObjetoPasivo(Integer idObjeto) {
         ObjetosPasivo objetoPasivo = null;

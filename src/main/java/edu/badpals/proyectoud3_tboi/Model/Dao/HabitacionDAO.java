@@ -22,6 +22,8 @@ public class HabitacionDAO {
         initHibernate();
     }
 
+    // Método para filtrar los objetos de un pool por el nombre de la habitación
+
     public List<Objeto> filtrarPool(String nombreHabitacion) {
         Query query = em.createQuery(
                 "SELECT o FROM Objeto o " +

@@ -22,6 +22,8 @@ public class ConsumibleDAO {
         initHibernate();
     }
 
+    // Método para crear un consumible en la base de datos
+
     public void crearConsumible(String nombre, String efecto, Integer duracionEfecto) {
         try {
             em.getTransaction().begin();
@@ -37,6 +39,8 @@ public class ConsumibleDAO {
         }
     }
 
+    // Método para modificar un consumible en la base de datos
+
     public void modificarConsumible(String nombreConsumible, String efecto, Integer duracionEfecto) {
         try {
             em.getTransaction().begin();
@@ -48,9 +52,11 @@ public class ConsumibleDAO {
             if (em.getTransaction().isActive()) {
                 em.getTransaction().rollback();
             }
-            //Alertas.showError("Error en ConsumibleDAO", "Ha dado error el método modificarConsumible");
+            Alertas.showError("Error en ConsumibleDAO", "Ha dado error el método modificarConsumible");
         }
     }
+
+    // Método para eliminar un consumible de la base de datos
 
     public void eliminarConsumible(String nombreConsumible) {
         try {
@@ -71,6 +77,8 @@ public class ConsumibleDAO {
         }
     }
 
+    // Método para eliminar un consumible de los pools de objetos
+
     public void eliminarConsumibleDePools(String nombreConsumible) {
         try {
             em.getTransaction().begin();
@@ -83,6 +91,7 @@ public class ConsumibleDAO {
         }
     }
 
+    // Método para comprobar si un personaje tiene un consumible
 
     public boolean personajeTieneConsumible(String nombreConsumible) {
         try {
@@ -95,6 +104,8 @@ public class ConsumibleDAO {
         }
     }
 
+    // Método para comprobar si un consumible existe
+
     public boolean consumibleExiste(String nombreConsumible) {
         try {
             em.createQuery("SELECT c FROM Consumible c WHERE c.nombre = :nombre", Consumible.class)
@@ -104,6 +115,8 @@ public class ConsumibleDAO {
             return false;
         }
     }
+
+    // Método para obtener todos los consumibles de la base de datos
 
     public List<Consumible> getConsumibles() {
         List<Consumible> consumibles = null;
@@ -118,6 +131,8 @@ public class ConsumibleDAO {
         return consumibles;
     }
 
+    // Método para obtener un consumible por su nombre
+
     public Consumible getConsumibleByName(String nombreConsumible) {
         Consumible consumible = null;
         try {
@@ -128,6 +143,8 @@ public class ConsumibleDAO {
         }
         return consumible;
     }
+
+    // Método para obtener el último consumible insertado
 
     public Consumible ultimoConsumible() {
         Consumible consumible = null;

@@ -49,6 +49,8 @@ public class ObjetoPasivoDAO {
         }
     }*/
 
+    // Método que devuelve una lista con todos los objetos pasivos
+
     public List<ObjetosPasivo> getObjetosPasivos() {
         List<ObjetosPasivo> objetosPasivos = null;
         try {

@@ -21,6 +21,8 @@ public class ObjetoDAO {
         initHibernate();
     }
 
+    // Método para obtener un objeto por su id
+
     public List<Objeto> getObjetos() {
         List<Objeto> objetos = null;
         try {
