@@ -44,12 +44,25 @@ class ConsumibleDAOTest {
         assertEquals(1, consumible.getDuracionEfecto());
     }
 
+    // EL test va pero el rollback no
+
     @Test
     public void modificarConsumibleTest() {
+        consumibleDAO.crearConsumible("nombre", "efecto", 1);
+        consumibleDAO.modificarConsumible("nombre", "a", 11);
+        Consumible consumible = em.createQuery("SELECT c FROM Consumible c WHERE c.nombre = 'nombre'", Consumible.class).getSingleResult();
+        assertEquals("nombre", consumible.getNombre());
+        assertEquals("a", consumible.getEfecto());
+        assertEquals(11, consumible.getDuracionEfecto());
     }
+
+    // Primera línea comentada para usar este test como rollback
 
     @Test
     public void eliminarConsumibleTest() {
+        //consumibleDAO.crearConsumible("nombre", "efecto", 1);
+        consumibleDAO.eliminarConsumible("nombre");
+        assertThrows(Exception.class, () -> em.createQuery("SELECT c FROM Consumible c WHERE c.nombre = 'nombre'", Consumible.class).getSingleResult());
     }
 
     @Test

@@ -34,9 +34,6 @@ public class ConsumibleDAO {
         } catch (Exception e) {
             em.getTransaction().rollback();
             Alertas.showError("Error en ConsumibleDAO", "Ha dado error el método crearConsumible");
-        } finally {
-            em.close();
-            emf.close();
         }
     }
 
@@ -48,8 +45,10 @@ public class ConsumibleDAO {
             consumible.setDuracionEfecto(duracionEfecto);
             em.getTransaction().commit();
         } catch (Exception e) {
-            em.getTransaction().rollback();
-            Alertas.showError("Error en ConsumibleDAO", "Ha dado error el método modificarConsumible");
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            //Alertas.showError("Error en ConsumibleDAO", "Ha dado error el método modificarConsumible");
         }
     }
 
