@@ -43,6 +43,8 @@ public class ObjetoActivoDAO {
     }
     */
 
+    // Método que devuelve una lista con todos los objetos activos
+
     public List<ObjetosActivo> getObjetosActivos() {
         List<ObjetosActivo> objetosActivos = null;
         try {
@@ -56,6 +58,7 @@ public class ObjetoActivoDAO {
         return objetosActivos;
     }
 
+    // Método que devuelve un objeto activo por su id
 
     public ObjetosActivo ultimoObjetoActivo() {
         ObjetosActivo objetoActivo;

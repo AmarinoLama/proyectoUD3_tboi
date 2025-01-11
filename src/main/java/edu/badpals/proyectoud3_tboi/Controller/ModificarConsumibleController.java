@@ -68,7 +68,6 @@ public class ModificarConsumibleController {
                 efectoModificar.clear();
                 duracionModificar.clear();
             }
-
         }
     }
 }

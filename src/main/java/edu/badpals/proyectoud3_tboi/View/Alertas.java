@@ -2,6 +2,8 @@ package edu.badpals.proyectoud3_tboi.View;
 
 import javafx.scene.control.Alert;
 
+// Clase encargada de mostrar alertas en la aplicación
+
 public class Alertas {
 
     public static void showError(String title, String message) {
