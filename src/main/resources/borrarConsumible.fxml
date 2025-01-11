@@ -24,6 +24,6 @@
             <Font size="13.0" />
          </font>
       </Text>
-      <Button fx:id="btnComprobarExiste" layoutX="241.0" layoutY="107.0" mnemonicParsing="false" onAction="#clickComprarExisteConsumible" text="🔍" />
+      <Button fx:id="btnComprobarExiste" layoutX="241.0" layoutY="107.0" mnemonicParsing="false" onAction="#clickComprobarExisteConsumible" text="🔍" />
    </children>
 </AnchorPane>

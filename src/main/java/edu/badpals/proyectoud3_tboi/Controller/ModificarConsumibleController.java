@@ -41,6 +41,12 @@ public class ModificarConsumibleController {
         } else if (!duracionModificar.getText().matches("[0-9]+")) {
             Alertas.showWarning("Error", "La duración debe ser un número entero");
             return;
+        } else if (!consumibleDAO.consumibleExiste(nombreModificar.getText())) {
+            Alertas.showWarning("Error", "El consumible no existe");
+            nombreModificar.clear();
+            efectoModificar.clear();
+            duracionModificar.clear();
+            return;
         }
         consumibleDAO.modificarConsumible(nombreModificar.getText(), efectoModificar.getText(), Integer.parseInt(duracionModificar.getText()));
         Alertas.showInfo("Consumible modificado", "El consumible se ha modificado con exitosamente");
@@ -56,7 +62,13 @@ public class ModificarConsumibleController {
             if (!(consumible == null)) {
                 efectoModificar.setText(consumible.getEfecto());
                 duracionModificar.setText(consumible.getDuracionEfecto().toString());
+            }else{
+                Alertas.showWarning("Error", "El consumible no existe");
+                nombreModificar.clear();
+                efectoModificar.clear();
+                duracionModificar.clear();
             }
+
         }
     }
 }

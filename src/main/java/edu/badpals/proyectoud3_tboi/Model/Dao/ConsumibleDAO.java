@@ -67,14 +67,38 @@ public class ConsumibleDAO {
 
         } catch (Exception e) {
             em.getTransaction().rollback();
-            Alertas.showError("Error en ConsumibleDAO", "Ha dado error el método eliminarConsumible");
+            //Alertas.showError("Error en ConsumibleDAO", "Ha dado error el método eliminarConsumible");
+            e.printStackTrace();
         }
     }
+
+    public void eliminarConsumibleDePools(String nombreConsumible) {
+        try {
+            em.getTransaction().begin();
+            em.createQuery("DELETE FROM PoolObjeto po WHERE po.idObjeto.nombre = :nombre")
+                    .setParameter("nombre", nombreConsumible).executeUpdate();
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            e.printStackTrace();
+        }
+    }
+
 
     public boolean personajeTieneConsumible(String nombreConsumible) {
         try {
             em.createQuery("SELECT c FROM Consumible c join PersonajeObjeto po on c.id = po.id.idObjeto " +
                             "WHERE c.nombre = :nombre", Consumible.class)
+                    .setParameter("nombre", nombreConsumible).getSingleResult();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean consumibleExiste(String nombreConsumible) {
+        try {
+            em.createQuery("SELECT c FROM Consumible c WHERE c.nombre = :nombre", Consumible.class)
                     .setParameter("nombre", nombreConsumible).getSingleResult();
             return true;
         } catch (Exception e) {
