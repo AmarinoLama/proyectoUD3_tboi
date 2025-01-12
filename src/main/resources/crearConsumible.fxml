@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="429.0" prefWidth="305.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.badpals.proyectoud3_tboi.Controller.CrearConsumibleController">
+   <children>
+      <ImageView fitHeight="509.0" fitWidth="307.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/fondoCrudConsumible.jpg" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="11.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CREAR CONSUMIBLE" textAlignment="CENTER" wrappingWidth="284.521484375">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <Button fx:id="btnCrear" layoutX="125.0" layoutY="372.0" mnemonicParsing="false" onAction="#crearConsumible" text="Crear" />
+      <TextField fx:id="nombreCrear" layoutX="78.0" layoutY="107.0" prefHeight="25.0" prefWidth="189.0" />
+      <TextField fx:id="duracionCrear" layoutX="80.0" layoutY="161.0" prefHeight="25.0" prefWidth="189.0" promptText="Introduce un número" />
+      <Text fill="WHITE" layoutX="16.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:" textAlignment="CENTER">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="14.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Efecto:" textAlignment="CENTER">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duración:" textAlignment="CENTER" wrappingWidth="83.931640625">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Text>
+      <TextArea fx:id="efectoCrear" layoutX="80.0" layoutY="217.0" prefHeight="128.0" prefWidth="189.0" />
+   </children>
+</AnchorPane>

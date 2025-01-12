@@ -1,20 +1,19 @@
 package edu.badpals.proyectoud3_tboi.Controller;
 
 import edu.badpals.proyectoud3_tboi.Model.Dao.PersonajeDAO;
-import edu.badpals.proyectoud3_tboi.View.Warnings;
+import edu.badpals.proyectoud3_tboi.Model.Entity.Personaje;
+import edu.badpals.proyectoud3_tboi.View.Alertas;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Objects;
 
 public class SeleccionPersonaje {
 
@@ -53,6 +52,9 @@ public class SeleccionPersonaje {
 
     @FXML
     private Text name;
+
+    private Float vida;
+    private Float velocidad;
 
     @FXML
     void createAzazel(MouseEvent event) {
@@ -119,22 +121,25 @@ public class SeleccionPersonaje {
     }
 
     @FXML
-    void createCharacterPressed(ActionEvent event) {
+    public void createCharacterPressed(ActionEvent event) {
         if (name.getText().equals("Selecciona un personaje")) {
-            Warnings.showError("Selecciona un personaje");
+            Alertas.showNadaSeleccionado();
             return;
         }
         PersonajeDAO personaje = new PersonajeDAO();
-        personaje.crearPersonaje(name.getText());
+        Personaje personajeActual = personaje.crearPersonaje(name.getText());
+        MenuController.setPersonajeActual(personajeActual);
+        Alertas.showInfo("Creación Exitosa", "El personaje " + name.getText() + " ha sido creado exitosamente");
         abrirMenuPrincipal();
     }
 
-    public void abrirMenuPrincipal() {
+    // Método que se encarga de abrir el menú principal accediendo a resorces y cogiendo el fxml
+
+    private void abrirMenuPrincipal() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/menuPrincipal.fxml"));
             Parent root = loader.load();
 
-            // usa esto para pasarle la vida inicial de los personajes, trata los corazones negativos como 0,5 y listo
             MenuController menuController = loader.getController();
             String personajeName = name.getText().equals("???") ? "blueBaby" : name.getText().toLowerCase();
             menuController.setImgPersonaje(personajeName);
@@ -149,7 +154,7 @@ public class SeleccionPersonaje {
             Stage currentStage = (Stage) heart.getScene().getWindow();
             currentStage.close();
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            Alertas.showError("Error al abrir ventana", "Ha sucedido un error al abrir la ventana del menú principal");
         }
     }
 }

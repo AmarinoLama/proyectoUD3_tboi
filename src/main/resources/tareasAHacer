@@ -7,43 +7,35 @@ REALIZADO - modificar lo que tenga que ver con personajes para cambiar el daño 
 REALIZADO - Crear CRUD de personajes
 REALIZADO - Crear Items
 REALIZADO - Eliminar personaje al cambiar de personaje
-
+REALIZADO - Crear query que coja el último activo
+REALIZADO - Crear query que coja el último consumible
+REALIZADO - Hacer crud del objetoConsumible
+REALIZADO - Testing JUnit
 
  >>>>>>>> Tareas Aman <<<<<<<<<
 
 REALIZADO - menu con personajes
 REALIZADO - asignar botones y llamar funcion pasandole el nombre
-
 REALIZADO - empezar con menu stats
 REALIZADO - crear menu stats básico (👞velocidad, ⚔daño, 💧lagrimas, 🏹alcance, 💦velocidadProyectil, 🍀suerte, ❤vida)
-
 REALIZADO - hacer hueco para los consumibles y el objeto activo
-
 REALIZADO - poner botones de añadir y quitar objetos + combobox para seleccionar el tipo de habitación
-
 REALIZADO - hacer el filtrado por pool (ponerle un botón)
-
 REALIZADO - poner al lado de la tabla los items que se eligan
-
 REALIZADO - cargar la tabla de objetos / cargar la tabla de objetos y enseñar sus stats junto a nombre y descripcion
-
->>>>>>> Tareas Extra <<<<<<<
-
 REALIZADO - Vincular botones añadir y eliminar objetos con la tabla de objetos (si es pasivo tabla, activo arriba, consumible abajo)
-REALIZADO - Crear query que coja el último activo
-REALIZADO - Crear query que coja el último consumible
-
-REALIZADO - Cargar los datos seleccionados en el Inventario
-
 REALIZADO - Hacer lo de que se vea el objeto activo y el consumible
-
+REALIZADO - Cargar los datos seleccionados en el Inventario
 REALIZADO - Hacer otra tabla o en la misma para filtrar los objetos por pools
 REALIZADO - Query tocha para obtener los objetos que estén en la relacion objetoPool y pillar la pool para ver el nombre de la habitación asignada
-
-- Pensar en cómo vamos a hacer para que las stats de la izq suban conforme los items que tenemos (solo pasivos)
-
-- CRUD?
-
-- Hacer un submenú para crear y borrar objetos ??? (skipeable)
-
-- Testing JUnit
+REALIZADO - Añadirle una columna a objetosActivo y objetosConsumible para que se vea la fecha de inserción modificando el objeto y así ya tenemos un modify
+REALIZADO - comprobar la clase PersonajeObjeto
+REALIZADO - Dos ventanas emergentes al crear el personaje
+REALIZADO - Sacar la id de la tabla principal
+REALIZADO - Hacer un submenú para crear y borrar objetos
+REALIZADO - Hacer un update en lo de asignarle tiempo
+REALIZADO - Sacar comentarios y comentar la parte del tiempo y decir que es para tener crud
+REALIZADO - Comprobar mensajes emergentes
+REALIZADO - Sacar métodos sobrantes
+REALIZADO - Meterle gif explicación diseño de la pantalla en el README
+REALIZADO - Poner en el README la mejora de crear personajes por JSON

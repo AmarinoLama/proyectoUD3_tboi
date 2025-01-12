@@ -8,7 +8,6 @@ import jakarta.persistence.Persistence;
 import jakarta.persistence.Query;
 
 import java.util.List;
-import java.util.Locale;
 
 public class HabitacionDAO {
     private EntityManagerFactory emf;
@@ -22,6 +21,8 @@ public class HabitacionDAO {
     public HabitacionDAO() {
         initHibernate();
     }
+
+    // Método para filtrar los objetos de un pool por el nombre de la habitación
 
     public List<Objeto> filtrarPool(String nombreHabitacion) {
         Query query = em.createQuery(

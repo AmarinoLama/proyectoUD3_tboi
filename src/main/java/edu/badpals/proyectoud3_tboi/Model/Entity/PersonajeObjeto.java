@@ -18,6 +18,9 @@ public class PersonajeObjeto {
     @JoinColumn(name = "id_objeto", nullable = false)
     private Objeto idObjeto;
 
+    @Column(name = "fechaInsercion")
+    private String fechaInsercion;
+
     public PersonajeObjetoId getId() {
         return id;
     }
@@ -42,4 +45,11 @@ public class PersonajeObjeto {
         this.idObjeto = idObjeto;
     }
 
+    public String getFechaInsercion() {
+        return fechaInsercion;
+    }
+
+    public void setFechaInsercion(String fechaInsercion) {
+        this.fechaInsercion = fechaInsercion;
+    }
 }

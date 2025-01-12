@@ -13,7 +13,7 @@ public class Objeto {
     @Column(name = "id_objeto", nullable = false)
     private Integer id;
 
-    @Column(name = "nombre", nullable = false, length = 50)
+    @Column(name = "nombre", nullable = false, length = 50, unique = true)
     private String nombre;
 
     @Column(name = "efecto")
