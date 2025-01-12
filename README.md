@@ -79,7 +79,7 @@ y estás son el número de relaciones de cada tipo:
 
 Finalmente esta es una representación visual de la base de datos:
 
-![diagramaBBDD.png](src%2Fmain%2Fresources%2Fimg%2Freadme%2FdiagramaBBDD.png)
+![diagramaBBDD.png](src/main/resources/img/readme/diagramaBBDD.png)
 
 ## 3. Estructura del código
 
@@ -107,7 +107,7 @@ Finalmente, respecto a las querys en JPSQL se han realizado las siguientes query
 
 A continuación se muestra una imagen de la estructura de carpetas del proyecto:
 
-![estructuraCarpetas.png](src%2Fmain%2Fresources%2Fimg%2Freadme%2FestructuraCarpetas.png)
+![estructuraCarpetas.png](src/main/resources/img/readme/estructuraCarpetas.png)
 
 ## 4. Supuesto
 
@@ -115,11 +115,11 @@ Para usar esta aplicación debes seleccionar un personaje entre los ocho que hay
 
 Este menú está organizado de la siguiente forma:
 
-![menuPrincipal.png](src%2Fmain%2Fresources%2Fimg%2Freadme%2FmenuPrincipal.png)
+![menuPrincipal.png](src/main/resources/img/readme/menuPrincipal.png)
 
 Tiene esta estructura para que se asemeje a una partida cualquiera en el juego normal, el cual tiene la siguiente estructura:
 
-![partidaIsaac.png](src%2Fmain%2Fresources%2Fimg%2Freadme%2FpartidaIsaac.png)
+![partidaIsaac.png](src/main/resources/img/readme/partidaIsaac.png)
 
 Como se puede apreciar a la izquierda aparecen las estadísticas, arriba a la izquierda se encuentra el objeto activo junto a sus cargas. Por otra parte en el lado derecho se encuentran los objetos del inventario y finalemtne en la parte inferior se encuentran el consumible.
 
@@ -201,7 +201,7 @@ Los atributos de cada tabla se mostrarán a continuación:
 
 En la siguiente imagen se puede apreciar el diagrama de clases:
 
-![diagramaClases.png](src%2Fmain%2Fresources%2Fimg%2Freadme%2FdiagramaClases.png)
+![diagramaClases.png](src/main/resources/img/readme/diagramaClases.png)
 
 Como se puede apreciar todas las clases giran entorno a los controladores de los fxml, estos así mismo llaman a las clases DAO que se encargan de realizar las operaciones con la base de datos. Por otra parte, las clases Entity son las que representan las tablas de la base de datos y se encargan de almacenar los datos de la base de datos.
 
@@ -211,7 +211,7 @@ Finalemente están las clases de Entity que se encargan de representar las tabla
 
 ## 6. Manual técnico para desarrolladores
 
-Para poder ejecutar la aplicación es necesario tener instalado Java 11 y Maven. Una vez que se tengan estas dos herramientas se debe clonar el repositorio y abrirlo con un IDE que soporte Java. Para realizar esta acción deberás abrir la terminal y escribir el siguiente comando:
+Para poder ejecutar la aplicación es necesario tener instalado Java 11 o superior, Maven y una versión superior o igual a la 17. Una vez que se tengan estas dos herramientas se debe clonar el repositorio y abrirlo con un IDE que soporte Java. Para realizar esta acción deberás abrir la terminal y escribir el siguiente comando:
 
 ```bash
 mkdir proyectoUD3_tboi
@@ -235,11 +235,26 @@ A continuación deberemos instalar MySQL y ejecutar el script que se encuentra e
 
 Una vez realizado todo esto ya tendremos nuestro proyecto en nuestro ordenador y podremos abrirlo con nuestro IDE. Para ejecutar la aplicación deberemos abrir el archivo `Main.java` y ejecutarlo. Una vez que se haya ejecutado la aplicación se abrirá una ventana con la selección de personajes y podremos empezar a interactuar con la aplicación.
 
+### Ejecución con JAR
+
+#### Para Crear el JAR
+
+```bash
+    mvn clean package
+```
+
+#### Para ejecutar con el JAR
+
+```bash
+    
+ java --module-path="ruta al directorio del SDKS" --add-modules=javafx.base,javafx.controls,javafx.fxml,javafx.graphics,javafx.swing,javafx.media
+```
+
 ## 7. Manual de usuario
 
 En este apartado hemos realizado un video tutorial para que se vea todo más claro:
 
-[Video tutorial](https://youtu.be/1Q6J9Z9Z9Z4)
+[Video tutorial](https://drive.google.com/file/d/1qxWN63MBJ69cmFAC2V_YxAnlQELNnTFe/view?usp=sharing)
 
 ## 8. Reparto de tareas
 
