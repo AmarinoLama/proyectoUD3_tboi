@@ -5,6 +5,7 @@ module edu.badpals.proyectoud3_tboi {
     requires java.sql;
     requires org.hibernate.orm.core;
     requires jdk.jshell;
+    requires javafx.graphics;
 
     opens edu.badpals.proyectoud3_tboi to javafx.fxml;
     opens edu.badpals.proyectoud3_tboi.Controller to javafx.fxml;

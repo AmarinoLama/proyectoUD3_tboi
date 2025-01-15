@@ -34,6 +34,9 @@ public class MenuController {
     public Button btnEliminar;
 
     @FXML
+    public Text txtCodigoPromocion;
+
+    @FXML
     private ImageView imgPersonaje;
 
     @FXML
@@ -98,11 +101,14 @@ public class MenuController {
 
     // FUNCIONES DEL FXML
 
+    // COMENTARIO EXAMEN: llamar a la función desde el initialize
+
     @FXML
     public void initialize() {
         cargarPasivos();
         mbtnHabitacion.setDisable(true);
         desactivarBotonesConsumible();
+        cargarCodigoPromocional();
     }
 
     @FXML
@@ -490,6 +496,14 @@ public class MenuController {
 
         tablaObjetos.getColumns().addAll(colNombre, colEfecto);
         tablaObjetos.getItems().setAll(objetos);
+    }
+
+    // COMENTARIO EXAMEN: crear este método para cargar el código
+
+    private void cargarCodigoPromocional() {
+        PersonajeDAO personajeDAO = new PersonajeDAO();
+        String codigo = personajeDAO.getCodigoPromocional();
+        txtCodigoPromocion.setText(codigo);
     }
 
     // FUNCIONES DE MANEJO DE BOTONES

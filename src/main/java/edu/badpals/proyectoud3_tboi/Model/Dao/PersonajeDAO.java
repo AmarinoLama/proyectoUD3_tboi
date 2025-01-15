@@ -23,6 +23,10 @@ public class PersonajeDAO implements InterfazDAO<Personaje> {
     @Override
     public Personaje crearPersonaje(String nombre) {
         Personaje personaje = null;
+
+        // COMENTARIO EXAMEN: Creamos el objeto Promocion para inicializarlo con su respectiva descripción
+        Promocion promocionCreada = new Promocion();
+
         try {
             em.getTransaction().begin();
             switch (nombre) {
@@ -34,6 +38,14 @@ public class PersonajeDAO implements InterfazDAO<Personaje> {
                     personaje.setDescripcion("Un niño que se adentra en las profundidades de su sótano para escapar de su madre.");
                     personaje.setSaludBase(3);
                     personaje.setMultiplicadorDano(1f);
+
+                    // COMENTARIO EXAMEN: Ponemos su respectivo código y lo añadimos la personaje
+                    promocionCreada.setCodigoUnipersonal("isaac000");
+                    promocionCreada.setDescripcion("Descripcion de isaac");
+                    em.persist(promocionCreada);
+                    em.flush();
+                    personaje.setPromocion(promocionCreada);
+
                     em.persist(personaje);
                     break;
 
@@ -45,6 +57,14 @@ public class PersonajeDAO implements InterfazDAO<Personaje> {
                     personaje.setDescripcion("Magdalena es una referencia a María Magdalena, una seguidora de Jesús que de su cuerpo salieron 7 demonios, referenciado con los 7 contenedores de vida necesarios para desbloquearla.");
                     personaje.setSaludBase(4);
                     personaje.setMultiplicadorDano(1f);
+
+                    // COMENTARIO EXAMEN: Ponemos su respectivo código y lo añadimos la personaje
+                    promocionCreada.setCodigoUnipersonal("magdalena111");
+                    promocionCreada.setDescripcion("Descripcion de magadalena");
+                    em.persist(promocionCreada);
+                    em.flush();
+                    personaje.setPromocion(promocionCreada);
+
                     em.persist(personaje);
                     break;
 
@@ -56,6 +76,14 @@ public class PersonajeDAO implements InterfazDAO<Personaje> {
                     personaje.setDescripcion("Es una referencia a la historia bíblica de Caín y Abel, donde Caín comete el primer asesinato al matar a Abel.");
                     personaje.setSaludBase(2);
                     personaje.setMultiplicadorDano(1.2f);
+
+                    // COMENTARIO EXAMEN: Ponemos su respectivo código y lo añadimos la personaje
+                    promocionCreada.setCodigoUnipersonal("cain222");
+                    promocionCreada.setDescripcion("Descripcion de cain");
+                    em.persist(promocionCreada);
+                    em.flush();
+                    personaje.setPromocion(promocionCreada);
+
                     em.persist(personaje);
                     break;
 
@@ -67,6 +95,14 @@ public class PersonajeDAO implements InterfazDAO<Personaje> {
                     personaje.setDescripcion("Es una referencia a la historia bíblica de Caín y Abel, donde Caín comete el primer asesinato al matar a Abel.");
                     personaje.setSaludBase(1);
                     personaje.setMultiplicadorDano(1.35f);
+
+                    // COMENTARIO EXAMEN: Ponemos su respectivo código y lo añadimos la personaje
+                    promocionCreada.setCodigoUnipersonal("judas333");
+                    promocionCreada.setDescripcion("Descripcion de judas");
+                    em.persist(promocionCreada);
+                    em.flush();
+                    personaje.setPromocion(promocionCreada);
+
                     em.persist(personaje);
                     break;
 
@@ -78,6 +114,14 @@ public class PersonajeDAO implements InterfazDAO<Personaje> {
                     personaje.setDescripcion("El nombre Blue Baby viene del síndrome del bebé azul, refiriendo a un bebé recién nacido con problemas que causan un tono de piel más azul. Este ha aparecido como un personaje recurrente en los trabajos de Edmund McMillen, funcionando originalmente como la «mascota» de su cuenta en Newgrounds «Bluebaby».");
                     personaje.setSaludBase(3);
                     personaje.setMultiplicadorDano(1.05f);
+
+                    // COMENTARIO EXAMEN: Ponemos su respectivo código y lo añadimos la personaje
+                    promocionCreada.setCodigoUnipersonal("bluebaby444");
+                    promocionCreada.setDescripcion("Descripcion de blueBaby");
+                    em.persist(promocionCreada);
+                    em.flush();
+                    personaje.setPromocion(promocionCreada);
+
                     em.persist(personaje);
                     break;
 
@@ -89,8 +133,15 @@ public class PersonajeDAO implements InterfazDAO<Personaje> {
                     personaje.setDescripcion("Según la teología bíblica, Eva fue la primera mujer en la tierra, nacida de la costilla de Adán según el libro de Génesis. En el juego original de The Binding of Isaac, Eve dejaba sangre en lugar de orina al entrar a una habitación teniendo medio corazón de vida restante; se teorizaba que esto era una referencia a la menstruación, que bíblicamente se explica como una maldición dada a Eve por Dios.");
                     personaje.setSaludBase(2);
                     personaje.setMultiplicadorDano(0.75f);
-                    em.persist(personaje);
 
+                    // COMENTARIO EXAMEN: Ponemos su respectivo código y lo añadimos la personaje
+                    promocionCreada.setCodigoUnipersonal("eva555");
+                    promocionCreada.setDescripcion("Descripcion de eva");
+                    em.persist(promocionCreada);
+                    em.flush();
+                    personaje.setPromocion(promocionCreada);
+
+                    em.persist(personaje);
                     break;
 
                 case "Samson":
@@ -101,6 +152,14 @@ public class PersonajeDAO implements InterfazDAO<Personaje> {
                     personaje.setDescripcion("En la Biblia, Sansón era un guerrero sobrenaturalmente fuerte que derivaba su poder de su voto nazareo, lo que le otorgaba a Sansón una fuerza inmensa si no se cortaba el cabello.");
                     personaje.setSaludBase(3);
                     personaje.setMultiplicadorDano(1f);
+
+                    // COMENTARIO EXAMEN: Ponemos su respectivo código y lo añadimos la personaje
+                    promocionCreada.setCodigoUnipersonal("samson666");
+                    promocionCreada.setDescripcion("Descripcion de samson");
+                    em.persist(promocionCreada);
+                    em.flush();
+                    personaje.setPromocion(promocionCreada);
+
                     em.persist(personaje);
                     break;
 
@@ -112,6 +171,14 @@ public class PersonajeDAO implements InterfazDAO<Personaje> {
                     personaje.setDescripcion("En la Biblia, Azazel es el nombre que se le da al macho cabrío que fue arrojado al monte como parte de los rituales de expiación judíos. Sin embargo, en ciertas tradiciones de las religiones abrahámicas, Azazel se refiere al ángel caído que enseñó a la gente a fabricar armas y joyas y enseñó a las mujeres el \"arte pecaminoso\" de pintarse la cara, como se menciona en el Libro apócrifo de Enoc.");
                     personaje.setSaludBase(3);
                     personaje.setMultiplicadorDano(1.5f);
+
+                    // COMENTARIO EXAMEN: Ponemos su respectivo código y lo añadimos la personaje
+                    promocionCreada.setCodigoUnipersonal("azazel777");
+                    promocionCreada.setDescripcion("Descripcion de azazel");
+                    em.persist(promocionCreada);
+                    em.flush();
+                    personaje.setPromocion(promocionCreada);
+
                     em.persist(personaje);
                     break;
                 default:
@@ -121,7 +188,8 @@ public class PersonajeDAO implements InterfazDAO<Personaje> {
 
         } catch (Exception e) {
             em.getTransaction().rollback();
-            Alertas.showError("Error en PersonajeDAO", "Error en el método crearPersonaje");
+            System.out.println("Se lanza excepcion " + e.getMessage());
+            //Alertas.showError("Error en PersonajeDAO", "Error en el método crearPersonaje");
         }
         return personaje;
     }
@@ -138,6 +206,7 @@ public class PersonajeDAO implements InterfazDAO<Personaje> {
             em.createQuery("DELETE FROM Personaje p WHERE p.id = :idPersonaje")
                     .setParameter("idPersonaje", idPersonaje)
                     .executeUpdate();
+            em.createQuery("DELETE FROM Promocion p").executeUpdate();
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
@@ -300,5 +369,17 @@ public class PersonajeDAO implements InterfazDAO<Personaje> {
             Alertas.showError("Error en PersonajeDAO", "Error en el método getObjetoPasivo");
         }
         return objetoPasivo;
+    }
+
+    public String getCodigoPromocional() {
+        try {
+            em.getTransaction().begin();
+            Personaje personajeActual = em.find(Personaje.class, seleccionarIDpersonaje());
+            return personajeActual.getPromocion().getCodigoUnipersonal();
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            Alertas.showError("Error en PersonajeDAO", "Error en el método getCodigoPromocional");
+        }
+        return "Ninguno";
     }
 }

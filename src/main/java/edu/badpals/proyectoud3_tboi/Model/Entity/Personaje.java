@@ -21,6 +21,10 @@ public class Personaje {
     @Column(name = "dano_base", nullable = false)
     private Float danoBase;
 
+    @OneToOne
+    @JoinColumn(name = "id_promocion")
+    private Promocion promocion;
+
     @Transient
     private Float multiplicadorDano;
 
@@ -72,4 +76,11 @@ public class Personaje {
         this.danoBase = danoBase;
     }
 
+    public Promocion getPromocion() {
+        return promocion;
+    }
+
+    public void setPromocion(Promocion promocion) {
+        this.promocion = promocion;
+    }
 }
