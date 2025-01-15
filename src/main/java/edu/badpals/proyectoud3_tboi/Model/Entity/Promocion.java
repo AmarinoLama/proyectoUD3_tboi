@@ -11,7 +11,7 @@ public class Promocion {
     @Column(name = "id_promocion")
     private Integer id;
 
-    @Column(name = "codigo_unipersonal")
+    @Column(name = "codigo_unipersonal", unique = true)
     private String codigoUnipersonal;
 
     @Column(name = "descripcion")
